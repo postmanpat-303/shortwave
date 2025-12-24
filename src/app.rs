@@ -20,6 +20,8 @@ use std::cell;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use async_compat::CompatExt;
+use formatx::formatx;
+use gettextrs::gettext;
 use gio::subclass::prelude::ApplicationImpl;
 use glib::{Properties, clone};
 use gtk::glib::VariantTy;
@@ -30,7 +32,6 @@ use crate::api::client;
 use crate::audio::{SwPlaybackState, SwPlayer, SwRecordingState, SwTrack};
 use crate::config;
 use crate::database::SwLibrary;
-use crate::i18n::i18n;
 use crate::settings::*;
 use crate::ui::{SwApplicationWindow, SwTrackDialog};
 
@@ -82,7 +83,7 @@ mod imp {
                         if let Some(track) = app.player().track_by_uuid(uuid) {
                             app.show_track_dialog(&track);
                         } else {
-                            window.show_notification(&i18n("Track no longer available"));
+                            window.show_notification(&gettext("Track no longer available"));
                         }
                     })
                     .build(),
@@ -105,8 +106,9 @@ mod imp {
                             return;
                         }
 
-                        window
-                            .show_notification(&i18n("This track is currently not being recorded"));
+                        window.show_notification(&gettext(
+                            "This track is currently not being recorded",
+                        ));
                     })
                     .build(),
                 // app.cancel-recording
@@ -128,8 +130,9 @@ mod imp {
                             return;
                         }
 
-                        window
-                            .show_notification(&i18n("This track is currently not being recorded"));
+                        window.show_notification(&gettext(
+                            "This track is currently not being recorded",
+                        ));
                     })
                     .build(),
                 // app.quit
@@ -254,12 +257,12 @@ mod imp {
 
         #[cfg(not(target_os = "windows"))]
         fn update_background_portal_status(&self) {
-            let mut message = i18n("No Playback");
+            let mut message = gettext("No Playback");
 
             if let Some(station) = self.obj().player().station()
                 && self.obj().player().state() == SwPlaybackState::Playing
             {
-                message = crate::i18n::i18n_f("Playing “{}”", &[&station.title()]);
+                message = formatx!(gettext("Playing “{}”"), station.title()).unwrap();
             }
 
             let fut = clone!(
@@ -355,7 +358,7 @@ impl SwApplication {
             let cookie = self.inhibit(
                 Some(&self.application_window()),
                 gtk::ApplicationInhibitFlags::SUSPEND,
-                Some(&i18n("Active Playback")),
+                Some(&gettext("Active Playback")),
             );
             imp.inhibit_cookie.set(cookie);
         } else if imp.inhibit_cookie.get() != 0 {

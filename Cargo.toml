@@ -16,6 +16,7 @@ cast-sender = "0.3"
 cruet = "0.15"
 diesel = { version = "2.3", features = ["sqlite", "r2d2"] }
 diesel_migrations = "2.3"
+formatx = "0.2"
 futures-util = "0.3"
 gettext-rs = { version = "0.7", features = ["gettext-system"] }
 indexmap = "2.12"

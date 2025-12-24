@@ -14,9 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+use formatx::formatx;
+use gettextrs::{gettext, ngettext};
 use gtk::glib;
-
-use crate::i18n::{gettext_f, ni18n_f};
 
 pub fn send<T: 'static>(sender: &async_channel::Sender<T>, message: T) {
     let fut = glib::clone!(
@@ -47,18 +47,18 @@ pub fn format_duration(d: u64, short: bool) -> String {
         let hour = time / (60 * 60);
 
         let hours = if hour != 0 {
-            ni18n_f("{} hour", "{} hours", hour, &[&hour.to_string()])
+            formatx!(ngettext("{} hour", "{} hours", hour), hour).unwrap()
         } else {
             String::new()
         };
 
         let mins = if min != 0 {
-            ni18n_f("{} minute", "{} minutes", min, &[&min.to_string()])
+            formatx!(ngettext("{} minute", "{} minutes", min), min).unwrap()
         } else {
             String::new()
         };
 
-        let secs_str = ni18n_f("{} second", "{} seconds", sec, &[&sec.to_string()]);
+        let secs_str = formatx!(ngettext("{} second", "{} seconds", sec), sec).unwrap();
         let secs = if sec != 0 {
             secs_str.clone()
         } else {
@@ -67,13 +67,16 @@ pub fn format_duration(d: u64, short: bool) -> String {
 
         if hour > 0 {
             // Translators: Do NOT translate the content between '{' and '}', this is a variable name.
-            gettext_f(
-                "{hours} {mins} {secs}",
-                &[("hours", &hours), ("mins", &mins), ("secs", &secs)],
+            formatx!(
+                gettext("{hours} {mins} {secs}"),
+                hours = hours,
+                mins = mins,
+                secs = secs,
             )
+            .unwrap()
         } else if min > 0 {
             // Translators: Do NOT translate the content between '{' and '}', this is a variable name.
-            gettext_f("{mins} {secs}", &[("mins", &mins), ("secs", &secs)])
+            formatx!(gettext("{mins} {secs}"), mins = mins, secs = secs).unwrap()
         } else if sec > 0 {
             secs
         } else {

@@ -14,10 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+use gettextrs::gettext;
 use gtk::glib;
 use gtk::glib::Enum;
-
-use crate::i18n::i18n;
 
 #[derive(Display, Copy, Debug, Clone, EnumString, Eq, PartialEq, Enum)]
 #[repr(u32)]
@@ -51,39 +50,39 @@ impl SwRecordingState {
 
     pub fn title(&self) -> String {
         match self {
-            SwRecordingState::IdleDisabled => i18n("Not Recorded"),
-            SwRecordingState::IdleIgnoredTrack => i18n("Ignored Track"),
-            SwRecordingState::IdleIncomplete => i18n("Not Recorded"),
+            SwRecordingState::IdleDisabled => gettext("Not Recorded"),
+            SwRecordingState::IdleIgnoredTrack => gettext("Ignored Track"),
+            SwRecordingState::IdleIncomplete => gettext("Not Recorded"),
 
-            SwRecordingState::Recording => i18n("Recording…"),
-            SwRecordingState::Recorded => i18n("Recorded"),
-            SwRecordingState::RecordedReachedMaxDuration => i18n("Recorded"),
+            SwRecordingState::Recording => gettext("Recording…"),
+            SwRecordingState::Recorded => gettext("Recorded"),
+            SwRecordingState::RecordedReachedMaxDuration => gettext("Recorded"),
 
-            SwRecordingState::DiscardedBelowMinDuration => i18n("Below Threshold"),
-            SwRecordingState::DiscardedCancelled => i18n("Cancelled"),
+            SwRecordingState::DiscardedBelowMinDuration => gettext("Below Threshold"),
+            SwRecordingState::DiscardedCancelled => gettext("Cancelled"),
         }
     }
 
     pub fn description(&self) -> String {
         match self {
-            SwRecordingState::IdleDisabled => i18n("Recording is deactivated in preferences"),
+            SwRecordingState::IdleDisabled => gettext("Recording is deactivated in preferences"),
             SwRecordingState::IdleIgnoredTrack => {
-                i18n("The track contains a word that is on the ignore list")
+                gettext("The track contains a word that is on the ignore list")
             }
             SwRecordingState::IdleIncomplete => {
-                i18n("The track wasn't played from the beginning, so it can't be fully recorded")
+                gettext("The track wasn't played from the beginning, so it can't be fully recorded")
             }
             SwRecordingState::Recording => {
-                i18n("The track will be recorded until a new track gets played")
+                gettext("The track will be recorded until a new track gets played")
             }
-            SwRecordingState::Recorded => i18n("The track has been temporarily recorded"),
+            SwRecordingState::Recorded => gettext("The track has been temporarily recorded"),
             SwRecordingState::RecordedReachedMaxDuration => {
-                i18n("The maximum recording duration has been reached")
+                gettext("The maximum recording duration has been reached")
             }
             SwRecordingState::DiscardedBelowMinDuration => {
-                i18n("The track has been discarded as the duration was below the set threshold")
+                gettext("The track has been discarded as the duration was below the set threshold")
             }
-            SwRecordingState::DiscardedCancelled => i18n("Recording has been cancelled"),
+            SwRecordingState::DiscardedCancelled => gettext("Recording has been cancelled"),
         }
     }
 }

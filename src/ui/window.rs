@@ -16,6 +16,7 @@
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
+use gettextrs::gettext;
 use glib::{clone, subclass};
 use gtk::{CompositeTemplate, gio, glib};
 
@@ -217,8 +218,6 @@ mod imp {
     impl SwApplicationWindow {
         #[cfg(not(target_os = "windows"))]
         async fn verify_background_portal_permissions(&self) {
-            use crate::i18n::i18n;
-
             // Verify whether app has permissions for background playback
             let has_permissions = crate::utils::background_portal_permissions().await;
             let mut close_window = has_permissions;
@@ -228,14 +227,14 @@ mod imp {
                 self.obj().set_visible(true);
 
                 let dialog = adw::AlertDialog::new(
-                    Some(&i18n("No Permission for Background Playback")),
-                    Some(&i18n(
+                    Some(&gettext("No Permission for Background Playback")),
+                    Some(&gettext(
                         "“Run in Background” must be allowed for this app in system settings.",
                     )),
                 );
 
-                dialog.add_response("try-anyway", &i18n("Try Anyway"));
-                dialog.add_response("disable", &i18n("Disable Background Playback"));
+                dialog.add_response("try-anyway", &gettext("Try Anyway"));
+                dialog.add_response("disable", &gettext("Disable Background Playback"));
                 dialog.set_close_response("try-anyway");
 
                 let res = dialog.choose_future(Some(&*self.obj())).await;

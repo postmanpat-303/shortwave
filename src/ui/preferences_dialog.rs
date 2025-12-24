@@ -16,10 +16,11 @@
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
+use formatx::formatx;
+use gettextrs::{gettext, ngettext};
 use glib::{clone, subclass};
 use gtk::{CompositeTemplate, gio, glib};
 
-use crate::i18n::{i18n, ni18n_f};
 use crate::settings::{Key, settings_manager};
 
 mod imp {
@@ -136,8 +137,8 @@ mod imp {
                 .unwrap();
 
             let dialog = gtk::FileDialog::new();
-            dialog.set_title(&i18n("Select Save Directory"));
-            dialog.set_accept_label(Some(&i18n("_Select")));
+            dialog.set_title(&gettext("Select Save Directory"));
+            dialog.set_accept_label(Some(&gettext("_Select")));
 
             dialog.select_folder(
                 Some(&parent),
@@ -160,7 +161,7 @@ mod imp {
         #[template_callback]
         fn on_maximum_duration_output(row: &adw::SpinRow) -> bool {
             let value = (row.value() / 60.0) as u32;
-            let text = ni18n_f("{} min", "{} min", value, &[&value.to_string()]);
+            let text = formatx!(ngettext("{} min", "{} min", value), value).unwrap();
             row.set_text(&text);
             row.set_width_chars(text.len() as i32);
             true
@@ -169,7 +170,7 @@ mod imp {
         #[template_callback]
         fn on_minimum_duration_output(row: &adw::SpinRow) -> bool {
             let value = row.value() as u32;
-            let text = ni18n_f("{} sec", "{} sec", value, &[&value.to_string()]);
+            let text = formatx!(ngettext("{} sec", "{} sec", value), value).unwrap();
             row.set_text(&text);
             row.set_width_chars(text.len() as i32);
             true

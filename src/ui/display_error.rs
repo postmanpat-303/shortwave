@@ -17,12 +17,13 @@
 // Original source: Key Rack / Sophie Herold
 // https://gitlab.gnome.org/sophie-h/key-rack/-/blob/9ca245815be2b81faa8cd028ed6030efe19d6832/src/utils/error.rs
 
+use gettextrs::gettext;
 use std::fmt::Display;
 
 use adw::prelude::*;
 
 use crate::app::SwApplication;
-use crate::{i18n::i18n, ui::SwApplicationWindow};
+use crate::ui::SwApplicationWindow;
 
 pub trait ToastWindow: IsA<gtk::Widget> {
     fn toast_overlay(&self) -> adw::ToastOverlay;
@@ -47,7 +48,7 @@ impl<E: Display, T> DisplayError<E> for Result<T, E> {
 
             let toast = adw::Toast::builder()
                 .title(title.as_ref())
-                .button_label(i18n("Show Details"))
+                .button_label(gettext("Show Details"))
                 .build();
 
             let heading = title.as_ref().to_string();

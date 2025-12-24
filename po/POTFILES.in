@@ -57,7 +57,6 @@ src/device/device_discovery.rs
 src/device/device_kind.rs
 src/device/device_model.rs
 src/device/mod.rs
-src/i18n.rs
 src/main.rs
 src/path.rs
 src/settings/key.rs

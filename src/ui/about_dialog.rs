@@ -15,9 +15,9 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 use adw::prelude::*;
+use gettextrs::gettext;
 
 use crate::config;
-use crate::i18n::i18n;
 use crate::ui::SwApplicationWindow;
 
 pub fn show(parent: &SwApplicationWindow) {
@@ -52,8 +52,8 @@ pub fn show(parent: &SwApplicationWindow) {
         "Elias Projahn",
     ]);
     dialog.set_designers(&["Tobias Bernard"]);
-    dialog.set_translator_credits(&i18n("translator-credits"));
-    dialog.add_link(&i18n("Donate"), "https://liberapay.com/haecker-felix");
+    dialog.set_translator_credits(&gettext("translator-credits"));
+    dialog.add_link(&gettext("Donate"), "https://liberapay.com/haecker-felix");
 
     dialog.present(Some(parent));
 }
