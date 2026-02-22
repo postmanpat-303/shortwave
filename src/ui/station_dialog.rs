@@ -21,6 +21,8 @@ use adw::subclass::prelude::*;
 use cruet::Inflector;
 use glib::{Properties, subclass};
 use gtk::{CompositeTemplate, gdk, glib};
+
+#[cfg(not(target_os = "windows"))]
 use shumate::prelude::*;
 
 use crate::api::SwStation;
@@ -71,11 +73,6 @@ mod imp {
         state_row: TemplateChild<adw::ActionRow>,
         #[template_child]
         map_box: TemplateChild<gtk::Box>,
-        #[template_child]
-        map: TemplateChild<shumate::Map>,
-        #[template_child]
-        map_license: TemplateChild<shumate::License>,
-        marker: shumate::Marker,
 
         #[property(get, set, construct_only)]
         station: OnceCell<SwStation>,
@@ -186,13 +183,14 @@ mod imp {
             }
 
             // Map
-            let long: f64 = metadata.geo_long.unwrap_or(0.0).into();
-            let lat: f64 = metadata.geo_lat.unwrap_or(0.0).into();
-            if long != 0.0 || lat != 0.0 {
-                self.setup_map_widget();
-                self.map_box.set_visible(true);
-                self.marker.set_location(lat, long);
-                self.map.center_on(lat, long);
+            #[cfg(not(target_os = "windows"))]
+            {
+                let long: f64 = metadata.geo_long.unwrap_or(0.0).into();
+                let lat: f64 = metadata.geo_lat.unwrap_or(0.0).into();
+                if long != 0.0 || lat != 0.0 {
+                    self.setup_map_widget(lat, long);
+                    self.map_box.set_visible(true);
+                }
             }
 
             // Codec
@@ -221,29 +219,46 @@ mod imp {
             self.stream_row.set_tooltip_text(Some(&url));
         }
 
-        fn setup_map_widget(&self) {
+        #[cfg(not(target_os = "windows"))]
+        fn setup_map_widget(&self, lat: f64, long: f64) {
             let registry = shumate::MapSourceRegistry::with_defaults();
-
             let source = registry.by_id(shumate::MAP_SOURCE_OSM_MAPNIK).unwrap();
-            self.map.set_map_source(&source);
 
-            let viewport = self.map.viewport().unwrap();
+            let map = shumate::Map::new();
+            map.set_sensitive(false);
+            map.set_height_request(294);
+            map.set_map_source(&source);
+
+            let viewport = map.viewport().unwrap();
             viewport.set_reference_map_source(Some(&source));
             viewport.set_zoom_level(6.0);
 
             let layer = shumate::MapLayer::new(&source, &viewport);
-            self.map.add_layer(&layer);
+            map.add_layer(&layer);
 
+            let marker = shumate::Marker::default();
             let marker_layer = shumate::MarkerLayer::new(&viewport);
-            marker_layer.add_marker(&self.marker);
-            self.map.add_layer(&marker_layer);
+            marker_layer.add_marker(&marker);
+            map.add_layer(&marker_layer);
 
             let marker_img = gtk::Image::from_icon_name("mark-location-symbolic");
             marker_img.add_css_class("map-pin");
             marker_img.set_icon_size(gtk::IconSize::Large);
-            self.marker.set_child(Some(&marker_img));
+            marker.set_child(Some(&marker_img));
 
-            self.map_license.append_map_source(&source);
+            marker.set_location(lat, long);
+            map.center_on(lat, long);
+
+            let frame = gtk::Frame::new(None);
+            frame.set_halign(gtk::Align::Fill);
+            frame.set_child(Some(&map));
+
+            let license = shumate::License::new();
+            license.set_xalign(0.0);
+            license.append_map_source(&source);
+
+            self.map_box.append(&frame);
+            self.map_box.append(&license);
         }
 
         #[template_callback]

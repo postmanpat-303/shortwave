@@ -193,22 +193,6 @@
                           <object class="GtkBox" id="map_box">
                             <property name="orientation">vertical</property>
                             <property name="visible">False</property>
-                            <child>
-                              <object class="GtkFrame">
-                                <property name="halign">fill</property>
-                                <property name="child">
-                                  <object class="ShumateMap" id="map">
-                                    <property name="sensitive">False</property>
-                                    <property name="height_request">294</property>
-                                  </object>
-                                </property>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ShumateLicense" id="map_license">
-                                <property name="xalign">0</property>
-                              </object>
-                            </child>
                           </object>
                         </child>
                         <child>

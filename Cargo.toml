@@ -47,4 +47,6 @@ glycin-gtk4 = { package = "libglycin-gtk4-rebind", version = "0.0.1" }
 gstreamer = { version = "0.24" }
 gstreamer-audio = { version = "0.24" }
 gtk = { version = "0.10", package = "gtk4", features = ["gnome_46"] }
+
+[target.'cfg(not(target_os = "windows"))'.dependencies]
 shumate = { version = "0.7", package = "libshumate" }
