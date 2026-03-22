@@ -1,5 +1,5 @@
 // Shortwave - gstreamer_backend.rs
-// Copyright (C) 2021-2024  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2026  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -28,18 +28,18 @@ use gtk::glib;
 use crate::audio::SwPlaybackState;
 
 #[rustfmt::skip]
-////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                //
-//  # Gstreamer Pipeline                                                                          //
-//                                           -----     (   -------------   )                      //
-//                                          |     | -> (  | recorderbin |  )                      //
-//   --------------      --------------     |     |    (   -------------   )                      //
-//  | uridecodebin | -> | audioconvert | -> | tee |                                               //
-//   --------------      --------------     |     |     -------      ---------------------------  //
-//                                          |     | -> | queue | -> | pulsesink | autoaudiosink | //
-//                                           -----      -------      ---------------------------  //
-//                                                                                                //
-////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+//                                                                                 //
+//  # Gstreamer Pipeline                                                           //
+//                                           -----     (   -------------   )       //
+//                                          |     | -> (  | recorderbin |  )       //
+//   --------------      --------------     |     |    (   -------------   )       //
+//  | uridecodebin | -> | audioconvert | -> | tee |                                //
+//   --------------      --------------     |     |     -------     -------------  //
+//                                          |     | -> | queue | -> | audiosink |  //
+//                                           -----      -------    --------------  //
+//                                                                                 //
+/////////////////////////////////////////////////////////////////////////////////////
 
 #[derive(Clone)]
 pub enum GstreamerChange {
@@ -79,18 +79,11 @@ pub struct GstreamerBackend {
 
 impl GstreamerBackend {
     pub fn new(gst_sender: Sender<GstreamerChange>) -> Self {
-        // Determine if env supports pulseaudio
-        let audiosink = if Self::check_pulse_support() {
-            "pulsesink"
-        } else {
-            // If not, use autoaudiosink as fallback
-            warn!("Cannot find PulseAudio. Shortwave will only work with limited functions.");
-            "autoaudiosink"
-        };
+        let audiosink = Self::audiosink();
 
         // create gstreamer pipeline
         let pipeline_launch = format!(
-            "uridecodebin name=uridecodebin use-buffering=true buffer-duration=6000000000 ! audioconvert name=audioconvert ! tee name=tee ! queue ! {audiosink} name={audiosink}"
+            "uridecodebin name=uridecodebin use-buffering=true buffer-duration=6000000000 ! audioconvert name=audioconvert ! tee name=tee ! queue ! {audiosink} name=audiosink"
         );
         let pipeline = gstreamer::parse::launch(&pipeline_launch)
             .expect("Unable to create gstreamer pipeline");
@@ -121,20 +114,23 @@ impl GstreamerBackend {
     }
 
     fn setup_signals(&mut self) {
-        // There's no volume support for non pulseaudio systems
-        if let Some(pulsesink) = self.pipeline.by_name("pulsesink") {
-            // Update volume coming from pulseaudio / pulsesink
-            pulsesink.connect_notify(
+        let audiosink = self
+            .pipeline
+            .by_name("audiosink")
+            .expect("Could not find audiosink in pipeline");
+        if audiosink.has_property("volume") {
+            // Update volume from platform audiosink
+            audiosink.connect_notify(
                 Some("volume"),
                 clone!(
                     #[strong(rename_to = sender)]
                     self.sender,
                     move |element, _| {
-                        let pa_volume: f64 = element.property("volume");
+                        let sink_volume: f64 = element.property("volume");
                         let new_volume = StreamVolume::convert_volume(
                             StreamVolumeFormat::Linear,
                             StreamVolumeFormat::Cubic,
-                            pa_volume,
+                            sink_volume,
                         );
 
                         sender
@@ -144,9 +140,9 @@ impl GstreamerBackend {
                 ),
             );
 
-            // It's possible to mute the audio (!= 0.0) from pulseaudio side, so we should
+            // It's possible to mute the audio (!= 0.0) from audiosink side, so we should
             // handle this too by setting the volume to 0.0
-            pulsesink.connect_notify(
+            audiosink.connect_notify(
                 Some("mute"),
                 clone!(
                     #[strong(rename_to = sender)]
@@ -273,8 +269,8 @@ impl GstreamerBackend {
     }
 
     pub fn volume(&self) -> f64 {
-        let v = if let Some(pulsesink) = self.pipeline.by_name("pulsesink") {
-            pulsesink.property("volume")
+        let v = if let Some(audiosink) = self.pipeline.by_name("audiosink") {
+            audiosink.property("volume")
         } else {
             1.0
         };
@@ -283,25 +279,37 @@ impl GstreamerBackend {
     }
 
     pub fn set_volume(&self, volume: f64) {
-        if let Some(pulsesink) = self.pipeline.by_name("pulsesink") {
-            if volume != 0.0 {
-                pulsesink.set_property("mute", false);
+        let audiosink = self
+            .pipeline
+            .by_name("audiosink")
+            .expect("Could not find audiosink in pipeline");
+        if audiosink.has_property("volume") {
+            if volume != 0.0 && audiosink.has_property("mute") {
+                audiosink.set_property("mute", false);
             }
 
-            let pa_volume = StreamVolume::convert_volume(
+            let sink_volume = StreamVolume::convert_volume(
                 StreamVolumeFormat::Cubic,
                 StreamVolumeFormat::Linear,
                 volume,
             );
-            pulsesink.set_property("volume", pa_volume);
+            audiosink.set_property("volume", sink_volume);
         } else {
-            warn!("PulseAudio is required for changing the volume.")
+            warn!("Native audiosink is required for changing the volume.")
         }
     }
 
     pub fn set_mute(&self, mute: bool) {
-        if let Some(pulsesink) = self.pipeline.by_name("pulsesink") {
-            pulsesink.set_property("mute", mute);
+        let audiosink = self
+            .pipeline
+            .by_name("audiosink")
+            .expect("Could not find audiosink in pipeline");
+        if audiosink.has_property("mute") {
+            audiosink.set_property("mute", mute);
+        } else if audiosink.has_property("volume") {
+            audiosink.set_property("volume", if mute { 0.0 } else { 1.0 });
+        } else {
+            warn!("Native audiosink is required for changing the volume.");
         }
     }
 
@@ -500,9 +508,19 @@ impl GstreamerBackend {
         debug!("Destroyed recorderbin.");
     }
 
-    fn check_pulse_support() -> bool {
-        let pulsesink = gstreamer::ElementFactory::make("pulsesink").build();
-        pulsesink.is_ok()
+    fn audiosink() -> String {
+        let audiosink = if cfg!(target_os = "linux") {
+            "pulsesink"
+        } else if cfg!(target_os = "macos") {
+            "osxaudiosink"
+        } else if cfg!(target_os = "windows") {
+            "wasapi2sink"
+        } else {
+            warn!("No native audiosink found. Shortwave will only work with limited functions.");
+            "autoaudiosink"
+        };
+
+        audiosink.to_string()
     }
 
     fn parse_bus_message(
