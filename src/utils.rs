@@ -14,7 +14,6 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use ashpd::desktop::background::Background;
 use gtk::glib;
 
 use crate::i18n::{gettext_f, ni18n_f};
@@ -97,13 +96,14 @@ pub fn ellipsize_end<S: std::fmt::Display>(x: S, max_len: usize) -> String {
     }
 }
 
+#[cfg(not(target_os = "windows"))]
 pub async fn background_portal_permissions() -> bool {
     if !ashpd::is_sandboxed().await {
         debug!("App is not sandboxed, background playback is allowed.");
         return true;
     }
 
-    if let Ok(res) = Background::request()
+    if let Ok(res) = ashpd::desktop::background::Background::request()
         .reason("Play radio station in the background")
         .send()
         .await

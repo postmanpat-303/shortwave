@@ -189,7 +189,11 @@ mod imp {
                     #[weak(rename_to = imp)]
                     self,
                     async move {
+                        #[cfg(not(target_os = "windows"))]
                         imp.verify_background_portal_permissions().await;
+
+                        #[cfg(target_os = "windows")]
+                        imp.obj().close();
                     }
                 );
                 glib::spawn_future_local(future);
@@ -213,6 +217,7 @@ mod imp {
     impl AdwApplicationWindowImpl for SwApplicationWindow {}
 
     impl SwApplicationWindow {
+        #[cfg(not(target_os = "windows"))]
         async fn verify_background_portal_permissions(&self) {
             // Verify whether app has permissions for background playback
             let has_permissions = utils::background_portal_permissions().await;

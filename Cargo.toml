@@ -7,7 +7,6 @@ license = "GPL-3.0-or-later"
 
 [dependencies]
 anyhow = "1.0"
-ashpd = { version = "0.12", features = ["async-std"], default-features = false }
 async-channel = "2.5"
 async-compat = "0.2"
 async-io = "2.6"
@@ -49,4 +48,5 @@ gstreamer-audio = { version = "0.24" }
 gtk = { version = "0.10", package = "gtk4", features = ["gnome_46"] }
 
 [target.'cfg(not(target_os = "windows"))'.dependencies]
+ashpd = { version = "0.12", features = ["async-std"], default-features = false }
 shumate = { version = "0.7", package = "libshumate" }
