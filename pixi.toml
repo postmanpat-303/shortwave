@@ -21,6 +21,7 @@ app = { cmd = "meson devenv -C build shortwave", depends-on = ["install"] }
 
 [dependencies]
 c-compiler = "*"
+cargo-deny = "*"
 expat = "*"
 freetype = "*"
 gettext = "*"
