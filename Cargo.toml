@@ -11,7 +11,7 @@ ashpd = { version = "0.12", features = ["async-std"], default-features = false }
 async-channel = "2.5"
 async-compat = "0.2"
 async-io = "2.6"
-hickory-resolver = { version = "0.25", features = ["system-config"] }
+hickory-resolver = { version = "0.26", features = ["system-config"] }
 cacache = "13.1"
 cast-sender = "0.3"
 cruet = "0.15"
