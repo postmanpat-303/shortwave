@@ -1,0 +1,49 @@
+[workspace]
+name = "Shortwave"
+authors = ["Felix Häcker haeckerfelix@gnome.org"]
+channels = ["conda-forge"]
+platforms = ["linux-64", "linux-aarch64"]
+
+[activation.env]
+RUST_LOG = "shortwave=debug,cast_sender=debug"
+RUST_BACKTRACE = "1"
+
+[system-requirements]
+libc = { family = "glibc", version = "2.34" }
+
+[tasks]
+setup = { cmd = "meson setup build --prefix=$CONDA_PREFIX -Dprofile=development --wipe", outputs = [
+    "build/build.ninja",
+] }
+build = { cmd = "ninja -C build", depends-on = ["setup"] }
+install = { cmd = "ninja -C build install", depends-on = ["build"] }
+app = { cmd = "meson devenv -C build shortwave", depends-on = ["install"] }
+
+[dependencies]
+c-compiler = "*"
+expat = "*"
+freetype = "*"
+gettext = "*"
+glycin-gtk4 = "*"
+glycin-loaders = "*"
+gst-plugins-bad = "*"
+gst-plugins-base = "*"
+gst-plugins-good = "*"
+gst-plugins-ugly = "*"
+gstreamer = "*"
+gtk4 = "*"
+libadwaita = "*"
+libsqlite = "*"
+libxml2-devel = "*"
+meson = "*"
+pkgconfig = "*"
+rust = "*"
+rust-src = "*"
+zlib = "*"
+
+[target.unix.dependencies]
+libshumate = "*"
+dbus = "*"
+
+[target.linux.dependencies]
+sysroot_linux-64 = ">=2.34"
