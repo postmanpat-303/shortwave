@@ -1,5 +1,5 @@
 // Shortwave - client.rs
-// Copyright (C) 2021-2025  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2026  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@ use std::sync::Arc;
 use gtk::gio;
 use hickory_resolver::Resolver;
 use hickory_resolver::config::ResolverConfig;
-use hickory_resolver::name_server::TokioConnectionProvider;
+use hickory_resolver::net::runtime::TokioRuntimeProvider;
 use indexmap::IndexMap;
 use rand::prelude::SliceRandom;
 use rand::rng;
@@ -100,15 +100,17 @@ async fn send_request<T: de::DeserializeOwned + std::marker::Send + 'static>(
 pub async fn lookup_rb_server() -> Option<String> {
     let lookup_domain = settings_manager::string(Key::ApiLookupDomain);
     let resolver = if let Ok(resolver) = Resolver::builder_tokio() {
-        resolver.build()
+        resolver.build().ok()
     } else {
         warn!("Unable to use dns resolver from system conf");
+        Resolver::builder_with_config(ResolverConfig::default(), TokioRuntimeProvider::default())
+            .build()
+            .ok()
+    };
 
-        Resolver::builder_with_config(
-            ResolverConfig::default(),
-            TokioConnectionProvider::default(),
-        )
-        .build()
+    let Some(resolver) = resolver else {
+        error!("Unable to retrieve dns resolver");
+        return None;
     };
 
     // Do forward lookup to receive a list with the api servers
@@ -124,7 +126,7 @@ pub async fn lookup_rb_server() -> Option<String> {
             .reverse_lookup(ip)
             .await
             .ok()
-            .and_then(|r| r.into_iter().next());
+            .and_then(|r| r.answers().first().map(|rec| rec.data.to_string()));
 
         if result.is_none() {
             warn!("Reverse lookup for {ip} failed");
