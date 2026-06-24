@@ -9,6 +9,9 @@ GETTEXT_DIR = "$CONDA_PREFIX"
 RUST_LOG = "shortwave=debug,cast_sender=debug"
 RUST_BACKTRACE = "1"
 
+[target.osx.activation.env]
+RUSTFLAGS = "-C link-arg=-Wl,-rpath,$CONDA_PREFIX/lib"
+
 [system-requirements]
 libc = { family = "glibc", version = "2.34" }
 
