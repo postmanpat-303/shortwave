@@ -1,5 +1,5 @@
 // Shortwave - app.rs
-// Copyright (C) 2021-2025  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2026  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,7 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use std::cell::{Cell, OnceCell, RefCell};
+use cell::{Cell, RefCell};
+use std::cell;
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
@@ -29,10 +30,9 @@ use crate::api::client;
 use crate::audio::{SwPlaybackState, SwPlayer, SwRecordingState, SwTrack};
 use crate::config;
 use crate::database::SwLibrary;
-use crate::i18n::{i18n, i18n_f};
+use crate::i18n::i18n;
 use crate::settings::*;
 use crate::ui::{SwApplicationWindow, SwTrackDialog};
-use crate::utils;
 
 mod imp {
     use super::*;
@@ -53,7 +53,7 @@ mod imp {
         pub inhibit_cookie: Cell<u32>,
         pub background_hold: RefCell<Option<gio::ApplicationHoldGuard>>,
         #[cfg(not(target_os = "windows"))]
-        pub background_proxy: OnceCell<ashpd::desktop::background::BackgroundProxy<'static>>,
+        pub background_proxy: cell::OnceCell<ashpd::desktop::background::BackgroundProxy<'static>>,
     }
 
     #[glib::object_subclass]
@@ -259,7 +259,7 @@ mod imp {
             if let Some(station) = self.obj().player().station()
                 && self.obj().player().state() == SwPlaybackState::Playing
             {
-                message = i18n_f("Playing “{}”", &[&station.title()]);
+                message = crate::i18n::i18n_f("Playing “{}”", &[&station.title()]);
             }
 
             let fut = clone!(
@@ -276,7 +276,7 @@ mod imp {
 
         #[cfg(not(target_os = "windows"))]
         async fn set_background_portal_status(&self, message: &str) {
-            let message = utils::ellipsize_end(message, 96);
+            let message = crate::utils::ellipsize_end(message, 96);
             if let Some(proxy) = self.background_proxy.get()
                 && let Err(err) = proxy.set_status(&message).await
             {

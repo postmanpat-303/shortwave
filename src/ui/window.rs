@@ -1,5 +1,5 @@
 // Shortwave - window.rs
-// Copyright (C) 2021-2025  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2026  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,7 +22,6 @@ use gtk::{CompositeTemplate, gio, glib};
 use crate::app::SwApplication;
 use crate::audio::SwPlaybackState;
 use crate::config;
-use crate::i18n::i18n;
 use crate::settings::{Key, settings_manager};
 use crate::ui::pages::*;
 use crate::ui::player::{SwPlayerGadget, SwPlayerToolbar, SwPlayerView};
@@ -30,7 +29,6 @@ use crate::ui::{
     DisplayError, SwAddStationDialog, SwDeviceDialog, SwPreferencesDialog, SwStationDialog,
     ToastWindow, about_dialog,
 };
-use crate::utils;
 
 mod imp {
     use super::*;
@@ -219,8 +217,10 @@ mod imp {
     impl SwApplicationWindow {
         #[cfg(not(target_os = "windows"))]
         async fn verify_background_portal_permissions(&self) {
+            use crate::i18n::i18n;
+
             // Verify whether app has permissions for background playback
-            let has_permissions = utils::background_portal_permissions().await;
+            let has_permissions = crate::utils::background_portal_permissions().await;
             let mut close_window = has_permissions;
 
             if !has_permissions {
