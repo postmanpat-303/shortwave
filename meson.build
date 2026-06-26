@@ -16,14 +16,7 @@ dependency('glib-2.0', version: '>= 2.66')
 dependency('gio-2.0', version: '>= 2.66')
 dependency('gtk4', version: '>= 4.16')
 dependency('libadwaita-1', version: '>= 1.8.alpha')
-
-if host_machine.system() != 'windows'
-  dependency('shumate-1.0', version: '>= 1.3')
-endif
-
-# Required by glycin crate
-dependency('lcms2', version: '>= 2.12.0')
-dependency('libseccomp', version: '>= 2.5.0')
+dependency('glycin-gtk4-2', version: '>= 2.1.0')
 
 dependency('gstreamer-1.0', version: '>= 1.16')
 dependency('gstreamer-base-1.0', version: '>= 1.16')
@@ -31,6 +24,10 @@ dependency('gstreamer-audio-1.0', version: '>= 1.16')
 dependency('gstreamer-plugins-base-1.0', version: '>= 1.16')
 dependency('gstreamer-plugins-bad-1.0', version: '>= 1.16')
 dependency('gstreamer-bad-audio-1.0', version: '>= 1.16')
+
+if host_machine.system() != 'windows'
+  dependency('shumate-1.0', version: '>= 1.3')
+endif
 
 # Initialize project variables
 name       = 'Shortwave'
