@@ -60,9 +60,15 @@ fn main() -> glib::ExitCode {
     gtk::Window::set_default_icon_name(*config::APP_ID);
 
     // Setup translations
-    setlocale(LocaleCategory::LcAll, "");
     bindtextdomain(*config::PKGNAME, *config::LOCALEDIR).unwrap();
     textdomain(*config::PKGNAME).unwrap();
+
+    // TODO: Remove once gettext-rs#107 is fixed, and use LcAll for all platforms
+    // https://github.com/gettext-rs/gettext-rs/issues/107
+    #[cfg(not(any(windows, target_os = "macos")))]
+    setlocale(LocaleCategory::LcAll, "");
+    #[cfg(any(windows, target_os = "macos"))]
+    setlocale(LocaleCategory::LcCType, "");
 
     // Load app resources
     let path = &format!(
