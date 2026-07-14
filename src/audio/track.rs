@@ -181,7 +181,7 @@ impl SwTrack {
             return Ok(());
         }
 
-        debug!("Save track \"{}\"", &self.title());
+        debug!("Save track \"{}\"", self.title());
 
         let directory = settings_manager::string(Key::RecordingTrackDirectory);
         let filename = sanitize_filename::sanitize_with_options(
@@ -206,7 +206,7 @@ impl SwTrack {
 
     pub fn play(&self) {
         if let Some(file) = self.saved_to() {
-            debug!("Play track \"{}\"", &self.title());
+            debug!("Play track \"{}\"", self.title());
 
             if let Some(win) = SwApplication::default().active_window() {
                 let launcher = gtk::FileLauncher::new(Some(&file));

@@ -384,7 +384,7 @@ impl GstreamerBackend {
     pub fn stop_recording(&mut self, discard_buffered_data: bool) {
         debug!(
             "Stop recording... (Discard buffered data: {:?})",
-            &discard_buffered_data
+            discard_buffered_data
         );
 
         let recorderbin = self.recorderbin.lock().unwrap().take();

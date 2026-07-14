@@ -127,7 +127,7 @@ mod imp {
             if let Some(ref homepage) = metadata.homepage {
                 let url = homepage.to_string().replace('&', "&amp;");
                 let domain = homepage.domain().unwrap_or_default();
-                let markup = format!("<a href=\"{}\">{}</a>", &url, &domain);
+                let markup = format!("<a href=\"{}\">{}</a>", url, domain);
 
                 self.homepage_label.set_visible(true);
                 self.homepage_label.set_markup(&markup);
@@ -213,7 +213,7 @@ mod imp {
                 metadata.url.map(|x| x.to_string()).unwrap_or_default()
             };
             let url = url.replace('&', "&amp;");
-            let subtitle = format!("<a href=\"{}\">{}</a>", &url, &url);
+            let subtitle = format!("<a href=\"{}\">{}</a>", url, url);
 
             self.stream_row.set_subtitle(&subtitle);
             self.stream_row.set_tooltip_text(Some(&url));

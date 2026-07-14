@@ -115,7 +115,7 @@ mod imp {
                             gio::Cancellable::NONE,
                             None,
                         ) {
-                            format!("{} - {}", &duration, &glib::format_size(res.0))
+                            format!("{} - {}", duration, glib::format_size(res.0))
                         } else {
                             duration
                         },

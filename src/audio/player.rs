@@ -217,7 +217,7 @@ mod imp {
 
         pub fn set_volume(&self, volume: f64) {
             if self.volume.get() != volume {
-                debug!("Set volume: {}", &volume);
+                debug!("Set volume: {}", volume);
                 self.volume.set(volume);
 
                 if self.obj().device().is_none() {
@@ -232,7 +232,7 @@ mod imp {
                 debug!(
                     "Set recording mode: {} -> {}",
                     self.recording_mode.get(),
-                    &mode
+                    mode
                 );
                 self.recording_mode.set(mode);
 
