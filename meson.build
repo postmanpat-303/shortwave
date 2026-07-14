@@ -10,7 +10,6 @@ i18n = import('i18n')
 # Dependencies
 dependency('sqlite3', version: '>= 3.20')
 dependency('openssl', version: '>= 1.0')
-dependency('dbus-1')
 
 dependency('glib-2.0', version: '>= 2.66')
 dependency('gio-2.0', version: '>= 2.66')
