@@ -32,17 +32,29 @@ conf = configuration_data()
 conf.set('APP_ID', app_id)
 conf.set('PKGNAME', meson.project_name())
 conf.set('NAME', name)
-appdata_file = i18n.merge_file(
-  input: configure_file(
+# TODO: Remove once gettext-feedstock#45 is fixed
+# https://github.com/conda-forge/gettext-feedstock/issues/45
+if add_languages('c', required: false, native: false) and meson.get_compiler('c').get_id() == 'msvc'
+  appdata_file = configure_file(
     input: '@0@.metainfo.xml.in.in'.format(base_id),
-    output: '@0@.metainfo.xml.in'.format(app_id),
-    configuration: conf
-  ),
-  output: '@0@.metainfo.xml'.format(app_id),
-  po_dir: '../po',
-  install: true,
-  install_dir: join_paths(datadir, 'metainfo')
-)
+    output: '@0@.metainfo.xml'.format(app_id),
+    configuration: conf,
+    install: true,
+    install_dir: join_paths(datadir, 'metainfo')
+  )
+else
+  appdata_file = i18n.merge_file(
+    input: configure_file(
+      input: '@0@.metainfo.xml.in.in'.format(base_id),
+      output: '@0@.metainfo.xml.in'.format(app_id),
+      configuration: conf
+    ),
+    output: '@0@.metainfo.xml'.format(app_id),
+    po_dir: '../po',
+    install: true,
+    install_dir: join_paths(datadir, 'metainfo')
+  )
+endif
 
 # Validate Appdata
 appstreamcli = find_program('appstreamcli', required: false)
