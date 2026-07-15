@@ -28,18 +28,18 @@ use gtk::glib;
 use crate::audio::SwPlaybackState;
 
 #[rustfmt::skip]
-/////////////////////////////////////////////////////////////////////////////////////
-//                                                                                 //
-//  # Gstreamer Pipeline                                                           //
-//                                           -----     (   -------------   )       //
-//                                          |     | -> (  | recorderbin |  )       //
-//   --------------      --------------     |     |    (   -------------   )       //
-//  | uridecodebin | -> | audioconvert | -> | tee |                                //
-//   --------------      --------------     |     |     -------     -------------  //
-//                                          |     | -> | queue | -> | audiosink |  //
-//                                           -----      -------    --------------  //
-//                                                                                 //
-/////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                      //
+//  # Gstreamer Pipeline                                                                                //
+//                                                                -----     (   -------------   )       //
+//                                                               |     | -> (  | recorderbin |  )       //
+//   --------------      --------------      ---------------     |     |    (   -------------   )       //
+//  | uridecodebin | -> | audioconvert | -> | audioresample | -> | tee |                                //
+//   --------------      --------------      ---------------     |     |     -------     -------------  //
+//                                                               |     | -> | queue | -> | audiosink |  //
+//                                                                -----      -------    --------------  //
+//                                                                                                      //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #[derive(Clone)]
 pub enum GstreamerChange {
@@ -83,7 +83,7 @@ impl GstreamerBackend {
 
         // create gstreamer pipeline
         let pipeline_launch = format!(
-            "uridecodebin name=uridecodebin use-buffering=true buffer-duration=6000000000 ! audioconvert name=audioconvert ! tee name=tee ! queue ! {audiosink} name=audiosink"
+            "uridecodebin name=uridecodebin use-buffering=true buffer-duration=6000000000 ! audioconvert name=audioconvert ! audioresample name=audioresample ! tee name=tee ! queue ! {audiosink} name=audiosink"
         );
         let pipeline = gstreamer::parse::launch(&pipeline_launch)
             .expect("Unable to create gstreamer pipeline");
