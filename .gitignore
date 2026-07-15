@@ -45,3 +45,4 @@ shortwave.pot
 # pixi environments
 .pixi/*
 !.pixi/config.toml
+xdg-home

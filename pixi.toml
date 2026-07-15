@@ -5,9 +5,24 @@ channels = ["conda-forge"]
 platforms = ["linux-64", "linux-aarch64"]
 
 [activation.env]
-GETTEXT_DIR = "$CONDA_PREFIX"
 RUST_LOG = "shortwave=debug,cast_sender=debug"
 RUST_BACKTRACE = "1"
+
+[target.unix.activation.env]
+GETTEXT_DIR = "$CONDA_PREFIX"
+MESON_PREFIX = "$CONDA_PREFIX"
+XDG_DATA_HOME = "$PIXI_PROJECT_ROOT/xdg-home/data"
+XDG_CACHE_HOME = "$PIXI_PROJECT_ROOT/xdg-home/cache"
+XDG_CONFIG_HOME = "$PIXI_PROJECT_ROOT/xdg-home/config"
+XDG_DATA_DIRS = "$CONDA_PREFIX/share:$XDG_DATA_DIRS"
+
+[target.win.activation.env]
+GETTEXT_DIR = "%CONDA_PREFIX%"
+MESON_PREFIX = "%CONDA_PREFIX%\\Library"
+XDG_DATA_HOME = "%PIXI_PROJECT_ROOT%\\xdg-home\\data"
+XDG_CACHE_HOME = "%PIXI_PROJECT_ROOT%\\xdg-home\\cache"
+XDG_CONFIG_HOME = "%PIXI_PROJECT_ROOT%\\xdg-home\\config"
+XDG_DATA_DIRS = "%CONDA_PREFIX%\\Library\\share;%XDG_DATA_DIRS%"
 
 [target.osx.activation.env]
 RUSTFLAGS = "-C link-arg=-Wl,-rpath,$CONDA_PREFIX/lib"
@@ -16,12 +31,12 @@ RUSTFLAGS = "-C link-arg=-Wl,-rpath,$CONDA_PREFIX/lib"
 libc = { family = "glibc", version = "2.34" }
 
 [tasks]
-setup = { cmd = "meson setup build --prefix=$CONDA_PREFIX -Dprofile=development --wipe", outputs = [
+setup = { cmd = "meson setup build --prefix=$MESON_PREFIX -Dprofile=development --wipe", outputs = [
     "build/build.ninja",
 ] }
 build = { cmd = "ninja -C build", depends-on = ["setup"] }
 install = { cmd = "ninja -C build install", depends-on = ["build"] }
-app = { cmd = "meson devenv -C build shortwave", depends-on = ["install"] }
+app = { cmd = "shortwave", depends-on = ["install"] }
 
 [dependencies]
 c-compiler = "*"
