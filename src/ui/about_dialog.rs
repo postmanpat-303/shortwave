@@ -1,5 +1,5 @@
 // Shortwave - about_dialog.rs
-// Copyright (C) 2021-2025  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2026  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -21,10 +21,20 @@ use crate::i18n::i18n;
 use crate::ui::SwApplicationWindow;
 
 pub fn show(parent: &SwApplicationWindow) {
+    #[cfg(not(target_os = "windows"))]
     let dialog = adw::AboutDialog::from_appdata(
         &format!("{}/metainfo.xml", *config::PATH_ID),
         Some(*config::VERSION),
     );
+    #[cfg(target_os = "windows")]
+    let dialog = adw::AboutDialog::builder()
+        .application_name(*config::NAME)
+        .application_icon(*config::APP_ID)
+        .developer_name("Felix Häcker")
+        .license_type(gtk::License::Gpl30)
+        .website("https://apps.gnome.org/Shortwave/")
+        .issue_url("https://gitlab.gnome.org/World/Shortwave/issues")
+        .build();
 
     if *config::PROFILE == "development" {
         dialog.set_version(&format!(
