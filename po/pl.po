@@ -4,14 +4,15 @@
 # Piotr Drąg <piotrdrag@gmail.com>, 2020-2023.
 # Aviary.pl <community-poland@mozilla.org>, 2020-2023.
 # Adam Lewicki <a.lewicki95@gmail.com>, 2025.
+# Victoria Niedzielska <victorian@gnome.org>, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: shortwave\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2026-01-12 20:45+0000\n"
-"PO-Revision-Date: 2026-03-26 15:42+0100\n"
-"Last-Translator: Adam Lewicki <a.lewicki95@gmail.com>\n"
+"POT-Creation-Date: 2026-06-25 23:19+0000\n"
+"PO-Revision-Date: 2026-07-14 22:49+0200\n"
+"Last-Translator: Victoria Niedzielska <victorian@gnome.org>\n"
 "Language-Team: Polish <https://l10n.gnome.org/teams/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Gtranslator 47.1\n"
+"X-Generator: Gtranslator 50.0\n"
 
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:2
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:5
@@ -118,7 +119,7 @@ msgstr "Adres URL strumienia"
 
 #: data/gtk/add_station_dialog.ui:123
 msgid "Add Station"
-msgstr "Dodaje stację"
+msgstr "Dodaj stację"
 
 #: data/gtk/device_dialog.ui:7 data/gtk/player_view.ui:134
 msgid "Connect Device"
@@ -130,7 +131,7 @@ msgstr "Wyszukiwanie urządzeń…"
 
 #: data/gtk/device_dialog.ui:25
 msgid "Search for Devices"
-msgstr "Wyszukiwanie urządzeń"
+msgstr "Wyszukaj urządzenia"
 
 #: data/gtk/device_dialog.ui:41
 msgid "No Devices Available"
@@ -206,7 +207,7 @@ msgstr "_Skróty klawiszowe"
 
 #: data/gtk/library_page.ui:174
 msgid "_About Shortwave"
-msgstr "_O programie"
+msgstr "_O aplikacji"
 
 #: data/gtk/library_page.ui:178
 msgid "_Quit"
@@ -219,12 +220,12 @@ msgstr "Dodaj _stację lokalną"
 #: data/gtk/player_gadget.ui:40 data/gtk/player_toolbar.ui:92
 #: data/gtk/player_view.ui:158 data/gtk/station_row.ui:86
 msgid "Play"
-msgstr "Odtwarza"
+msgstr "Odtwórz"
 
 #: data/gtk/player_gadget.ui:55 data/gtk/player_toolbar.ui:106
 #: data/gtk/player_view.ui:172
 msgid "Stop"
-msgstr "Zatrzymuje"
+msgstr "Zatrzymaj"
 
 #: data/gtk/player_gadget.ui:71 data/gtk/player_toolbar.ui:121
 #: data/gtk/player_view.ui:187
@@ -236,25 +237,25 @@ msgid "SHORTWAVE INTERNET RADIO"
 msgstr "RADIO INTERNETOWE SHORTWAVE"
 
 #: data/gtk/player_gadget.ui:140 data/gtk/player_toolbar.ui:29
-#: data/gtk/player_view.ui:58 src/app.rs:254
+#: data/gtk/player_view.ui:58 src/app.rs:257
 msgid "No Playback"
 msgstr "Brak odtwarzania"
 
 #: data/gtk/player_gadget.ui:199
 msgid "Close"
-msgstr "Zamyka"
+msgstr "Zamknij"
 
 #: data/gtk/player_gadget.ui:210
 msgid "Restore Window"
-msgstr "Przywraca okno"
+msgstr "Przywróć okno"
 
 #: data/gtk/player_view.ui:13
 msgid "Enable Gadget Mode"
-msgstr "Włącza tryb gadżetowy"
+msgstr "Włącz tryb gadżetowy"
 
 #: data/gtk/player_view.ui:217
 msgid "Show Station Details"
-msgstr "Wyświetla informacje o stacji"
+msgstr "Wyświetl informacje o stacji"
 
 #: data/gtk/player_view.ui:268
 msgid "No Tracks"
@@ -262,7 +263,7 @@ msgstr "Brak utworów"
 
 #: data/gtk/player_view.ui:279
 msgid "Played tracks will appear here"
-msgstr "Odtwarzane utwory pojawią się tuta"
+msgstr "Odtwarzane utwory pojawią się tutaj"
 
 #: data/gtk/player_view.ui:313
 msgid "An error occurred"
@@ -353,11 +354,11 @@ msgstr ""
 
 #: data/gtk/search_filter.ui:21
 msgid "Search"
-msgstr "Wyszukiwanie"
+msgstr "Wyszukaj"
 
 #: data/gtk/search_filter.ui:22
 msgid "Search stations"
-msgstr "Wyszukiwanie  stacji"
+msgstr "Wyszukaj stacje"
 
 # ten ciąg jest częścią nieukończonej funkcji, więc na razie oznaczam jako „niepewne” — Victoria
 #: data/gtk/search_filter.ui:32
@@ -389,7 +390,7 @@ msgstr ""
 
 #: data/gtk/search_page.ui:184
 msgid "Loading…"
-msgstr "Ładowanie…"
+msgstr "Wczytywanie…"
 
 #: data/gtk/search_page.ui:199
 msgid "No Results"
@@ -428,7 +429,7 @@ msgstr "Otwarcie okna skrótów"
 #: data/gtk/shortcuts_dialog.ui:22
 msgctxt "shortcut window"
 msgid "Open application menu"
-msgstr "Otwarcie menu programu"
+msgstr "Otwarcie menu aplikacji"
 
 #: data/gtk/shortcuts_dialog.ui:27
 msgctxt "shortcut window"
@@ -443,7 +444,7 @@ msgstr "Zamknięcie okna"
 #: data/gtk/shortcuts_dialog.ui:39
 msgctxt "shortcut window"
 msgid "Quit the application"
-msgstr "Zakończenie działania programu"
+msgstr "Zakończenie działania aplikacji"
 
 #: data/gtk/shortcuts_dialog.ui:50
 msgctxt "shortcut window"
@@ -502,7 +503,8 @@ msgid ""
 "The information could not be updated, probably this station was removed from "
 "the public database"
 msgstr ""
-"Nie można zaktualizować informacji, prawdopodobnie ta stacja została usunięta z publicznej bazy danych"
+"Nie można zaktualizować informacji, prawdopodobnie ta stacja została "
+"usunięta z publicznej bazy danych"
 
 #: data/gtk/station_dialog.ui:138
 msgid "Information"
@@ -528,26 +530,26 @@ msgstr "Kraj"
 msgid "State"
 msgstr "Stan"
 
-#: data/gtk/station_dialog.ui:216
+#: data/gtk/station_dialog.ui:200
 msgid "Audio"
 msgstr "Dźwięk"
 
-#: data/gtk/station_dialog.ui:219
+#: data/gtk/station_dialog.ui:203
 msgid "Bitrate"
 msgstr "Szybkość strumienia"
 
-#: data/gtk/station_dialog.ui:230
+#: data/gtk/station_dialog.ui:214
 msgid "Codec"
 msgstr "Kodek"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:241
+#: data/gtk/station_dialog.ui:225
 msgid "Stream"
 msgstr "Strumień"
 
-#: data/gtk/station_dialog.ui:247
+#: data/gtk/station_dialog.ui:231
 msgid "Copy"
-msgstr "Kopiuje"
+msgstr "Skopiuj"
 
 #: data/gtk/track_dialog.ui:76
 msgid "Edit"
@@ -564,7 +566,7 @@ msgstr "Zapisz utwór"
 
 #: data/gtk/track_dialog.ui:150
 msgid "Play Track"
-msgstr "Odtwarzaj utwór"
+msgstr "Odtwórz utwór"
 
 #: data/gtk/track_dialog.ui:161
 msgid "Cancel Recording"
@@ -580,7 +582,7 @@ msgstr "Zapisz ten utwór po zakończeniu nagrywania"
 
 #: data/gtk/track_dialog.ui:225
 msgid "Recording behaviour can be changed in <a href=\"\">preferences</a>"
-msgstr "Zachowanie nagrywania można zmienić w <a href=\"\">preferencjach	</a>"
+msgstr "Zachowanie nagrywania można zmienić w <a href=\"\">preferencjach\t</a>"
 
 #: data/gtk/track_row.ui:21
 msgid "Saved"
@@ -588,7 +590,7 @@ msgstr "Zapisano"
 
 #: data/gtk/volume_control.ui:9
 msgid "Toggle Mute"
-msgstr "Przełącza wyciszenie"
+msgstr "Przełącz wyciszenie"
 
 #: src/app.rs:85
 msgid "Track no longer available"
@@ -598,12 +600,7 @@ msgstr "Utwór nie jest już dostępny"
 msgid "This track is currently not being recorded"
 msgstr "Ten utwór nie jest obecnie nagrywany"
 
-#: src/app.rs:259
-#, rust-format
-msgid "Playing “{}”"
-msgstr "Odtwarzanie „{}”"
-
-#: src/app.rs:354
+#: src/app.rs:358
 msgid "Active Playback"
 msgstr "Aktywne odtwarzanie"
 
@@ -683,7 +680,8 @@ msgid "translator-credits"
 msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2020-2023\n"
 "Aviary.pl <community-poland@mozilla.org>, 2020-2023\n"
-"Adam Lewicki <a.lewicki95@gmail.com>, 2025"
+"Adam Lewicki <a.lewicki95@gmail.com>, 2025\n"
+"Victoria Niedzielska <victorian@gnome.org>, 2026"
 
 #: src/ui/about_dialog.rs:46
 msgid "Donate"
@@ -726,33 +724,34 @@ msgstr[0] "{} sek."
 msgstr[1] "{} sek."
 msgstr[2] "{} sek."
 
-#: src/ui/station_dialog.rs:207
+#: src/ui/station_dialog.rs:205
 #, rust-format
 msgid "{} kbit/s"
 msgstr "{} kb/s"
 
-#: src/ui/station_dialog.rs:292
+#: src/ui/station_dialog.rs:307
 msgid "Copied"
 msgstr "Skopiowano"
 
-#: src/ui/window.rs:226
+#: src/ui/window.rs:231
 msgid "No Permission for Background Playback"
 msgstr "Brak uprawnień do odtwarzania w tle"
 
-#: src/ui/window.rs:228
+#: src/ui/window.rs:233
 msgid "“Run in Background” must be allowed for this app in system settings."
 msgstr ""
-"Należy zezwolić na „Działanie w tle” dla tej aplikacji w ustawieniach systemowych."
+"Należy zezwolić na „Działanie w tle” dla tej aplikacji w ustawieniach "
+"systemowych."
 
-#: src/ui/window.rs:232
+#: src/ui/window.rs:237
 msgid "Try Anyway"
 msgstr "Spróbuj mimo tego"
 
-#: src/ui/window.rs:233
+#: src/ui/window.rs:238
 msgid "Disable Background Playback"
 msgstr "Wyłącz odtwarzanie w tle"
 
-#: src/utils.rs:51
+#: src/utils.rs:50
 #, rust-format
 msgid "{} hour"
 msgid_plural "{} hours"
@@ -760,7 +759,7 @@ msgstr[0] "{} godzina"
 msgstr[1] "{} godzny"
 msgstr[2] "{} godzin"
 
-#: src/utils.rs:57
+#: src/utils.rs:56
 #, rust-format
 msgid "{} minute"
 msgid_plural "{} minutes"
@@ -768,7 +767,7 @@ msgstr[0] "{} minuta"
 msgstr[1] "{} minuty"
 msgstr[2] "{} minut"
 
-#: src/utils.rs:62
+#: src/utils.rs:61
 #, rust-format
 msgid "{} second"
 msgid_plural "{} seconds"
