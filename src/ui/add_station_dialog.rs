@@ -16,6 +16,7 @@
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
+use gettextrs::gettext;
 use glib::{Properties, clone, subclass};
 use gtk::{CompositeTemplate, gdk, gio, glib};
 use url::Url;
@@ -23,7 +24,6 @@ use uuid::Uuid;
 
 use crate::api::{StationMetadata, SwStation};
 use crate::app::SwApplication;
-use crate::i18n::i18n;
 use crate::ui::SwStationCover;
 
 mod imp {
@@ -91,7 +91,7 @@ mod imp {
         #[template_callback]
         fn select_cover_file(&self) {
             let file_chooser = gtk::FileDialog::builder()
-                .title(i18n("Select Station Cover"))
+                .title(gettext("Select Station Cover"))
                 .build();
 
             let parent = self

@@ -14,6 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+use gettextrs::gettext;
 use std::cell::Cell;
 use std::pin::pin;
 use std::time::Duration;
@@ -27,7 +28,6 @@ use gtk::glib;
 use mdns_sd::{Error, ServiceDaemon, ServiceEvent};
 
 use super::{SwDevice, SwDeviceKind, SwDeviceModel};
-use crate::i18n::i18n;
 
 mod imp {
     use super::*;
@@ -80,10 +80,10 @@ mod imp {
                         SwDeviceKind::Cast,
                         info.get_property("fn")
                             .map(|txt| txt.val_str())
-                            .unwrap_or(&i18n("Google Cast Device")),
+                            .unwrap_or(&gettext("Google Cast Device")),
                         info.get_property("md")
                             .map(|txt| txt.val_str())
-                            .unwrap_or(&i18n("Unknown Model")),
+                            .unwrap_or(&gettext("Unknown Model")),
                         &host,
                     );
                     self.devices.add_device(&device);

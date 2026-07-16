@@ -19,6 +19,8 @@ use std::cell::OnceCell;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use cruet::Inflector;
+use formatx::formatx;
+use gettextrs::gettext;
 use glib::{Properties, subclass};
 use gtk::{CompositeTemplate, gdk, glib};
 
@@ -27,7 +29,6 @@ use shumate::prelude::*;
 
 use crate::api::SwStation;
 use crate::app::SwApplication;
-use crate::i18n::{i18n, i18n_f};
 use crate::ui::{SwStationCover, ToastWindow};
 
 mod imp {
@@ -202,7 +203,7 @@ mod imp {
             // Bitrate
             if metadata.bitrate != 0 {
                 self.bitrate_row.set_visible(true);
-                let bitrate = i18n_f("{} kbit/s", &[&metadata.bitrate.to_string()]);
+                let bitrate = formatx!(gettext("{} kbit/s"), metadata.bitrate).unwrap();
                 self.bitrate_row.set_subtitle(&bitrate);
             }
 
@@ -304,7 +305,7 @@ mod imp {
                 let clipboard = display.clipboard();
                 clipboard.set_text(url_resolved.as_ref());
 
-                let toast = adw::Toast::new(&i18n("Copied"));
+                let toast = adw::Toast::new(&gettext("Copied"));
                 self.toast_overlay.add_toast(toast);
             }
         }

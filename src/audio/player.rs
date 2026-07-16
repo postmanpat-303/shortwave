@@ -18,6 +18,7 @@ use std::cell::{Cell, OnceCell, RefCell};
 use std::fs;
 
 use adw::prelude::*;
+use gettextrs::gettext;
 use glib::Properties;
 use glib::clone;
 use glib::subclass::prelude::*;
@@ -28,7 +29,6 @@ use crate::app::SwApplication;
 use crate::audio::*;
 use crate::config;
 use crate::device::{SwCastSender, SwDevice, SwDeviceDiscovery, SwDeviceKind};
-use crate::i18n::*;
 use crate::path;
 use crate::settings::{Key, settings_manager};
 use crate::ui::DisplayError;
@@ -445,7 +445,7 @@ mod imp {
             if track.state() == SwRecordingState::Recording {
                 if self.obj().recording_mode() == SwRecordingMode::Decide {
                     notification.add_button_with_target_value(
-                        &i18n("Save Track"),
+                        &gettext("Save Track"),
                         "app.save-track",
                         Some(&target),
                     );
@@ -455,7 +455,7 @@ mod imp {
                     || self.obj().recording_mode() == SwRecordingMode::Decide
                 {
                     notification.add_button_with_target_value(
-                        &i18n("Don't Record"),
+                        &gettext("Don't Record"),
                         "app.cancel-recording",
                         Some(&target),
                     );

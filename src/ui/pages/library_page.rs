@@ -18,6 +18,8 @@ use std::cell::Cell;
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
+use formatx::formatx;
+use gettextrs::gettext;
 use glib::{Properties, clone, subclass};
 use gtk::{CompositeTemplate, glib};
 
@@ -25,7 +27,6 @@ use crate::api::{SwStation, SwStationSorter, SwStationSorting, SwStationSortingT
 use crate::app::SwApplication;
 use crate::config;
 use crate::database::SwLibraryStatus;
-use crate::i18n::*;
 use crate::settings::{Key, settings_manager};
 use crate::ui::{SwStationDialog, SwStationRow};
 
@@ -108,7 +109,7 @@ mod imp {
             // Welcome text which gets displayed when the library is empty. "{}" is the
             // application name.
             self.status_page
-                .set_title(&i18n_f("Welcome to {}", &[*config::NAME]));
+                .set_title(&formatx!(gettext("Welcome to {}"), *config::NAME).unwrap());
 
             // Set initial stack page
             self.update_stack_page();
