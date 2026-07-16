@@ -45,7 +45,6 @@ expat = "*"
 freetype = "*"
 gettext = "*"
 glycin-gtk4 = "*"
-glycin-loaders = "*"
 gst-plugins-bad = "*"
 gst-plugins-base = "*"
 gst-plugins-good = "*"
@@ -67,3 +66,4 @@ dbus = "*"
 
 [target.linux.dependencies]
 sysroot_linux-64 = ">=2.34"
+glycin-loaders = "*"
