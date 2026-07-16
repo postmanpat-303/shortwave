@@ -21,7 +21,7 @@ use adw::subclass::prelude::*;
 use formatx::formatx;
 use gettextrs::gettext;
 use glib::{Properties, clone, subclass};
-use gtk::{CompositeTemplate, glib};
+use gtk::{CompositeTemplate, gio, glib};
 
 use crate::api::{SwStation, SwStationSorter, SwStationSorting, SwStationSortingType};
 use crate::app::SwApplication;
@@ -43,6 +43,8 @@ mod imp {
         stack: TemplateChild<adw::ViewStack>,
         #[template_child]
         gridview: TemplateChild<gtk::GridView>,
+        #[template_child]
+        app_section: TemplateChild<gio::Menu>,
 
         #[property(get, set, builder(SwStationSorting::default()))]
         sorting: Cell<SwStationSorting>,
@@ -110,6 +112,16 @@ mod imp {
             // application name.
             self.status_page
                 .set_title(&formatx!(gettext("Welcome to {}"), *config::NAME).unwrap());
+
+            self.obj().set_title(*config::NAME);
+
+            self.app_section.insert_item(
+                self.app_section.n_items() - 1,
+                &gio::MenuItem::new(
+                    Some(&formatx!(gettext("_About {}"), *config::NAME).unwrap()),
+                    Some("win.about"),
+                ),
+            );
 
             // Set initial stack page
             self.update_stack_page();

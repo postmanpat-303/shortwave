@@ -1,5 +1,5 @@
 // Shortwave - search_page.rs
-// Copyright (C) 2021-2025  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2026  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -18,6 +18,8 @@ use std::cell::Cell;
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
+use formatx::formatx;
+use gettextrs::gettext;
 use glib::{clone, subclass};
 use gtk::{CompositeTemplate, glib};
 use indexmap::IndexMap;
@@ -44,6 +46,8 @@ mod imp {
         search_gridview: TemplateChild<gtk::GridView>,
         #[template_child]
         failure_statuspage: TemplateChild<adw::StatusPage>,
+        #[template_child]
+        disclaimer_label: TemplateChild<gtk::Label>,
 
         popular_model: SwStationModel,
         random_model: SwStationModel,
@@ -98,6 +102,13 @@ mod imp {
                 .connect_child_activated(child_activate_func);
             self.random_flowbox
                 .connect_child_activated(child_activate_func);
+
+            let disclaimer = gettext(
+                "The displayed information is provided by {}.\n{} has no influence on the listed stations.",
+            );
+            let url = "<a href=\"https://www.radio-browser.info/\">radio-browser.info</a>";
+            self.disclaimer_label
+                .set_markup(&formatx!(disclaimer, url, *crate::config::NAME).unwrap());
 
             // Search grid view
             let model = gtk::NoSelection::new(Some(self.search_model.clone()));

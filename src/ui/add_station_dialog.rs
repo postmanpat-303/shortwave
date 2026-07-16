@@ -16,6 +16,7 @@
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
+use formatx::formatx;
 use gettextrs::gettext;
 use glib::{Properties, clone, subclass};
 use gtk::{CompositeTemplate, gdk, gio, glib};
@@ -40,6 +41,8 @@ mod imp {
         #[template_child]
         remove_cover_button: TemplateChild<gtk::Button>,
         #[template_child]
+        description_label: TemplateChild<gtk::Label>,
+        #[template_child]
         name_row: TemplateChild<adw::EntryRow>,
         #[template_child]
         url_row: TemplateChild<adw::EntryRow>,
@@ -63,6 +66,7 @@ mod imp {
                 add_button: TemplateChild::default(),
                 station_cover: TemplateChild::default(),
                 remove_cover_button: TemplateChild::default(),
+                description_label: TemplateChild::default(),
                 name_row: TemplateChild::default(),
                 url_row: TemplateChild::default(),
                 station,
@@ -80,7 +84,14 @@ mod imp {
     }
 
     #[glib::derived_properties]
-    impl ObjectImpl for SwAddStationDialog {}
+    impl ObjectImpl for SwAddStationDialog {
+        fn constructed(&self) {
+            self.parent_constructed();
+
+            let url = "https://www.radio-browser.info/add";
+            self.description_label.set_markup(&formatx!(gettext("This station will only be added to your library. If you want it to be available to everyone, you should add it to the <a href=\"{}\">public database</a>."), url).unwrap())
+        }
+    }
 
     impl WidgetImpl for SwAddStationDialog {}
 

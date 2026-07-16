@@ -2,7 +2,7 @@
 <component type="desktop-application">
   <!-- Meson Build -->
   <id>@APP_ID@</id>
-  <name>@NAME@</name>
+  <name translate="no">@NAME@</name>
   <translation type="gettext">@PKGNAME@</translation>
   <launchable type="desktop-id">@APP_ID@.desktop</launchable>
 
@@ -10,7 +10,7 @@
   <summary>Listen to internet radio</summary>
   <description>
     <p>
-      Shortwave is an internet radio player that provides access to a station database with over 50,000 stations.
+      @NAME@ is an internet radio player that provides access to a station database with over 50,000 stations.
     </p>
     <p>Features:</p>
     <ul>

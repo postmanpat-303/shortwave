@@ -114,8 +114,7 @@
                 <property name="orientation">vertical</property>
                 <property name="hexpand">True</property>
                 <child>
-                  <object class="GtkLabel">
-                    <property name="label" translatable="yes">SHORTWAVE INTERNET RADIO</property>
+                  <object class="GtkLabel" id="gadget_brand_label">
                     <attributes>
                       <attribute name="font-desc" value="Cantarell Bold 9" />
                       <attribute name="style" value="italic" />

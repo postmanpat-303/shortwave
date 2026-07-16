@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <template class="SwLibraryPage" parent="AdwNavigationPage">
-    <property name="title" translatable="yes">Shortwave</property>
     <property name="tag">library</property>
     <property name="child">
       <object class="AdwToolbarView">
@@ -161,7 +160,7 @@
         <attribute name="use-markup">True</attribute>
       </item>
     </section>
-    <section>
+    <section id="app_section">
       <item>
         <attribute name="label" translatable="yes">_Preferences</attribute>
         <attribute name="action">win.show-preferences</attribute>
@@ -169,10 +168,6 @@
       <item>
         <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
         <attribute name="action">app.shortcuts</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">_About Shortwave</attribute>
-        <attribute name="action">win.about</attribute>
       </item>
       <item>
         <attribute name="label" translatable="yes">_Quit</attribute>

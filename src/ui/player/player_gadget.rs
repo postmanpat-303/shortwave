@@ -18,6 +18,8 @@ use std::marker::PhantomData;
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
+use formatx::formatx;
+use gettextrs::gettext;
 use glib::{Properties, subclass};
 use gtk::{CompositeTemplate, glib};
 
@@ -34,6 +36,8 @@ mod imp {
     pub struct SwPlayerGadget {
         #[template_child]
         volume_control: TemplateChild<SwVolumeControl>,
+        #[template_child]
+        gadget_brand_label: TemplateChild<gtk::Label>,
 
         #[property(get=Self::player)]
         pub player: PhantomData<SwPlayer>,
@@ -58,6 +62,14 @@ mod imp {
     impl ObjectImpl for SwPlayerGadget {
         fn constructed(&self) {
             self.parent_constructed();
+
+            self.gadget_brand_label.set_label(
+                &formatx!(
+                    gettext("{} INTERNET RADIO"),
+                    (*crate::config::NAME).to_uppercase()
+                )
+                .unwrap(),
+            );
 
             self.obj()
                 .player()
