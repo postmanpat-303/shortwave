@@ -1,5 +1,5 @@
 // Shortwave - main.rs
-// Copyright (C) 2021-2023  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2026  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -35,6 +35,7 @@ mod utils;
 mod app;
 mod config;
 mod path;
+mod platform;
 
 use gettextrs::*;
 use gtk::{gio, glib};
@@ -50,6 +51,9 @@ fn main() -> glib::ExitCode {
 
     // Initialize GTK
     gtk::init().unwrap_or_else(|_| panic!("Failed to initialize GTK."));
+
+    // Initialize platform specific features / tweaks
+    platform::init();
 
     // Initialize Gstreamer
     gstreamer::init().expect("Failed to initialize Gstreamer");
