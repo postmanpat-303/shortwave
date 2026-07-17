@@ -302,8 +302,8 @@ impl SwApplicationWindow {
             previous_width = 450.0;
             previous_height = 105.0;
         } else if !enable && previous_height < 175.0 {
-            previous_width = 950.0;
-            previous_height = 650.0;
+            previous_width = 1000.0;
+            previous_height = 675.0;
         }
 
         self.set_visible(false);
