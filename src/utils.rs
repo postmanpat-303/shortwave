@@ -99,14 +99,6 @@ pub fn ellipsize_end<S: std::fmt::Display>(x: S, max_len: usize) -> String {
     }
 }
 
-pub fn primary_accel(key: &str) -> String {
-    if cfg!(target_os = "macos") {
-        format!("<Meta>{key}")
-    } else {
-        format!("<Primary>{key}")
-    }
-}
-
 #[cfg(not(target_os = "windows"))]
 pub async fn background_portal_permissions() -> bool {
     if !ashpd::is_sandboxed().await {

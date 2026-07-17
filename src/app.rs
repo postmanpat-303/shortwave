@@ -34,7 +34,6 @@ use crate::config;
 use crate::database::SwLibrary;
 use crate::settings::*;
 use crate::ui::{SwApplicationWindow, SwTrackDialog};
-use crate::utils;
 
 mod imp {
     use super::*;
@@ -144,15 +143,19 @@ mod imp {
                     .build(),
             ]);
 
-            obj.set_accels_for_action("win.show-search", &[&utils::primary_accel("f")]);
-            obj.set_accels_for_action("win.show-preferences", &[&utils::primary_accel("comma")]);
-            obj.set_accels_for_action("window.close", &[&utils::primary_accel("w")]);
-            // Meta + Space would clash with macOS spotlight, so keep it on CTRL
-            obj.set_accels_for_action("player.toggle-playback", &["<primary>space"]);
-            obj.set_accels_for_action("player.toggle-mute", &[&utils::primary_accel("m")]);
-            obj.set_accels_for_action("player.increase-volume", &[&utils::primary_accel("plus")]);
-            obj.set_accels_for_action("player.decrease-volume", &[&utils::primary_accel("minus")]);
-            obj.set_accels_for_action("app.quit", &[&utils::primary_accel("q")]);
+            let primary = if cfg!(target_os = "macos") {
+                "Meta"
+            } else {
+                "Primary"
+            };
+            obj.set_accels_for_action("win.show-search", &[&format!("<{primary}>f")]);
+            obj.set_accels_for_action("win.show-preferences", &[&format!("<{primary}>comma")]);
+            obj.set_accels_for_action("window.close", &[&format!("<{primary}>w")]);
+            obj.set_accels_for_action("player.toggle-playback", &[&format!("<{primary}>p")]);
+            obj.set_accels_for_action("player.toggle-mute", &[&format!("<Alt><{primary}>Down")]);
+            obj.set_accels_for_action("player.increase-volume", &[&format!("<{primary}>Up")]);
+            obj.set_accels_for_action("player.decrease-volume", &[&format!("<{primary}>Down")]);
+            obj.set_accels_for_action("app.quit", &[&format!("<{primary}>q")]);
         }
     }
 
@@ -284,7 +287,7 @@ mod imp {
 
         #[cfg(not(target_os = "windows"))]
         async fn set_background_portal_status(&self, message: &str) {
-            let message = utils::ellipsize_end(message, 96);
+            let message = crate::utils::ellipsize_end(message, 96);
             if let Some(proxy) = self.background_proxy.get()
                 && let Err(err) = proxy.set_status(&message).await
             {
