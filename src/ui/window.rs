@@ -82,7 +82,7 @@ mod imp {
             klass.install_action("player.decrease-volume", None, |_, _, _| {
                 SwApplication::default().player().decrease_volume();
             });
-            klass.install_action("player.show-device-connect", None, move |win, _, _| {
+            klass.install_action("player.connect-device", None, move |win, _, _| {
                 let is_visible = win
                     .visible_dialog()
                     .map(|d| d.downcast::<SwDeviceDialog>().is_ok())
@@ -106,10 +106,10 @@ mod imp {
             });
 
             // win
-            klass.install_action("win.open-radio-browser-info", None, move |win, _, _| {
+            klass.install_action("window.open-radio-browser-info", None, move |win, _, _| {
                 win.show_uri("https://www.radio-browser.info/");
             });
-            klass.install_action("win.add-local-station", None, move |win, _, _| {
+            klass.install_action("window.add-local-station", None, move |win, _, _| {
                 let is_visible = win
                     .visible_dialog()
                     .map(|d| d.downcast::<SwAddStationDialog>().is_ok())
@@ -119,19 +119,19 @@ mod imp {
                     SwAddStationDialog::new().present(Some(win));
                 }
             });
-            klass.install_action("win.add-public-station", None, move |win, _, _| {
+            klass.install_action("window.add-public-station", None, move |win, _, _| {
                 win.show_uri("https://www.radio-browser.info/add");
             });
-            klass.install_action("win.enable-gadget-player", None, move |win, _, _| {
+            klass.install_action("window.enable-gadget-player", None, move |win, _, _| {
                 win.enable_gadget_player(true);
             });
-            klass.install_action("win.disable-gadget-player", None, move |win, _, _| {
+            klass.install_action("window.disable-gadget-player", None, move |win, _, _| {
                 win.enable_gadget_player(false);
             });
-            klass.install_action("win.show-search", None, move |win, _, _| {
+            klass.install_action("window.search", None, move |win, _, _| {
                 win.imp().navigation_view.push_by_tag("search");
             });
-            klass.install_action("win.show-preferences", None, move |win, _, _| {
+            klass.install_action("app.preferences", None, move |win, _, _| {
                 let is_visible = win
                     .visible_dialog()
                     .map(|d| d.downcast::<SwPreferencesDialog>().is_ok())
@@ -141,7 +141,7 @@ mod imp {
                     SwPreferencesDialog::new().present(Some(win));
                 }
             });
-            klass.install_action("win.about", None, move |win, _, _| {
+            klass.install_action("app.about", None, move |win, _, _| {
                 let is_visible = win
                     .visible_dialog()
                     .map(|d| d.downcast::<adw::AboutDialog>().is_ok())

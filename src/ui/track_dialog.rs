@@ -190,7 +190,7 @@ mod imp {
                 label
                     .root()
                     .unwrap()
-                    .activate_action("win.show-preferences", None)
+                    .activate_action("app.preferences", None)
                     .unwrap();
                 glib::Propagation::Stop
             });

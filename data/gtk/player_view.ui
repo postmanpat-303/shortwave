@@ -11,7 +11,7 @@
                 <child type="end">
                   <object class="GtkButton">
                     <property name="tooltip_text" translatable="yes">Enable Gadget Mode</property>
-                    <property name="action_name">win.enable-gadget-player</property>
+                    <property name="action_name">window.enable-gadget-player</property>
                     <property name="icon_name">window-shrink-symbolic</property>
                     <binding name="visible">
                       <lookup name="show-gadget-button">SwPlayerView</lookup>
@@ -132,7 +132,7 @@
                             <child>
                               <object class="GtkButton" id="connect_button">
                                 <property name="tooltip_text" translatable="yes">Connect Device</property>
-                                <property name="action_name">player.show-device-connect</property>
+                                <property name="action_name">player.connect-device</property>
                                 <property name="valign">center</property>
                                 <property name="icon_name">streaming-symbolic</property>
                                 <style>

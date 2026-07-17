@@ -148,14 +148,16 @@ mod imp {
             } else {
                 "Primary"
             };
-            obj.set_accels_for_action("win.show-search", &[&format!("<{primary}>f")]);
-            obj.set_accels_for_action("win.show-preferences", &[&format!("<{primary}>comma")]);
+            obj.set_accels_for_action("window.search", &[&format!("<{primary}>f")]);
             obj.set_accels_for_action("window.close", &[&format!("<{primary}>w")]);
+
             obj.set_accels_for_action("player.toggle-playback", &[&format!("<{primary}>p")]);
             obj.set_accels_for_action("player.toggle-mute", &[&format!("<Alt><{primary}>Down")]);
             obj.set_accels_for_action("player.increase-volume", &[&format!("<{primary}>Up")]);
             obj.set_accels_for_action("player.decrease-volume", &[&format!("<{primary}>Down")]);
+
             obj.set_accels_for_action("app.quit", &[&format!("<{primary}>q")]);
+            obj.set_accels_for_action("app.preferences", &[&format!("<{primary}>comma")]);
         }
     }
 

@@ -156,14 +156,14 @@
     <section>
       <item>
         <attribute name="label" translatable="yes">_Open radio-browser.info &lt;sup&gt;↗&lt;/sup&gt;</attribute>
-        <attribute name="action">win.open-radio-browser-info</attribute>
+        <attribute name="action">window.open-radio-browser-info</attribute>
         <attribute name="use-markup">True</attribute>
       </item>
     </section>
     <section id="app_section">
       <item>
         <attribute name="label" translatable="yes">_Preferences</attribute>
-        <attribute name="action">win.show-preferences</attribute>
+        <attribute name="action">app.preferences</attribute>
       </item>
       <item>
         <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
@@ -179,7 +179,7 @@
     <section>
       <item>
         <attribute name="label" translatable="yes">Add _Local Station</attribute>
-        <attribute name="action">win.add-local-station</attribute>
+        <attribute name="action">window.add-local-station</attribute>
         <attribute name="use-markup">True</attribute>
       </item>
     </section>

@@ -119,7 +119,7 @@ mod imp {
                 self.app_section.n_items() - 1,
                 &gio::MenuItem::new(
                     Some(&formatx!(gettext("_About {}"), *config::NAME).unwrap()),
-                    Some("win.about"),
+                    Some("app.about"),
                 ),
             );
 
