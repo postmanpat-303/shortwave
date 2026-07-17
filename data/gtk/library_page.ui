@@ -153,13 +153,6 @@
         </section>
       </submenu>
     </section>
-    <section>
-      <item>
-        <attribute name="label" translatable="yes">_Open radio-browser.info &lt;sup&gt;↗&lt;/sup&gt;</attribute>
-        <attribute name="action">window.open-radio-browser-info</attribute>
-        <attribute name="use-markup">True</attribute>
-      </item>
-    </section>
     <section id="app_section">
       <item>
         <attribute name="label" translatable="yes">_Preferences</attribute>
