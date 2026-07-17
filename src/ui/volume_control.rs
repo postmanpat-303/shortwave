@@ -1,5 +1,5 @@
 // Shortwave - volume_control.rs
-// Copyright (C) 2024  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2026  Felix Häcker <haeckerfelix@gnome.org>
 //               2022  Emmanuele Bassi (Original Author, Amberol)
 //
 // This program is free software: you can redistribute it and/or modify
@@ -15,13 +15,12 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use std::cell::Cell;
 use std::marker::PhantomData;
 
 use adw::subclass::prelude::*;
 use glib::clone;
 use glib::{Properties, subclass::Signal};
-use gtk::{CompositeTemplate, gdk, gio, glib, prelude::*};
+use gtk::{CompositeTemplate, gio, glib, prelude::*};
 
 mod imp {
     use std::sync::LazyLock;
@@ -41,10 +40,6 @@ mod imp {
 
         #[property(get=Self::volume, set=Self::set_volume, minimum = 0.0, maximum = 1.0, default = 1.0)]
         volume: PhantomData<f64>,
-        #[property(get, set=Self::set_toggle_mute)]
-        toggle_mute: Cell<bool>,
-
-        prev_volume: Cell<f64>,
     }
 
     #[glib::object_subclass]
@@ -59,16 +54,6 @@ mod imp {
             klass.set_layout_manager_type::<gtk::BoxLayout>();
             klass.set_css_name("volume");
             klass.set_accessible_role(gtk::AccessibleRole::Group);
-
-            klass.install_property_action("volume.toggle-mute", "toggle-mute");
-
-            klass.install_action("volume.increase", None, |obj, _, _| {
-                obj.set_volume((obj.volume() + 0.05).clamp(0.0, 1.0));
-            });
-
-            klass.install_action("volume.decrease", None, |obj, _, _| {
-                obj.set_volume((obj.volume() - 0.05).clamp(0.0, 1.0));
-            });
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -127,32 +112,6 @@ mod imp {
                 }
             ));
             self.volume_scale.add_controller(event_controller);
-
-            let shortcut_controller = gtk::ShortcutController::new();
-            shortcut_controller.set_scope(gtk::ShortcutScope::Global);
-
-            shortcut_controller.add_shortcut(gtk::Shortcut::new(
-                Some(gtk::KeyvalTrigger::new(
-                    gdk::Key::m,
-                    gdk::ModifierType::CONTROL_MASK,
-                )),
-                Some(gtk::NamedAction::new("volume.toggle-mute")),
-            ));
-            shortcut_controller.add_shortcut(gtk::Shortcut::new(
-                Some(gtk::KeyvalTrigger::new(
-                    gdk::Key::plus,
-                    gdk::ModifierType::CONTROL_MASK,
-                )),
-                Some(gtk::NamedAction::new("volume.increase")),
-            ));
-            shortcut_controller.add_shortcut(gtk::Shortcut::new(
-                Some(gtk::KeyvalTrigger::new(
-                    gdk::Key::minus,
-                    gdk::ModifierType::CONTROL_MASK,
-                )),
-                Some(gtk::NamedAction::new("volume.decrease")),
-            ));
-            self.obj().add_controller(shortcut_controller);
         }
 
         fn dispose(&self) {
@@ -177,20 +136,6 @@ mod imp {
     impl WidgetImpl for SwVolumeControl {}
 
     impl SwVolumeControl {
-        fn set_toggle_mute(&self, muted: bool) {
-            if muted != self.toggle_mute.replace(muted) {
-                if muted {
-                    let prev_value = self.volume_scale.value();
-                    self.prev_volume.replace(prev_value);
-                    self.volume_scale.set_value(0.0);
-                } else {
-                    let prev_value = self.prev_volume.get();
-                    self.volume_scale.set_value(prev_value);
-                }
-                self.obj().notify_toggle_mute();
-            }
-        }
-
         pub fn volume(&self) -> f64 {
             self.volume_scale.value()
         }

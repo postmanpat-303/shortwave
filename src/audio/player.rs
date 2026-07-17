@@ -1,5 +1,5 @@
 // Shortwave - player.rs
-// Copyright (C) 2021-2025  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2026  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -71,6 +71,7 @@ mod imp {
         past_tracks: SwTrackModel,
         #[property(get, set=Self::set_volume)]
         volume: Cell<f64>,
+        pub prev_volume: Cell<f64>,
         #[property(get, set=Self::set_recording_mode, builder(SwRecordingMode::default()))]
         recording_mode: Cell<SwRecordingMode>,
 
@@ -551,6 +552,23 @@ impl SwPlayer {
             .stop_playback()
             .await
             .handle_error("Unable to stop Google Cast playback");
+    }
+
+    pub fn increase_volume(&self) {
+        self.set_volume((self.volume() + 0.05).clamp(0.0, 1.0));
+    }
+
+    pub fn decrease_volume(&self) {
+        self.set_volume((self.volume() - 0.05).clamp(0.0, 1.0));
+    }
+
+    pub fn toggle_mute(&self) {
+        if self.volume() > 0.0 {
+            self.imp().prev_volume.set(self.volume());
+            self.set_volume(0.0);
+        } else {
+            self.set_volume(self.imp().prev_volume.get());
+        }
     }
 
     pub async fn toggle_playback(&self) {

@@ -59,19 +59,19 @@
         <child>
           <object class="AdwShortcutsItem">
             <property name="title" translatable="yes" context="shortcut window">Toggle mute</property>
-            <property name="accelerator">&lt;Ctrl&gt;m</property>
+            <property name="action_name">player.toggle-mute</property>
           </object>
         </child>
         <child>
           <object class="AdwShortcutsItem">
             <property name="title" translatable="yes" context="shortcut window">Increase volume</property>
-            <property name="accelerator">&lt;Ctrl&gt;plus</property>
+            <property name="action_name">player.increase-volume</property>
           </object>
         </child>
         <child>
           <object class="AdwShortcutsItem">
             <property name="title" translatable="yes" context="shortcut window">Decrease volume</property>
-            <property name="accelerator">&lt;Ctrl&gt;minus</property>
+            <property name="action_name">player.decrease-volume</property>
           </object>
         </child>
       </object>

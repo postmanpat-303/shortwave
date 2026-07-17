@@ -73,6 +73,15 @@ mod imp {
             klass.install_action_async("player.toggle-playback", None, |_, _, _| async move {
                 SwApplication::default().player().toggle_playback().await;
             });
+            klass.install_action("player.toggle-mute", None, |_, _, _| {
+                SwApplication::default().player().toggle_mute();
+            });
+            klass.install_action("player.increase-volume", None, |_, _, _| {
+                SwApplication::default().player().increase_volume();
+            });
+            klass.install_action("player.decrease-volume", None, |_, _, _| {
+                SwApplication::default().player().decrease_volume();
+            });
             klass.install_action("player.show-device-connect", None, move |win, _, _| {
                 let is_visible = win
                     .visible_dialog()

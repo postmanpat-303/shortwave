@@ -1,5 +1,5 @@
 // Shortwave - utils.rs
-// Copyright (C) 2021-2025  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2026  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -96,6 +96,14 @@ pub fn ellipsize_end<S: std::fmt::Display>(x: S, max_len: usize) -> String {
         text.truncate(max_len.max(1) - 1);
         text.push('…');
         text
+    }
+}
+
+pub fn primary_accel(key: &str) -> String {
+    if cfg!(target_os = "macos") {
+        format!("<Meta>{key}")
+    } else {
+        format!("<Primary>{key}")
     }
 }
 
