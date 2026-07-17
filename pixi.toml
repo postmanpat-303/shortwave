@@ -31,7 +31,7 @@ RUSTFLAGS = "-C link-arg=-Wl,-rpath,$CONDA_PREFIX/lib"
 libc = { family = "glibc", version = "2.34" }
 
 [tasks]
-setup = { cmd = "meson setup build --prefix=$MESON_PREFIX -Dprofile=development --wipe", outputs = [
+setup = { cmd = "meson setup build --prefix=$MESON_PREFIX -Dprofile=development --reconfigure", outputs = [
     "build/build.ninja",
 ] }
 build = { cmd = "ninja -C build", depends-on = ["setup"] }
