@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <menu id="menubar">
+    <submenu>
+      <attribute name="label" translatable="yes">_Library</attribute>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">_Search Stations</attribute>
+          <attribute name="action">window.search</attribute>
+        </item>
+      </section>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">Add _Local Station</attribute>
+          <attribute name="action">window.add-local-station</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Add _Public Station</attribute>
+          <attribute name="action">window.add-public-station</attribute>
+        </item>
+      </section>
+    </submenu>
+    <!-- TODO: macOS doesn't add its native items to the edit menu once we set our own menubar, see https://gitlab.gnome.org/GNOME/gtk/-/work_items/8313 -->
+    <submenu>
+      <attribute name="label" translatable="yes">_Edit</attribute>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">Undo</attribute>
+          <attribute name="action">text.undo</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Redo</attribute>
+          <attribute name="action">text.redo</attribute>
+        </item>
+      </section>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">Cut</attribute>
+          <attribute name="action">clipboard.cut</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Copy</attribute>
+          <attribute name="action">clipboard.copy</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Paste</attribute>
+          <attribute name="action">clipboard.paste</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Delete</attribute>
+          <attribute name="action">selection.delete</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Select All</attribute>
+          <attribute name="action">selection.select-all</attribute>
+        </item>
+      </section>
+    </submenu>
+    <submenu>
+      <attribute name="label" translatable="yes">_Playback</attribute>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">_Toggle Playback</attribute>
+          <attribute name="action">player.toggle-playback</attribute>
+        </item>
+      </section>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">Toggle _Mute</attribute>
+          <attribute name="action">player.toggle-mute</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">_Increase Volume</attribute>
+          <attribute name="action">player.increase-volume</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">_Decrease Volume</attribute>
+          <attribute name="action">player.decrease-volume</attribute>
+        </item>
+      </section>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">_Connect Device</attribute>
+          <attribute name="action">player.connect-device</attribute>
+        </item>
+      </section>
+    </submenu>
+    <submenu>
+      <attribute name="label" translatable="yes">_Window</attribute>
+      <attribute name="gtk-macos-special">window-submenu</attribute>
+    </submenu>
+    <submenu>
+      <attribute name="label" translatable="yes">_Help</attribute>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
+          <attribute name="action">app.shortcuts</attribute>
+        </item>
+      </section>
+    </submenu>
+  </menu>
+</interface>

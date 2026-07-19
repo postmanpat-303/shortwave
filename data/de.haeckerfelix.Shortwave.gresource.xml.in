@@ -7,6 +7,7 @@
     <file compressed="true" preprocess="xml-stripblanks">gtk/device_indicator.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">gtk/device_row.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">gtk/library_page.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks">gtk/menus.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">gtk/player_gadget.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">gtk/player_toolbar.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">gtk/player_view.ui</file>
