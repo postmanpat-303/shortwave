@@ -14,5 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+#[cfg(target_os = "macos")]
+pub mod mpnowplaying;
 #[cfg(all(unix, not(target_os = "macos")))]
 pub mod mpris;

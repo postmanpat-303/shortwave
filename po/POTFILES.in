@@ -6,6 +6,7 @@ data/gtk/device_dialog.ui
 data/gtk/device_indicator.ui
 data/gtk/device_row.ui
 data/gtk/library_page.ui
+data/gtk/menus.ui
 data/gtk/player.ui
 data/gtk/player_gadget.ui
 data/gtk/player_toolbar.ui
@@ -35,8 +36,9 @@ src/api/station_sorter.rs
 src/api/stats.rs
 src/app.rs
 src/audio/gstreamer_backend.rs
+src/audio/media_controls/mod.rs
+src/audio/media_controls/mpris.rs
 src/audio/mod.rs
-src/audio/mpris.rs
 src/audio/playback_state.rs
 src/audio/player.rs
 src/audio/recording_mode.rs

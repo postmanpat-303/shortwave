@@ -14,6 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+// Gets used on UNIX(-like) platforms, excluding macOS (Linux, BSD, ...)
+// See: https://specifications.freedesktop.org/mpris/latest/
+
 use std::rc::Rc;
 
 use glib::clone;
@@ -49,12 +52,28 @@ impl MprisServer {
         let server = Self {
             player: Rc::new(player),
         };
-        let player = SwApplication::default().player();
 
         // Shortwave side callbacks
+        server.setup_player_callbacks();
+
+        // Mpris side callbacks
+        server.setup_mpris_callbacks();
+
+        glib::spawn_future_local(server.player.run());
+
+        server.update_mpris_playback_status().await;
+        server.update_mpris_metadata().await;
+        server.update_mpris_volume().await;
+
+        Ok(server)
+    }
+
+    fn setup_player_callbacks(&self) {
+        let player = SwApplication::default().player();
+
         player.connect_state_notify(clone!(
-            #[strong]
-            server,
+            #[strong(rename_to = server)]
+            self,
             move |_| {
                 glib::spawn_future_local(clone!(
                     #[strong]
@@ -67,8 +86,8 @@ impl MprisServer {
         ));
 
         player.connect_station_notify(clone!(
-            #[strong]
-            server,
+            #[strong(rename_to = server)]
+            self,
             move |_| {
                 glib::spawn_future_local(clone!(
                     #[strong]
@@ -81,8 +100,8 @@ impl MprisServer {
         ));
 
         player.connect_playing_track_notify(clone!(
-            #[strong]
-            server,
+            #[strong(rename_to = server)]
+            self,
             move |_| {
                 glib::spawn_future_local(clone!(
                     #[strong]
@@ -95,8 +114,8 @@ impl MprisServer {
         ));
 
         player.connect_volume_notify(clone!(
-            #[strong]
-            server,
+            #[strong(rename_to = server)]
+            self,
             move |_| {
                 glib::spawn_future_local(clone!(
                     #[strong]
@@ -107,44 +126,38 @@ impl MprisServer {
                 ));
             }
         ));
+    }
 
-        // Mpris side callbacks
-        server.player.connect_play_pause(|_| {
+    fn setup_mpris_callbacks(&self) {
+        self.player.connect_play_pause(|_| {
             glib::spawn_future_local(async move {
                 SwApplication::default().player().toggle_playback().await;
             });
         });
 
-        server.player.connect_play(|_| {
+        self.player.connect_play(|_| {
             glib::spawn_future_local(async move {
                 SwApplication::default().player().start_playback().await;
             });
         });
 
-        server.player.connect_stop(|_| {
+        self.player.connect_stop(|_| {
             glib::spawn_future_local(async move {
                 SwApplication::default().player().stop_playback().await;
             });
         });
 
-        server.player.connect_set_volume(|_, volume| {
+        self.player.connect_set_volume(|_, volume| {
             SwApplication::default().player().set_volume(volume);
         });
 
-        server.player.connect_raise(|_| {
+        self.player.connect_raise(|_| {
             SwApplication::default().activate();
         });
 
-        server.player.connect_quit(|_| {
+        self.player.connect_quit(|_| {
             SwApplication::default().quit();
         });
-
-        glib::spawn_future_local(server.player.run());
-        server.update_mpris_playback_status().await;
-        server.update_mpris_metadata().await;
-        server.update_mpris_volume().await;
-
-        Ok(server)
     }
 
     async fn update_mpris_metadata(&self) {

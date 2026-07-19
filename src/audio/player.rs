@@ -147,6 +147,8 @@ mod imp {
                     .await
                     .handle_error("Unable to start MPRIS media controls")
             });
+            #[cfg(target_os = "macos")]
+            crate::audio::media_controls::mpnowplaying::MpNowPlayingController::start(&self.obj());
 
             // Cleanup temporary recording directory
             let mut path = path::DATA.clone();
