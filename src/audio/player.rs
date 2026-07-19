@@ -137,6 +137,10 @@ mod imp {
                 .bidirectional()
                 .build();
 
+            // Initialize volume with NAN, otherwise the volume wouldn't
+            // get to propagated to the backend if it's 0 / muted.
+            self.volume.set(f64::NAN);
+
             // MPRIS controls
             glib::spawn_future_local(async move {
                 MprisServer::start()
