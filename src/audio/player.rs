@@ -140,7 +140,7 @@ mod imp {
             // get to propagated to the backend if it's 0 / muted.
             self.volume.set(f64::NAN);
 
-            // Intialize media controls
+            // Initialize media controls
             #[cfg(all(unix, not(target_os = "macos")))]
             glib::spawn_future_local(async move {
                 crate::audio::media_controls::mpris::MprisServer::start()
