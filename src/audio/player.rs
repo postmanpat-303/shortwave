@@ -84,7 +84,6 @@ mod imp {
         cast_sender: SwCastSender,
 
         pub backend: OnceCell<RefCell<GstreamerBackend>>,
-        pub mpris_server: OnceCell<MprisServer>,
     }
 
     #[glib::object_subclass]
@@ -141,9 +140,10 @@ mod imp {
             // get to propagated to the backend if it's 0 / muted.
             self.volume.set(f64::NAN);
 
-            // MPRIS controls
+            // Intialize media controls
+            #[cfg(all(unix, not(target_os = "macos")))]
             glib::spawn_future_local(async move {
-                MprisServer::start()
+                crate::audio::media_controls::mpris::MprisServer::start()
                     .await
                     .handle_error("Unable to start MPRIS media controls")
             });

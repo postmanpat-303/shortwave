@@ -23,7 +23,6 @@ indexmap = "2.12"
 language-tags = "0.3"
 log = "0.4"
 mdns-sd = "0.17"
-mpris-server = "0.9"
 pretty_env_logger = "0.5"
 rand = "0.9"
 regex = "1.12"
@@ -49,5 +48,9 @@ gstreamer-audio = { version = "0.24" }
 gtk = { version = "0.10", package = "gtk4", features = ["gnome_46"] }
 
 [target.'cfg(not(target_os = "windows"))'.dependencies]
-ashpd = { version = "0.12", features = ["async-std"], default-features = false }
 shumate = { version = "0.7", package = "libshumate" }
+
+[target.'cfg(all(unix, not(target_os = "macos")))'.dependencies]
+ashpd = { version = "0.12", features = ["async-std"], default-features = false }
+mpris-server = "0.9"
+

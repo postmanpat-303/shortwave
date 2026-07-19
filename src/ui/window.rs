@@ -16,7 +16,6 @@
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
-use gettextrs::gettext;
 use glib::{clone, subclass};
 use gtk::{CompositeTemplate, gio, glib};
 
@@ -197,10 +196,10 @@ mod imp {
                     #[weak(rename_to = imp)]
                     self,
                     async move {
-                        #[cfg(not(target_os = "windows"))]
+                        #[cfg(all(unix, not(target_os = "macos")))]
                         imp.verify_background_portal_permissions().await;
 
-                        #[cfg(target_os = "windows")]
+                        #[cfg(any(target_os = "windows", target_os = "macos"))]
                         imp.obj().close();
                     }
                 );
@@ -225,7 +224,7 @@ mod imp {
     impl AdwApplicationWindowImpl for SwApplicationWindow {}
 
     impl SwApplicationWindow {
-        #[cfg(not(target_os = "windows"))]
+        #[cfg(all(unix, not(target_os = "macos")))]
         async fn verify_background_portal_permissions(&self) {
             // Verify whether app has permissions for background playback
             let has_permissions = crate::utils::background_portal_permissions().await;
@@ -236,14 +235,17 @@ mod imp {
                 self.obj().set_visible(true);
 
                 let dialog = adw::AlertDialog::new(
-                    Some(&gettext("No Permission for Background Playback")),
-                    Some(&gettext(
+                    Some(&gettextrs::gettext("No Permission for Background Playback")),
+                    Some(&gettextrs::gettext(
                         "“Run in Background” must be allowed for this app in system settings.",
                     )),
                 );
 
-                dialog.add_response("try-anyway", &gettext("Try Anyway"));
-                dialog.add_response("disable", &gettext("Disable Background Playback"));
+                dialog.add_response("try-anyway", &gettextrs::gettext("Try Anyway"));
+                dialog.add_response(
+                    "disable",
+                    &gettextrs::gettext("Disable Background Playback"),
+                );
                 dialog.set_close_response("try-anyway");
 
                 let res = dialog.choose_future(Some(&*self.obj())).await;

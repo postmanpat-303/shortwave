@@ -20,7 +20,6 @@ use std::cell;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use async_compat::CompatExt;
-use formatx::formatx;
 use gettextrs::gettext;
 use gio::subclass::prelude::ApplicationImpl;
 use glib::{Properties, clone};
@@ -53,7 +52,7 @@ mod imp {
         pub cover_loader: CoverLoader,
         pub inhibit_cookie: Cell<u32>,
         pub background_hold: RefCell<Option<gio::ApplicationHoldGuard>>,
-        #[cfg(not(target_os = "windows"))]
+        #[cfg(all(unix, not(target_os = "macos")))]
         pub background_proxy: cell::OnceCell<ashpd::desktop::background::BackgroundProxy<'static>>,
     }
 
@@ -173,7 +172,7 @@ mod imp {
                     imp.lookup_rb_server().await;
 
                     // Setup background portal proxy
-                    #[cfg(not(target_os = "windows"))]
+                    #[cfg(all(unix, not(target_os = "macos")))]
                     imp.setup_background_portal_proxy().await;
                 }
             );
@@ -232,7 +231,7 @@ mod imp {
             }
         }
 
-        #[cfg(not(target_os = "windows"))]
+        #[cfg(all(unix, not(target_os = "macos")))]
         async fn setup_background_portal_proxy(&self) {
             if !ashpd::is_sandboxed().await {
                 debug!("Not sandboxed, not setting up background portal proxy.");
@@ -265,14 +264,14 @@ mod imp {
             };
         }
 
-        #[cfg(not(target_os = "windows"))]
+        #[cfg(all(unix, not(target_os = "macos")))]
         fn update_background_portal_status(&self) {
             let mut message = gettext("No Playback");
 
             if let Some(station) = self.obj().player().station()
                 && self.obj().player().state() == SwPlaybackState::Playing
             {
-                message = formatx!(gettext("Playing “{}”"), station.title()).unwrap();
+                message = formatx::formatx!(gettext("Playing “{}”"), station.title()).unwrap();
             }
 
             let fut = clone!(
@@ -287,7 +286,7 @@ mod imp {
             glib::spawn_future_local(fut);
         }
 
-        #[cfg(not(target_os = "windows"))]
+        #[cfg(all(unix, not(target_os = "macos")))]
         async fn set_background_portal_status(&self, message: &str) {
             let message = crate::utils::ellipsize_end(message, 96);
             if let Some(proxy) = self.background_proxy.get()

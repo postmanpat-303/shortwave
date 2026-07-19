@@ -1,5 +1,5 @@
 // Shortwave - mod.rs
-// Copyright (C) 2021-2024  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2026  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,8 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+pub mod media_controls;
+
 mod gstreamer_backend;
-mod mpris;
 mod playback_state;
 mod player;
 mod recording_mode;
@@ -24,7 +25,6 @@ mod track;
 mod track_model;
 
 pub use gstreamer_backend::{GstreamerBackend, GstreamerChange};
-pub use mpris::MprisServer;
 pub use playback_state::SwPlaybackState;
 pub use player::SwPlayer;
 pub use recording_mode::SwRecordingMode;

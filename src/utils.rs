@@ -87,6 +87,7 @@ pub fn format_duration(d: u64, short: bool) -> String {
 
 /// Ellipsizes a string at the end so that it is `max_len` characters long
 /// Source: https://gitlab.gnome.org/World/pika-backup/-/blob/6bd7d0df56479ee769a249b466d5ac226f88056b/src/ui/utils.rs#L344
+#[allow(dead_code)]
 pub fn ellipsize_end<S: std::fmt::Display>(x: S, max_len: usize) -> String {
     let mut text = x.to_string();
 
@@ -99,7 +100,7 @@ pub fn ellipsize_end<S: std::fmt::Display>(x: S, max_len: usize) -> String {
     }
 }
 
-#[cfg(not(target_os = "windows"))]
+#[cfg(all(unix, not(target_os = "macos")))]
 pub async fn background_portal_permissions() -> bool {
     if !ashpd::is_sandboxed().await {
         debug!("App is not sandboxed, background playback is allowed.");
