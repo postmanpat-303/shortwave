@@ -59,6 +59,8 @@ src/device/device_model.rs
 src/device/mod.rs
 src/main.rs
 src/path.rs
+src/platform/macos.rs
+src/platform/mod.rs
 src/settings/key.rs
 src/settings/mod.rs
 src/settings/settings_manager.rs
