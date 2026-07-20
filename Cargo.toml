@@ -40,15 +40,15 @@ tokio = { version = "1", features = ["rt", "sync"] }
 url = "2.5"
 uuid = { version = "1.19", features = ["v4"] }
 
-adw = { version = "0.8", package = "libadwaita", features = ["v1_7"] }
-glycin = { package = "libglycin-rebind", version = "0.0.1" }
-glycin-gtk4 = { package = "libglycin-gtk4-rebind", version = "0.0.1" }
-gstreamer = { version = "0.24" }
-gstreamer-audio = { version = "0.24" }
-gtk = { version = "0.10", package = "gtk4", features = ["gnome_46"] }
+adw = { version = "0.9", package = "libadwaita", features = ["v1_7"] }
+glycin = { package = "libglycin-rebind", version = "0.1.0" }
+glycin-gtk4 = { package = "libglycin-gtk4-rebind", version = "0.1.0" }
+gstreamer = { version = "0.25" }
+gstreamer-audio = { version = "0.25" }
+gtk = { version = "0.11", package = "gtk4", features = ["gnome_46"] }
 
 [target.'cfg(not(target_os = "windows"))'.dependencies]
-shumate = { version = "0.7", package = "libshumate" }
+shumate = { version = "0.8", package = "libshumate" }
 
 [target.'cfg(all(unix, not(target_os = "macos")))'.dependencies]
 ashpd = { version = "0.12", features = ["async-std"], default-features = false }
