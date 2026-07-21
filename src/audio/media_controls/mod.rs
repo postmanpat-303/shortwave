@@ -18,3 +18,5 @@
 pub mod mpnowplaying;
 #[cfg(all(unix, not(target_os = "macos")))]
 pub mod mpris;
+#[cfg(target_os = "windows")]
+pub mod smtc;

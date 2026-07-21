@@ -31,7 +31,7 @@ use crate::config;
 use crate::device::{SwCastSender, SwDevice, SwDeviceDiscovery, SwDeviceKind};
 use crate::path;
 use crate::settings::{Key, settings_manager};
-use crate::ui::DisplayError;
+use crate::ui::{DisplayError, SwApplicationWindow};
 
 mod imp {
     use super::*;
@@ -139,16 +139,6 @@ mod imp {
             // Initialize volume with NAN, otherwise the volume wouldn't
             // get to propagated to the backend if it's 0 / muted.
             self.volume.set(f64::NAN);
-
-            // Initialize media controls
-            #[cfg(all(unix, not(target_os = "macos")))]
-            glib::spawn_future_local(async move {
-                crate::audio::media_controls::mpris::MprisServer::start()
-                    .await
-                    .handle_error("Unable to start MPRIS media controls")
-            });
-            #[cfg(target_os = "macos")]
-            crate::audio::media_controls::mpnowplaying::MpNowPlayingController::start(&self.obj());
 
             // Cleanup temporary recording directory
             let mut path = path::DATA.clone();
@@ -481,6 +471,33 @@ glib::wrapper! {
 impl SwPlayer {
     pub fn new() -> Self {
         glib::Object::new()
+    }
+
+    pub fn init_media_controls(&self, #[allow(unused)] window: &SwApplicationWindow) {
+        // MPRIS
+        #[cfg(all(unix, not(target_os = "macos")))]
+        gtk::glib::spawn_future_local(async move {
+            media_controls::mpris::MprisServer::start()
+                .await
+                .handle_error("Unable to start MPRIS media controls");
+        });
+
+        // MpNowPlaying
+        #[cfg(target_os = "macos")]
+        media_controls::mpnowplaying::MpNowPlayingController::start(self);
+
+        // SMTC
+        #[cfg(target_os = "windows")]
+        media_controls::smtc::SmtcController::start(
+            self,
+            window
+                .surface()
+                .unwrap()
+                .downcast::<gdk4_win32::Win32Surface>()
+                .unwrap()
+                .handle(),
+        )
+        .handle_error("Unable to initialize SMTC media controls");
     }
 
     pub async fn set_station(&self, station: SwStation) {

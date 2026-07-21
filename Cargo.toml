@@ -54,6 +54,16 @@ shumate = { version = "0.8", package = "libshumate" }
 ashpd = { version = "0.12", features = ["async-std"], default-features = false }
 mpris-server = "0.9"
 
+[target.'cfg(target_os = "windows")'.dependencies]
+windows = { version = "0.62.2", features = [
+    "Foundation",
+    "Media",
+    "Storage_Streams",
+    "Win32_Foundation",
+    "Win32_System_WinRT",
+] }
+gdk4-win32 = { version = "0.11", features = ["win32"] }
+
 [target.'cfg(target_os = "macos")'.dependencies]
 block2 = "0.6"
 objc2 = "0.6"

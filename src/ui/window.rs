@@ -174,7 +174,16 @@ mod imp {
         }
     }
 
-    impl WidgetImpl for SwApplicationWindow {}
+    impl WidgetImpl for SwApplicationWindow {
+        fn realize(&self) {
+            self.parent_realize();
+
+            // SMTC needs a window handle, which doesn't exist yet in constructed
+            SwApplication::default()
+                .player()
+                .init_media_controls(&self.obj());
+        }
+    }
 
     impl WindowImpl for SwApplicationWindow {
         fn close_request(&self) -> glib::Propagation {
