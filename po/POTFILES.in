@@ -39,6 +39,7 @@ src/audio/gstreamer_backend.rs
 src/audio/media_controls/mod.rs
 src/audio/media_controls/mpnowplaying.rs
 src/audio/media_controls/mpris.rs
+src/audio/media_controls/smtc.rs
 src/audio/mod.rs
 src/audio/playback_state.rs
 src/audio/player.rs
