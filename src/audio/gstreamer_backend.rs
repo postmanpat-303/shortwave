@@ -31,13 +31,13 @@ use crate::audio::SwPlaybackState;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                      //
 //  # Gstreamer Pipeline                                                                                //
-//                                                                -----     (   -------------   )       //
-//                                                               |     | -> (  | recorderbin |  )       //
-//   --------------      --------------      ---------------     |     |    (   -------------   )       //
-//  | uridecodebin | -> | audioconvert | -> | audioresample | -> | tee |                                //
-//   --------------      --------------      ---------------     |     |     -------      -----------   //
-//                                                               |     | -> | queue | -> | audiosink |  //
-//                                                                -----      -------      -----------   //
+//                                           -----     (   -------------   )                            //
+//                                          |     | -> (  | recorderbin |  )                            //
+//   --------------      --------------     |     |    (   -------------   )                            //
+//  | uridecodebin | -> | audioconvert | -> | tee |                                                     //
+//   --------------      --------------     |     |     ---------------      -------      -----------   //
+//                                          |     | -> | audioresample | -> | queue | -> | audiosink |  //
+//                                           -----      ---------------      -------      -----------   //
 //                                                                                                      //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -331,8 +331,7 @@ impl GstreamerBackend {
         debug!("Creating new recorderbin...");
 
         // Create actual recorderbin
-        let description =
-            "queue name=queue ! vorbisenc ! oggmux  ! filesink name=filesink async=false";
+        let description = "queue name=queue ! audioconvert ! vorbisenc ! oggmux ! filesink name=filesink async=false";
         let recorderbin = gstreamer::parse::bin_from_description(description, true)
             .expect("Unable to create recorderbin");
         recorderbin.set_property("message-forward", true);
