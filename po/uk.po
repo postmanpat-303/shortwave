@@ -2,25 +2,24 @@
 # Copyright (C) 2020 shortwave's COPYRIGHT HOLDER
 # This file is distributed under the same license as the shortwave package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024, 2025, 2026 Yuri Chornoivan <yurchor@ukr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2026-01-06 17:25+0000\n"
-"PO-Revision-Date: 2026-01-12 21:42+0200\n"
+"POT-Creation-Date: 2026-07-23 09:41+0000\n"
+"PO-Revision-Date: 2026-08-12 21:38+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.04.3\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%10>="
+"2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:2
-#: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:5
 msgid "@NAME@"
 msgstr "@NAME@"
 
@@ -40,11 +39,14 @@ msgid "Gradio;Radio;Stream;Wave;"
 msgstr "Gradio;Radio;Stream;Wave;градіо;жрадіо;радіо;потік;трансляція;хвиля;"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:12
+#| msgid ""
+#| "Shortwave is an internet radio player that provides access to a station "
+#| "database with over 50,000 stations."
 msgid ""
-"Shortwave is an internet radio player that provides access to a station "
+"@NAME@ is an internet radio player that provides access to a station "
 "database with over 50,000 stations."
 msgstr ""
-"«Коротка хвиля» — програвач інтернет-радіостанцій, який надає доступ до бази "
+"@NAME@ — програвач інтернет-радіостанцій, який надає доступ до бази "
 "з понад 50000 станцій."
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:15
@@ -86,6 +88,7 @@ msgstr "Безшовна інтеграція до стільничного се
 
 #. Branding
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:28
+#: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:30
 msgid "Felix Häcker"
 msgstr "Felix Häcker"
 
@@ -97,25 +100,15 @@ msgstr "Додати місцеву станцію"
 msgid "Change Station Cover"
 msgstr "Змінити обкладинку для станції"
 
-#: data/gtk/add_station_dialog.ui:95
-msgid ""
-"This station will only be added to your library. If you want it to be "
-"available to everyone, you should add it to the <a href=\"https://www.radio-"
-"browser.info/add\">public database</a>."
-msgstr ""
-"Цю станцію буде додано лише до вашої бібліотеки. Якщо ви хочете зробити дані "
-"щодо неї доступними для усіх, вам слід додати її запис до <a href=\"https://"
-"www.radio-browser.info/add\">громадської бази даних</a>."
-
-#: data/gtk/add_station_dialog.ui:107
+#: data/gtk/add_station_dialog.ui:106
 msgid "Name"
 msgstr "Назва"
 
-#: data/gtk/add_station_dialog.ui:115
+#: data/gtk/add_station_dialog.ui:114
 msgid "Stream URL"
 msgstr "Адреса трансляції"
 
-#: data/gtk/add_station_dialog.ui:123
+#: data/gtk/add_station_dialog.ui:122
 msgid "Add Station"
 msgstr "Додати станцію"
 
@@ -143,77 +136,156 @@ msgstr "Не знайдено підтримуваних пристроїв Goog
 msgid "Disconnect From Device"
 msgstr "Від'єднати від пристрою"
 
-#: data/gtk/library_page.ui:4
-msgid "Shortwave"
-msgstr "Коротка хвиля"
-
-#: data/gtk/library_page.ui:15 data/gtk/search_page.ui:4
+#: data/gtk/library_page.ui:14 data/gtk/search_page.ui:4
 msgid "Browse Stations"
 msgstr "Навігація станціями"
 
-#: data/gtk/library_page.ui:23
+#: data/gtk/library_page.ui:22
 msgid "Main Menu"
 msgstr "Головне меню"
 
-#: data/gtk/library_page.ui:92
+#: data/gtk/library_page.ui:91
 msgid "_Add New Stations"
 msgstr "_Додати нові станції"
 
-#: data/gtk/library_page.ui:115
+#: data/gtk/library_page.ui:114
 msgid "_Sorting"
 msgstr "Вп_орядкування"
 
-#: data/gtk/library_page.ui:118
+#: data/gtk/library_page.ui:117
 msgid "_Name"
 msgstr "_Назва"
 
-#: data/gtk/library_page.ui:123
+#: data/gtk/library_page.ui:122
 msgid "_Language"
 msgstr "_Мова"
 
-#: data/gtk/library_page.ui:128
+#: data/gtk/library_page.ui:127
 msgid "_Country"
 msgstr "К_раїна"
 
-#: data/gtk/library_page.ui:133
+#: data/gtk/library_page.ui:132
 msgid "S_tate"
 msgstr "_Штат"
 
-#: data/gtk/library_page.ui:138
+#: data/gtk/library_page.ui:137
 msgid "_Bitrate"
 msgstr "_Бітова швидкість"
 
-#: data/gtk/library_page.ui:145
+#: data/gtk/library_page.ui:144
 msgid "_Ascending"
 msgstr "За з_ростанням"
 
-#: data/gtk/library_page.ui:150
+#: data/gtk/library_page.ui:149
 msgid "_Descending"
 msgstr "За с_паданням"
 
-#: data/gtk/library_page.ui:159
-msgid "_Open radio-browser.info <sup>↗</sup>"
-msgstr "В_ідкрити radio-browser.info <sup>↗</sup>"
-
-#: data/gtk/library_page.ui:166
+#: data/gtk/library_page.ui:158
 msgid "_Preferences"
 msgstr "_Налаштування"
 
-#: data/gtk/library_page.ui:170
+#: data/gtk/library_page.ui:162 data/gtk/menus.ui:96
 msgid "_Keyboard Shortcuts"
 msgstr "_Клавіатурні скорочення"
 
-#: data/gtk/library_page.ui:174
-msgid "_About Shortwave"
-msgstr "П_ро «Shortwave»"
-
-#: data/gtk/library_page.ui:178
+#: data/gtk/library_page.ui:166
 msgid "_Quit"
 msgstr "Ви_йти"
 
-#: data/gtk/library_page.ui:186
+#: data/gtk/library_page.ui:174 data/gtk/menus.ui:14
 msgid "Add _Local Station"
 msgstr "Додати _місцеву станцію"
+
+#: data/gtk/menus.ui:5
+#| msgid "Library"
+msgid "_Library"
+msgstr "_Бібліотека"
+
+#: data/gtk/menus.ui:8
+#| msgid "Search stations"
+msgid "_Search Stations"
+msgstr "По_шук станцій"
+
+#: data/gtk/menus.ui:18
+#| msgid "Create _Public Station"
+msgid "Add _Public Station"
+msgstr "Додати з_агальнодоступу станцію"
+
+#: data/gtk/menus.ui:25
+#| msgid "Edit"
+msgid "_Edit"
+msgstr "З_міни"
+
+#: data/gtk/menus.ui:28
+msgid "Undo"
+msgstr "Скасувати"
+
+#: data/gtk/menus.ui:32
+msgid "Redo"
+msgstr "Повторити"
+
+#: data/gtk/menus.ui:38
+#| msgid "Country"
+msgid "Cut"
+msgstr "Вирізати"
+
+#: data/gtk/menus.ui:42 data/gtk/station_dialog.ui:231
+msgid "Copy"
+msgstr "Копіювати"
+
+#: data/gtk/menus.ui:46
+msgid "Paste"
+msgstr "Вставити"
+
+#: data/gtk/menus.ui:50
+msgid "Delete"
+msgstr "Вилучити"
+
+#: data/gtk/menus.ui:54
+#| msgid "_Select"
+msgid "Select All"
+msgstr "Позначити все"
+
+#: data/gtk/menus.ui:60
+#| msgid "Playback"
+msgid "_Playback"
+msgstr "В_ідтворення"
+
+#: data/gtk/menus.ui:63
+#| msgctxt "shortcut window"
+#| msgid "Toggle playback"
+msgid "_Toggle Playback"
+msgstr "П_еремкнути відтворення"
+
+#: data/gtk/menus.ui:69
+#| msgid "Toggle Mute"
+msgid "Toggle _Mute"
+msgstr "Увімкнути або вимкнути зв_ук"
+
+#: data/gtk/menus.ui:73
+#| msgctxt "shortcut window"
+#| msgid "Increase volume"
+msgid "_Increase Volume"
+msgstr "З_більшити гучність"
+
+#: data/gtk/menus.ui:77
+#| msgctxt "shortcut window"
+#| msgid "Decrease volume"
+msgid "_Decrease Volume"
+msgstr "З_меншити гучність"
+
+#: data/gtk/menus.ui:83
+#| msgid "Connect Device"
+msgid "_Connect Device"
+msgstr "З'_єднати пристрій"
+
+#: data/gtk/menus.ui:89
+msgid "_Window"
+msgstr "_Вікно"
+
+#: data/gtk/menus.ui:93
+msgid "_Help"
+msgstr "_Довідка"
 
 #: data/gtk/player_gadget.ui:40 data/gtk/player_toolbar.ui:92
 #: data/gtk/player_view.ui:158 data/gtk/station_row.ui:86
@@ -230,20 +302,16 @@ msgstr "Зупинити"
 msgid "Buffering…"
 msgstr "Буферизація…"
 
-#: data/gtk/player_gadget.ui:118
-msgid "SHORTWAVE INTERNET RADIO"
-msgstr "КОРОТКОХВИЛЬОВЕ ІНТЕРНЕТ-РАДІО"
-
-#: data/gtk/player_gadget.ui:140 data/gtk/player_toolbar.ui:29
-#: data/gtk/player_view.ui:58 src/app.rs:254
+#: data/gtk/player_gadget.ui:139 data/gtk/player_toolbar.ui:29
+#: data/gtk/player_view.ui:58 src/app.rs:269
 msgid "No Playback"
 msgstr "Немає відтворення"
 
-#: data/gtk/player_gadget.ui:199
+#: data/gtk/player_gadget.ui:198
 msgid "Close"
 msgstr "Закрити"
 
-#: data/gtk/player_gadget.ui:210
+#: data/gtk/player_gadget.ui:209
 msgid "Restore Window"
 msgstr "Відновити вікно"
 
@@ -360,17 +428,8 @@ msgid "Search stations"
 msgstr "Пошук станцій"
 
 #: data/gtk/search_filter.ui:32
-#| msgid "Search Results"
 msgid "Search Filter"
 msgstr "Фільтр пошуку"
-
-#: data/gtk/search_filter.ui:33
-msgid "filter-symbolic"
-msgstr "filter-symbolic"
-
-#: data/gtk/search_filter.ui:34
-msgid "False"
-msgstr "False"
 
 #: data/gtk/search_page.ui:55
 msgid "Discover over 50,000 public stations"
@@ -384,30 +443,15 @@ msgstr "Популярні станції"
 msgid "Discover New Stations"
 msgstr "Виявити нові станції"
 
-#: data/gtk/search_page.ui:118
-#| msgid ""
-#| "The displayed information is provided by <a href=\"https://www.radio-"
-#| "browser.info/\">radio-browser.info</a>.\n"
-#| "                                  Shortwave has no influence on the "
-#| "listed stations."
-msgid ""
-"The displayed information is provided by <a href=\"https://www.radio-"
-"browser.info/\">radio-browser.info</a>.\n"
-"Shortwave has no influence on the listed stations."
-msgstr ""
-"Показані дані надано <a href=\"https://www.radio-browser.info/\">radio-"
-"browser.info</a>.\n"
-"Shortwave не має впливу на показаний перелік станцій."
-
-#: data/gtk/search_page.ui:184
+#: data/gtk/search_page.ui:182
 msgid "Loading…"
 msgstr "Завантаження…"
 
-#: data/gtk/search_page.ui:199
+#: data/gtk/search_page.ui:197
 msgid "No Results"
 msgstr "Нічого не знайдено"
 
-#: data/gtk/search_page.ui:200
+#: data/gtk/search_page.ui:198
 msgid ""
 "If the station you are looking for is missing, you can add it to the public "
 "database."
@@ -415,20 +459,19 @@ msgstr ""
 "Якщо у списку немає станції, яку ви шукаєте, ви можете додати її до "
 "громадської бази даних."
 
-#: data/gtk/search_page.ui:204
+#: data/gtk/search_page.ui:202
 msgid "Add Missing Station"
 msgstr "Додати пропущену станцію"
 
-#: data/gtk/search_page.ui:222
+#: data/gtk/search_page.ui:220
 msgid "Unable to Retrieve Station Data"
 msgstr "Не вдалося отримати дані станцій"
 
-#: data/gtk/search_page.ui:225
+#: data/gtk/search_page.ui:223
 msgid "Try Again"
 msgstr "Повторити спробу"
 
 #: data/gtk/shortcuts_dialog.ui:9
-#| msgid "Search stations"
 msgctxt "shortcut window"
 msgid "Search stations"
 msgstr "Шукати станції"
@@ -469,18 +512,18 @@ msgstr "Гучність"
 
 #: data/gtk/shortcuts_dialog.ui:61
 msgctxt "shortcut window"
-msgid "Toggle mute"
-msgstr "Увімкнути або вимкнути звук"
-
-#: data/gtk/shortcuts_dialog.ui:67
-msgctxt "shortcut window"
 msgid "Increase volume"
 msgstr "Збільшити гучність"
 
-#: data/gtk/shortcuts_dialog.ui:73
+#: data/gtk/shortcuts_dialog.ui:67
 msgctxt "shortcut window"
 msgid "Decrease volume"
 msgstr "Зменшити гучність"
+
+#: data/gtk/shortcuts_dialog.ui:73
+msgctxt "shortcut window"
+msgid "Toggle mute"
+msgstr "Увімкнути або вимкнути звук"
 
 #: data/gtk/station_dialog.ui:71
 msgid "_Play"
@@ -542,26 +585,22 @@ msgstr "Країна"
 msgid "State"
 msgstr "Штат"
 
-#: data/gtk/station_dialog.ui:216
+#: data/gtk/station_dialog.ui:200
 msgid "Audio"
 msgstr "Звук"
 
-#: data/gtk/station_dialog.ui:219
+#: data/gtk/station_dialog.ui:203
 msgid "Bitrate"
 msgstr "Бітова швидкість"
 
-#: data/gtk/station_dialog.ui:230
+#: data/gtk/station_dialog.ui:214
 msgid "Codec"
 msgstr "Кодек"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:241
+#: data/gtk/station_dialog.ui:225
 msgid "Stream"
 msgstr "Трансляція"
-
-#: data/gtk/station_dialog.ui:247
-msgid "Copy"
-msgstr "Копіювати"
 
 #: data/gtk/track_dialog.ui:76
 msgid "Edit"
@@ -572,7 +611,7 @@ msgid "The recorded track has been saved"
 msgstr "Записану композицію збережено"
 
 #: data/gtk/track_dialog.ui:139 data/gtk/track_dialog.ui:210
-#: data/gtk/track_row.ui:10 src/audio/player.rs:448
+#: data/gtk/track_row.ui:10 src/audio/player.rs:445
 msgid "Save Track"
 msgstr "Зберегти доріжку"
 
@@ -609,83 +648,78 @@ msgstr "Увімкнути або вимкнути звук"
 msgid "Track no longer available"
 msgstr "Композиція недоступна"
 
-#: src/app.rs:109 src/app.rs:132
+#: src/app.rs:109 src/app.rs:133
 msgid "This track is currently not being recorded"
 msgstr "Запис цієї композиції не виконується"
 
-#: src/app.rs:259
-#, rust-format
-msgid "Playing “{}”"
-msgstr "Відтворення «{}»"
-
-#: src/app.rs:354
+#: src/app.rs:370
 msgid "Active Playback"
 msgstr "Активне відтворення"
 
-#: src/audio/player.rs:458
+#: src/audio/player.rs:455
 msgid "Don't Record"
 msgstr "Не записувати"
 
-#: src/audio/recording_state.rs:54 src/audio/recording_state.rs:56
+#: src/audio/recording_state.rs:53 src/audio/recording_state.rs:55
 msgid "Not Recorded"
 msgstr "Не записано"
 
-#: src/audio/recording_state.rs:55
+#: src/audio/recording_state.rs:54
 msgid "Ignored Track"
 msgstr "Ігнорована композиція"
 
-#: src/audio/recording_state.rs:58
+#: src/audio/recording_state.rs:57
 msgid "Recording…"
 msgstr "Записування…"
 
-#: src/audio/recording_state.rs:59 src/audio/recording_state.rs:60
+#: src/audio/recording_state.rs:58 src/audio/recording_state.rs:59
 msgid "Recorded"
 msgstr "Записано"
 
-#: src/audio/recording_state.rs:62
+#: src/audio/recording_state.rs:61
 msgid "Below Threshold"
 msgstr "Нижче порогового значення"
 
-#: src/audio/recording_state.rs:63
+#: src/audio/recording_state.rs:62
 msgid "Cancelled"
 msgstr "Скасовано"
 
-#: src/audio/recording_state.rs:69
+#: src/audio/recording_state.rs:68
 msgid "Recording is deactivated in preferences"
 msgstr "Записування вимкнено у налаштуваннях"
 
-#: src/audio/recording_state.rs:71
+#: src/audio/recording_state.rs:70
 msgid "The track contains a word that is on the ignore list"
 msgstr "Назва доріжки містить слово, яке перебуває у списку ігнорування"
 
-#: src/audio/recording_state.rs:74
+#: src/audio/recording_state.rs:73
 msgid ""
 "The track wasn't played from the beginning, so it can't be fully recorded"
 msgstr ""
 "Відтворення композиції відбувалося не з початку, тому її не може бути "
 "записано повністю"
 
-#: src/audio/recording_state.rs:77
+#: src/audio/recording_state.rs:76
 msgid "The track will be recorded until a new track gets played"
 msgstr ""
 "Запис поточної композиції відбуватиметься, доки не буде виявлено перехід до "
 "нової композиції"
 
-#: src/audio/recording_state.rs:79
+#: src/audio/recording_state.rs:78
 msgid "The track has been temporarily recorded"
 msgstr "Композицію було тимчасово записано"
 
-#: src/audio/recording_state.rs:81
+#: src/audio/recording_state.rs:80
 msgid "The maximum recording duration has been reached"
 msgstr "Досягнуто максимальної тривалості запису даних"
 
-#: src/audio/recording_state.rs:84
+#: src/audio/recording_state.rs:83
 msgid ""
 "The track has been discarded as the duration was below the set threshold"
 msgstr ""
 "Композицію відкинуто, оскільки її тривалість була меншою за порогове значення"
 
-#: src/audio/recording_state.rs:86
+#: src/audio/recording_state.rs:85
 msgid "Recording has been cancelled"
 msgstr "Записування було скасовано"
 
@@ -697,36 +731,75 @@ msgstr "Пристрій Google Cast"
 msgid "Unknown Model"
 msgstr "Невідома модель"
 
-#: src/ui/about_dialog.rs:45
+#: src/ui/about_dialog.rs:55
 msgid "translator-credits"
 msgstr "Юрій Чорноіван <yurchor@ukr.net>, 2020"
 
-#: src/ui/about_dialog.rs:46
+#: src/ui/about_dialog.rs:56
 msgid "Donate"
 msgstr "Підтримати фінансово"
 
-#: src/ui/add_station_dialog.rs:94
+#: src/ui/add_station_dialog.rs:92
+#, rust-format
+#| msgid ""
+#| "This station will only be added to your library. If you want it to be "
+#| "available to everyone, you should add it to the <a href=\"https://"
+#| "www.radio-browser.info/add\">public database</a>."
+msgid ""
+"This station will only be added to your library. If you want it to be "
+"available to everyone, you should add it to the <a href=\"{}\">public "
+"database</a>."
+msgstr ""
+"Цю станцію буде додано лише до вашої бібліотеки. Якщо ви хочете зробити дані "
+"щодо неї доступними для усіх, вам слід додати її запис до <a href=\"{}\">гром"
+"адської бази даних</a>."
+
+#: src/ui/add_station_dialog.rs:105
 msgid "Select Station Cover"
 msgstr "Виберіть обкладинку станції"
 
-#: src/ui/display_error.rs:50
+#: src/ui/display_error.rs:51
 msgid "Show Details"
 msgstr "Показати подробиці"
 
-#: src/ui/pages/library_page.rs:111
+#: src/ui/pages/library_page.rs:114
 #, rust-format
 msgid "Welcome to {}"
 msgstr "Вітаємо у {}"
 
-#: src/ui/preferences_dialog.rs:139
+#: src/ui/pages/library_page.rs:121
+#, rust-format
+msgid "_About {}"
+msgstr "_Про {}"
+
+#: src/ui/pages/search_page.rs:107
+#, rust-format
+#| msgid ""
+#| "The displayed information is provided by <a href=\"https://www.radio-"
+#| "browser.info/\">radio-browser.info</a>.\n"
+#| "Shortwave has no influence on the listed stations."
+msgid ""
+"The displayed information is provided by {}.\n"
+"{} has no influence on the listed stations."
+msgstr ""
+"Показані дані надано {}.\n"
+"{} не має впливу на показаний перелік станцій."
+
+#: src/ui/player/player_gadget.rs:68
+#, rust-format
+#| msgid "SHORTWAVE INTERNET RADIO"
+msgid "{} INTERNET RADIO"
+msgstr "{} ІНТЕРНЕТ-РАДІО"
+
+#: src/ui/preferences_dialog.rs:140
 msgid "Select Save Directory"
 msgstr "Виберіть каталог для збереження"
 
-#: src/ui/preferences_dialog.rs:140
+#: src/ui/preferences_dialog.rs:141
 msgid "_Select"
 msgstr "_Вибрати"
 
-#: src/ui/preferences_dialog.rs:163
+#: src/ui/preferences_dialog.rs:164
 #, rust-format
 msgid "{} min"
 msgid_plural "{} min"
@@ -735,7 +808,7 @@ msgstr[1] "{} хв"
 msgstr[2] "{} хв"
 msgstr[3] "{} хв"
 
-#: src/ui/preferences_dialog.rs:172
+#: src/ui/preferences_dialog.rs:173
 #, rust-format
 msgid "{} sec"
 msgid_plural "{} sec"
@@ -744,34 +817,16 @@ msgstr[1] "{} сек"
 msgstr[2] "{} сек"
 msgstr[3] "{} сек"
 
-#: src/ui/station_dialog.rs:207
+#: src/ui/station_dialog.rs:206
 #, rust-format
 msgid "{} kbit/s"
 msgstr "{} кбіт/с"
 
-#: src/ui/station_dialog.rs:292
+#: src/ui/station_dialog.rs:308
 msgid "Copied"
 msgstr "Скопійовано"
 
-#: src/ui/window.rs:226
-msgid "No Permission for Background Playback"
-msgstr "Немає прав доступу для фонового відтворення"
-
-#: src/ui/window.rs:228
-msgid "“Run in Background” must be allowed for this app in system settings."
-msgstr ""
-"Для цієї програми має бути увімкнено режим «Запустити у фоновому режимі» у "
-"Системних параметрах."
-
-#: src/ui/window.rs:232
-msgid "Try Anyway"
-msgstr "Спробувати попри все"
-
-#: src/ui/window.rs:233
-msgid "Disable Background Playback"
-msgstr "Вимкнути фонове відтворення"
-
-#: src/utils.rs:51
+#: src/utils.rs:50
 #, rust-format
 msgid "{} hour"
 msgid_plural "{} hours"
@@ -780,7 +835,7 @@ msgstr[1] "{} год"
 msgstr[2] "{} год"
 msgstr[3] "{} год"
 
-#: src/utils.rs:57
+#: src/utils.rs:56
 #, rust-format
 msgid "{} minute"
 msgid_plural "{} minutes"
@@ -789,7 +844,7 @@ msgstr[1] "{} хвилини"
 msgstr[2] "{} хвилин"
 msgstr[3] "{} хвилина"
 
-#: src/utils.rs:62
+#: src/utils.rs:61
 #, rust-format
 msgid "{} second"
 msgid_plural "{} seconds"
@@ -797,6 +852,50 @@ msgstr[0] "{} секунда"
 msgstr[1] "{} секунди"
 msgstr[2] "{} секунд"
 msgstr[3] "{} секунда"
+
+#: src/utils.rs:71
+#, rust-format
+msgid "{hours} {mins} {secs}"
+msgstr "{hours} {mins} {secs}"
+
+#. Translators: Do NOT translate the content between '{' and '}', this is a variable name.
+#: src/utils.rs:79
+#, rust-format
+msgid "{mins} {secs}"
+msgstr "{mins} {secs}"
+
+#~ msgid "Shortwave"
+#~ msgstr "Коротка хвиля"
+
+#~ msgid "_Open radio-browser.info <sup>↗</sup>"
+#~ msgstr "В_ідкрити radio-browser.info <sup>↗</sup>"
+
+#~ msgid "_About Shortwave"
+#~ msgstr "П_ро «Shortwave»"
+
+#~ msgid "filter-symbolic"
+#~ msgstr "filter-symbolic"
+
+#~ msgid "False"
+#~ msgstr "False"
+
+#, rust-format
+#~ msgid "Playing “{}”"
+#~ msgstr "Відтворення «{}»"
+
+#~ msgid "No Permission for Background Playback"
+#~ msgstr "Немає прав доступу для фонового відтворення"
+
+#~ msgid "“Run in Background” must be allowed for this app in system settings."
+#~ msgstr ""
+#~ "Для цієї програми має бути увімкнено режим «Запустити у фоновому режимі» "
+#~ "у Системних параметрах."
+
+#~ msgid "Try Anyway"
+#~ msgstr "Спробувати попри все"
+
+#~ msgid "Disable Background Playback"
+#~ msgstr "Вимкнути фонове відтворення"
 
 #~ msgid "0 seconds"
 #~ msgstr "0 секунд"
@@ -843,9 +942,6 @@ msgstr[3] "{} секунда"
 #~ msgstr ""
 #~ "Ви можете визначити, хочете ви, щоб нову станцію змогли побачити "
 #~ "користувачі з усього світу, чи ви хочете створити локальну станцію."
-
-#~ msgid "Create _Public Station"
-#~ msgstr "Створити з_агальнодоступу станцію"
 
 #~ msgid "Create _Local Station"
 #~ msgstr "Створити _локальну станцію"
@@ -901,9 +997,6 @@ msgstr[3] "{} секунда"
 
 #~ msgid "Next"
 #~ msgstr "Далі"
-
-#~ msgid "Library"
-#~ msgstr "Бібліотека"
 
 #~ msgid "No Songs Detected"
 #~ msgstr "Не виявлено жодної пісні"
