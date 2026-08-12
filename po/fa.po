@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2026-06-25 23:19+0000\n"
-"PO-Revision-Date: 2026-08-08 02:05+0330\n"
+"POT-Creation-Date: 2026-07-23 09:41+0000\n"
+"PO-Revision-Date: 2026-08-13 03:09+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
@@ -19,7 +19,6 @@ msgstr ""
 "X-Generator: Poedit 3.9\n"
 
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:2
-#: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:5
 msgid "@NAME@"
 msgstr "موج کوتاه"
 
@@ -40,11 +39,11 @@ msgstr "Gradio;Radio;Stream;Wave;رادیو;پخش;جریان;موج;"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:12
 msgid ""
-"Shortwave is an internet radio player that provides access to a station database "
+"@NAME@ is an internet radio player that provides access to a station database "
 "with over 50,000 stations."
 msgstr ""
-"موج کوتاه پخش‌کنندهٔ رادیو اینترنتی‌ای است که دسترسی به پایگاه داده‌ای با بیش از "
-"۵۰٫۰۰۰ ایستگاه را فراهم می‌کند."
+"‏@NAME@ پخش‌کنندهٔ رادیو اینترنتی‌ای است که دسترسی به پایگاه داده‌ای با بیش از ۵۰٫۰۰۰ "
+"ایستگاه را فراهم می‌کند."
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:15
 msgid "Features:"
@@ -80,6 +79,7 @@ msgstr "یکپارچگی با محیط میزکار گنوم"
 
 #. Branding
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:28
+#: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:30
 msgid "Felix Häcker"
 msgstr "فلیکس هکر"
 
@@ -91,25 +91,15 @@ msgstr "افزودن ایستگاه محلّی"
 msgid "Change Station Cover"
 msgstr "تغییر تصویر ایستگاه"
 
-#: data/gtk/add_station_dialog.ui:95
-msgid ""
-"This station will only be added to your library. If you want it to be available "
-"to everyone, you should add it to the <a href=\"https://www.radio-browser.info/"
-"add\">public database</a>."
-msgstr ""
-"این ایستگاه به کتابخانه‌تان افزوده خواهد شد. اگر می‌خواهید در دسترس همه باشد، باید "
-"به <a href=\"https://www.radio-browser.info/add\">پایگاه دادهٔ عمومی</a> "
-"بیفزاییدش."
-
-#: data/gtk/add_station_dialog.ui:107
+#: data/gtk/add_station_dialog.ui:106
 msgid "Name"
 msgstr "نام"
 
-#: data/gtk/add_station_dialog.ui:115
+#: data/gtk/add_station_dialog.ui:114
 msgid "Stream URL"
 msgstr "نشانی جریان"
 
-#: data/gtk/add_station_dialog.ui:123
+#: data/gtk/add_station_dialog.ui:122
 msgid "Add Station"
 msgstr "افزودن ایستگاه"
 
@@ -137,77 +127,141 @@ msgstr "هیچ افزاره‌ای با پشتیبانی از پخش گوگل پ
 msgid "Disconnect From Device"
 msgstr "جدا کردن از افزاره"
 
-#: data/gtk/library_page.ui:4
-msgid "Shortwave"
-msgstr "موج کوتاه"
-
-#: data/gtk/library_page.ui:15 data/gtk/search_page.ui:4
+#: data/gtk/library_page.ui:14 data/gtk/search_page.ui:4
 msgid "Browse Stations"
 msgstr "مرور ایستگاه‌ها"
 
-#: data/gtk/library_page.ui:23
+#: data/gtk/library_page.ui:22
 msgid "Main Menu"
 msgstr "فهرست اصلی"
 
-#: data/gtk/library_page.ui:92
+#: data/gtk/library_page.ui:91
 msgid "_Add New Stations"
 msgstr "_افزودن ایستگاه جدید"
 
-#: data/gtk/library_page.ui:115
+#: data/gtk/library_page.ui:114
 msgid "_Sorting"
 msgstr "_چینش"
 
-#: data/gtk/library_page.ui:118
+#: data/gtk/library_page.ui:117
 msgid "_Name"
 msgstr "_نام"
 
-#: data/gtk/library_page.ui:123
+#: data/gtk/library_page.ui:122
 msgid "_Language"
 msgstr "_زبان"
 
-#: data/gtk/library_page.ui:128
+#: data/gtk/library_page.ui:127
 msgid "_Country"
 msgstr "_کشور"
 
-#: data/gtk/library_page.ui:133
+#: data/gtk/library_page.ui:132
 msgid "S_tate"
 msgstr "ا_یالت"
 
-#: data/gtk/library_page.ui:138
+#: data/gtk/library_page.ui:137
 msgid "_Bitrate"
 msgstr "_نرخ بیت"
 
-#: data/gtk/library_page.ui:145
+#: data/gtk/library_page.ui:144
 msgid "_Ascending"
 msgstr "پیش‌رونده"
 
-#: data/gtk/library_page.ui:150
+#: data/gtk/library_page.ui:149
 msgid "_Descending"
 msgstr "پس‌رونده"
 
-#: data/gtk/library_page.ui:159
-msgid "_Open radio-browser.info <sup>↗</sup>"
-msgstr "_گشودن radio-browser.info ‏<sup>↖</sup>"
-
-#: data/gtk/library_page.ui:166
+#: data/gtk/library_page.ui:158
 msgid "_Preferences"
 msgstr "_ترجیحات"
 
-#: data/gtk/library_page.ui:170
+#: data/gtk/library_page.ui:162 data/gtk/menus.ui:96
 msgid "_Keyboard Shortcuts"
 msgstr "_میان‌برهای صفحه‌کلید"
 
-#: data/gtk/library_page.ui:174
-msgid "_About Shortwave"
-msgstr "_دربارهٔ موج کوتاه"
-
-#: data/gtk/library_page.ui:178
+#: data/gtk/library_page.ui:166
 msgid "_Quit"
 msgstr "_خروج"
 
-#: data/gtk/library_page.ui:186
+#: data/gtk/library_page.ui:174 data/gtk/menus.ui:14
 msgid "Add _Local Station"
 msgstr "افزودن ایستگاه _محلّی"
+
+#: data/gtk/menus.ui:5
+msgid "_Library"
+msgstr "_کتابخانه"
+
+#: data/gtk/menus.ui:8
+msgid "_Search Stations"
+msgstr "_جست‌وجوی ایستگاه‌ها"
+
+#: data/gtk/menus.ui:18
+msgid "Add _Public Station"
+msgstr "افزودن ایستگاه _همگانی"
+
+#: data/gtk/menus.ui:25
+msgid "_Edit"
+msgstr "_ویرایش"
+
+#: data/gtk/menus.ui:28
+msgid "Undo"
+msgstr "برگردان"
+
+#: data/gtk/menus.ui:32
+msgid "Redo"
+msgstr "انجام دوباره"
+
+#: data/gtk/menus.ui:38
+msgid "Cut"
+msgstr "برش"
+
+#: data/gtk/menus.ui:42 data/gtk/station_dialog.ui:231
+msgid "Copy"
+msgstr "رونوشت"
+
+#: data/gtk/menus.ui:46
+msgid "Paste"
+msgstr "جایگذاری"
+
+#: data/gtk/menus.ui:50
+msgid "Delete"
+msgstr "حذف"
+
+#: data/gtk/menus.ui:54
+msgid "Select All"
+msgstr "گزینش همه"
+
+#: data/gtk/menus.ui:60
+msgid "_Playback"
+msgstr "_پخش"
+
+#: data/gtk/menus.ui:63
+msgid "_Toggle Playback"
+msgstr "_تغییر وضعیت پخش"
+
+#: data/gtk/menus.ui:69
+msgid "Toggle _Mute"
+msgstr "تغییر حالت _خموشی"
+
+#: data/gtk/menus.ui:73
+msgid "_Increase Volume"
+msgstr "_افزایش حجم صدا"
+
+#: data/gtk/menus.ui:77
+msgid "_Decrease Volume"
+msgstr "_کاهش حجم صدا"
+
+#: data/gtk/menus.ui:83
+msgid "_Connect Device"
+msgstr "_وصل کردن افزاره"
+
+#: data/gtk/menus.ui:89
+msgid "_Window"
+msgstr "_پنجره"
+
+#: data/gtk/menus.ui:93
+msgid "_Help"
+msgstr "_راهنما"
 
 #: data/gtk/player_gadget.ui:40 data/gtk/player_toolbar.ui:92
 #: data/gtk/player_view.ui:158 data/gtk/station_row.ui:86
@@ -224,20 +278,16 @@ msgstr "توقّف"
 msgid "Buffering…"
 msgstr "میانگیری…"
 
-#: data/gtk/player_gadget.ui:118
-msgid "SHORTWAVE INTERNET RADIO"
-msgstr "رادیوهای اینترنتی موج کوتاه"
-
-#: data/gtk/player_gadget.ui:140 data/gtk/player_toolbar.ui:29
-#: data/gtk/player_view.ui:58 src/app.rs:257
+#: data/gtk/player_gadget.ui:139 data/gtk/player_toolbar.ui:29
+#: data/gtk/player_view.ui:58 src/app.rs:269
 msgid "No Playback"
 msgstr "بدون پخش"
 
-#: data/gtk/player_gadget.ui:199
+#: data/gtk/player_gadget.ui:198
 msgid "Close"
 msgstr "بستن"
 
-#: data/gtk/player_gadget.ui:210
+#: data/gtk/player_gadget.ui:209
 msgid "Restore Window"
 msgstr "بازگرداندن پنجره"
 
@@ -365,40 +415,30 @@ msgstr "ایستگاه‌های محبوب"
 msgid "Discover New Stations"
 msgstr "کشف ایستگاه‌های جدید"
 
-#: data/gtk/search_page.ui:118
-msgid ""
-"The displayed information is provided by <a href=\"https://www.radio-"
-"browser.info/\">radio-browser.info</a>.\n"
-"Shortwave has no influence on the listed stations."
-msgstr ""
-"اطّلاعات نمایشی به دست <a href=\"https://www.radio-browser.info/\">radio-"
-"browser.info</a> فراهم شده.\n"
-"موج کوتاه هیچ تأثیری روی ایستگاه‌های سیاهه شده ندارد."
-
-#: data/gtk/search_page.ui:184
+#: data/gtk/search_page.ui:182
 msgid "Loading…"
 msgstr "بار کردن…"
 
-#: data/gtk/search_page.ui:199
+#: data/gtk/search_page.ui:197
 msgid "No Results"
 msgstr "بدون نتیجه"
 
-#: data/gtk/search_page.ui:200
+#: data/gtk/search_page.ui:198
 msgid ""
 "If the station you are looking for is missing, you can add it to the public "
 "database."
 msgstr ""
 "اگر ایستگاهی که به دنبالشید غایب است، می‌توانید به پایگاه دادهٔ عمومی بیفزایدش."
 
-#: data/gtk/search_page.ui:204
+#: data/gtk/search_page.ui:202
 msgid "Add Missing Station"
 msgstr "افزودن ایستگاه غایب"
 
-#: data/gtk/search_page.ui:222
+#: data/gtk/search_page.ui:220
 msgid "Unable to Retrieve Station Data"
 msgstr "ناتوان در گرفتن داده‌های ایستگاه"
 
-#: data/gtk/search_page.ui:225
+#: data/gtk/search_page.ui:223
 msgid "Try Again"
 msgstr "تلاش دوباره"
 
@@ -443,18 +483,18 @@ msgstr "حجم صدا"
 
 #: data/gtk/shortcuts_dialog.ui:61
 msgctxt "shortcut window"
-msgid "Toggle mute"
-msgstr "تغییر حالت خموشی"
-
-#: data/gtk/shortcuts_dialog.ui:67
-msgctxt "shortcut window"
 msgid "Increase volume"
 msgstr "افزایش حجم صدا"
 
-#: data/gtk/shortcuts_dialog.ui:73
+#: data/gtk/shortcuts_dialog.ui:67
 msgctxt "shortcut window"
 msgid "Decrease volume"
 msgstr "کاهش حجم صدا"
+
+#: data/gtk/shortcuts_dialog.ui:73
+msgctxt "shortcut window"
+msgid "Toggle mute"
+msgstr "تغییر حالت خموشی"
 
 #: data/gtk/station_dialog.ui:71
 msgid "_Play"
@@ -532,10 +572,6 @@ msgstr "رمزینه"
 msgid "Stream"
 msgstr "جریان"
 
-#: data/gtk/station_dialog.ui:231
-msgid "Copy"
-msgstr "رونوشت"
-
 #: data/gtk/track_dialog.ui:76
 msgid "Edit"
 msgstr "ویرایش"
@@ -545,7 +581,7 @@ msgid "The recorded track has been saved"
 msgstr "قطعهٔ ضبط شده ذخیره شد"
 
 #: data/gtk/track_dialog.ui:139 data/gtk/track_dialog.ui:210
-#: data/gtk/track_row.ui:10 src/audio/player.rs:448
+#: data/gtk/track_row.ui:10 src/audio/player.rs:445
 msgid "Save Track"
 msgstr "ذخیرهٔ قطعه"
 
@@ -581,71 +617,71 @@ msgstr "تغییر حالت خموشی"
 msgid "Track no longer available"
 msgstr "قطعه دیگر موجود نیست"
 
-#: src/app.rs:109 src/app.rs:132
+#: src/app.rs:109 src/app.rs:133
 msgid "This track is currently not being recorded"
 msgstr "در حال حاضر قطعه ضبط نمی‌شود"
 
-#: src/app.rs:358
+#: src/app.rs:370
 msgid "Active Playback"
 msgstr "فعّال کردن پخش"
 
-#: src/audio/player.rs:458
+#: src/audio/player.rs:455
 msgid "Don't Record"
 msgstr "ضبط نکردن"
 
-#: src/audio/recording_state.rs:54 src/audio/recording_state.rs:56
+#: src/audio/recording_state.rs:53 src/audio/recording_state.rs:55
 msgid "Not Recorded"
 msgstr "ضبط نشده"
 
-#: src/audio/recording_state.rs:55
+#: src/audio/recording_state.rs:54
 msgid "Ignored Track"
 msgstr "چشم‌پوشی از قطعه"
 
-#: src/audio/recording_state.rs:58
+#: src/audio/recording_state.rs:57
 msgid "Recording…"
 msgstr "ضبط کردن…"
 
-#: src/audio/recording_state.rs:59 src/audio/recording_state.rs:60
+#: src/audio/recording_state.rs:58 src/audio/recording_state.rs:59
 msgid "Recorded"
 msgstr "ضبط شده"
 
-#: src/audio/recording_state.rs:62
+#: src/audio/recording_state.rs:61
 msgid "Below Threshold"
 msgstr "زیر آستانه"
 
-#: src/audio/recording_state.rs:63
+#: src/audio/recording_state.rs:62
 msgid "Cancelled"
 msgstr "لغو شده"
 
-#: src/audio/recording_state.rs:69
+#: src/audio/recording_state.rs:68
 msgid "Recording is deactivated in preferences"
 msgstr "ضبط کردن در ترجیحات غیرفعّال شده"
 
-#: src/audio/recording_state.rs:71
+#: src/audio/recording_state.rs:70
 msgid "The track contains a word that is on the ignore list"
 msgstr "قطعه شامل واژه‌ای در سیاههٔ چشم‌پوشی است."
 
-#: src/audio/recording_state.rs:74
+#: src/audio/recording_state.rs:73
 msgid "The track wasn't played from the beginning, so it can't be fully recorded"
 msgstr "قطعه از ابتدا پخش نشده و نمی‌تواند کامل ضبط شود"
 
-#: src/audio/recording_state.rs:77
+#: src/audio/recording_state.rs:76
 msgid "The track will be recorded until a new track gets played"
 msgstr "قطعه تا زمان پخش قطعه‌ای جدید ضبط خواهد شد"
 
-#: src/audio/recording_state.rs:79
+#: src/audio/recording_state.rs:78
 msgid "The track has been temporarily recorded"
 msgstr "قطعه به صورت موقّتی ضبط شده"
 
-#: src/audio/recording_state.rs:81
+#: src/audio/recording_state.rs:80
 msgid "The maximum recording duration has been reached"
 msgstr "رسیدن به پایان بیشینهٔ زمان ضبط"
 
-#: src/audio/recording_state.rs:84
+#: src/audio/recording_state.rs:83
 msgid "The track has been discarded as the duration was below the set threshold"
 msgstr "از آن‌جا که طول قطعه زیر آستانهٔ تنظیم شده بود دور انداخته شد"
 
-#: src/audio/recording_state.rs:86
+#: src/audio/recording_state.rs:85
 msgid "Recording has been cancelled"
 msgstr "ضبط کردن لغو شد"
 
@@ -657,73 +693,85 @@ msgstr "افزارهٔ پخش گوگل"
 msgid "Unknown Model"
 msgstr "مدل ناشناخته"
 
-#: src/ui/about_dialog.rs:45
+#: src/ui/about_dialog.rs:55
 msgid "translator-credits"
 msgstr "دانیال بهزادی <dani.behzi@ubuntu.com>"
 
-#: src/ui/about_dialog.rs:46
+#: src/ui/about_dialog.rs:56
 msgid "Donate"
 msgstr "اعانه"
 
-#: src/ui/add_station_dialog.rs:94
+#: src/ui/add_station_dialog.rs:92
+#, rust-format
+msgid ""
+"This station will only be added to your library. If you want it to be available "
+"to everyone, you should add it to the <a href=\"{}\">public database</a>."
+msgstr ""
+"این ایستگاه به کتابخانه‌تان افزوده خواهد شد. اگر می‌خواهید در دسترس همه باشد، باید "
+"به <a href=\"{}\">پایگاه دادهٔ عمومی</a> بیفزاییدش."
+
+#: src/ui/add_station_dialog.rs:105
 msgid "Select Station Cover"
 msgstr "گزینش تصویر ایستگاه"
 
-#: src/ui/display_error.rs:50
+#: src/ui/display_error.rs:51
 msgid "Show Details"
 msgstr "نمایش جزییات"
 
-#: src/ui/pages/library_page.rs:111
+#: src/ui/pages/library_page.rs:114
 #, rust-format
 msgid "Welcome to {}"
 msgstr "به {} خوش‌آمدید"
 
-#: src/ui/preferences_dialog.rs:139
+#: src/ui/pages/library_page.rs:121
+#, rust-format
+msgid "_About {}"
+msgstr "_دربارهٔ {}"
+
+#: src/ui/pages/search_page.rs:107
+#, rust-format
+msgid ""
+"The displayed information is provided by {}.\n"
+"{} has no influence on the listed stations."
+msgstr ""
+"اطّلاعات نمایشی به دست {}> فراهم شده.\n"
+"{} هیچ تأثیری روی ایستگاه‌های سیاهه شده ندارد."
+
+#: src/ui/player/player_gadget.rs:68
+#, rust-format
+msgid "{} INTERNET RADIO"
+msgstr "رادیوهای اینترنتی موج {}"
+
+#: src/ui/preferences_dialog.rs:140
 msgid "Select Save Directory"
 msgstr "گزینش شاخهٔ ذخیره"
 
-#: src/ui/preferences_dialog.rs:140
+#: src/ui/preferences_dialog.rs:141
 msgid "_Select"
 msgstr "_گینش"
 
-#: src/ui/preferences_dialog.rs:163
+#: src/ui/preferences_dialog.rs:164
 #, rust-format
 msgid "{} min"
 msgid_plural "{} min"
 msgstr[0] "{} دقیقه"
 msgstr[1] "{} دقیقه"
 
-#: src/ui/preferences_dialog.rs:172
+#: src/ui/preferences_dialog.rs:173
 #, rust-format
 msgid "{} sec"
 msgid_plural "{} sec"
 msgstr[0] "{} ثانیه"
 msgstr[1] "{} ثانیه"
 
-#: src/ui/station_dialog.rs:205
+#: src/ui/station_dialog.rs:206
 #, rust-format
 msgid "{} kbit/s"
 msgstr "{} ک‌بی/ث"
 
-#: src/ui/station_dialog.rs:307
+#: src/ui/station_dialog.rs:308
 msgid "Copied"
 msgstr "رونوشت شد"
-
-#: src/ui/window.rs:231
-msgid "No Permission for Background Playback"
-msgstr "اجازهٔ پخش پس‌زمینه وجود ندارد"
-
-#: src/ui/window.rs:233
-msgid "“Run in Background” must be allowed for this app in system settings."
-msgstr "باید «اجرا در پس‌زمینه» برای این کاره در تنظیمات سامانه مجاز باشد."
-
-#: src/ui/window.rs:237
-msgid "Try Anyway"
-msgstr "تلاش به هر روی"
-
-#: src/ui/window.rs:238
-msgid "Disable Background Playback"
-msgstr "از کار انداختن پخش پس‌زمینه"
 
 #: src/utils.rs:50
 #, rust-format
@@ -745,6 +793,38 @@ msgid "{} second"
 msgid_plural "{} seconds"
 msgstr[0] "{} ثانیه"
 msgstr[1] "{} ثانیه"
+
+#: src/utils.rs:71
+#, rust-format
+msgid "{hours} {mins} {secs}"
+msgstr "{hours} {mins} {secs}"
+
+#. Translators: Do NOT translate the content between '{' and '}', this is a variable name.
+#: src/utils.rs:79
+#, rust-format
+msgid "{mins} {secs}"
+msgstr "{mins} {secs}"
+
+#~ msgid "Shortwave"
+#~ msgstr "موج کوتاه"
+
+#~ msgid "_Open radio-browser.info <sup>↗</sup>"
+#~ msgstr "_گشودن radio-browser.info ‏<sup>↖</sup>"
+
+#~ msgid "_About Shortwave"
+#~ msgstr "_دربارهٔ موج کوتاه"
+
+#~ msgid "No Permission for Background Playback"
+#~ msgstr "اجازهٔ پخش پس‌زمینه وجود ندارد"
+
+#~ msgid "“Run in Background” must be allowed for this app in system settings."
+#~ msgstr "باید «اجرا در پس‌زمینه» برای این کاره در تنظیمات سامانه مجاز باشد."
+
+#~ msgid "Try Anyway"
+#~ msgstr "تلاش به هر روی"
+
+#~ msgid "Disable Background Playback"
+#~ msgstr "از کار انداختن پخش پس‌زمینه"
 
 #~ msgid "Playing “{}”"
 #~ msgstr "پخش کردن «{}»"
@@ -790,9 +870,6 @@ msgstr[1] "{} ثانیه"
 #~ msgstr ""
 #~ "می‌توانید تصمیم بگیرید که می‌خواهید ایستگاه جدید برای همهٔ کاربران نمایان بوده "
 #~ "یا تنها می‌خواهید ایستگاهی محلّی ایجاد کنید."
-
-#~ msgid "Create _Public Station"
-#~ msgstr "ایجاد ایستگاه _همگانی"
 
 #~ msgid "Create _Local Station"
 #~ msgstr "ایجاد ایستگاه _محلّی"
@@ -850,9 +927,6 @@ msgstr[1] "{} ثانیه"
 
 #~ msgid "Next"
 #~ msgstr "بعدی"
-
-#~ msgid "Library"
-#~ msgstr "کتاب‌خانه"
 
 #~ msgid "No Songs Detected"
 #~ msgstr "آوازی تشخیص داده نشد"
