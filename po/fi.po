@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2026-01-12 20:45+0000\n"
-"PO-Revision-Date: 2026-02-08 11:01+0200\n"
+"POT-Creation-Date: 2026-07-23 09:41+0000\n"
+"PO-Revision-Date: 2026-08-17 22:46+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: Finnish <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -16,10 +16,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:2
-#: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:5
 msgid "@NAME@"
 msgstr "@NAME@"
 
@@ -31,7 +30,7 @@ msgstr "Nettiradioasemien soitin"
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:4
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:10
 msgid "Listen to internet radio"
-msgstr "Kuuntele internetradiota"
+msgstr "Kuuntele radiokanavia verkossa"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:13
@@ -40,11 +39,11 @@ msgstr "Gradio;Radio;Stream;Wave;suoratoisto;nettiradio;"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:12
 msgid ""
-"Shortwave is an internet radio player that provides access to a station "
+"@NAME@ is an internet radio player that provides access to a station "
 "database with over 50,000 stations."
 msgstr ""
-"Shortwave on internetradioasemien toistamiseen tarkoitettu sovellus, joka "
-"tarjoaa yli 50 000 aseman tietokannan."
+"@NAME@ on nettiradioasemien toistamiseen tarkoitettu sovellus, joka sisältää "
+"yli 50 000 aseman tietokannan."
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:15
 msgid "Features:"
@@ -85,6 +84,7 @@ msgstr "Saumaton integraatio Gnome-työpöytäympäristöön"
 
 #. Branding
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:28
+#: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:30
 msgid "Felix Häcker"
 msgstr "Felix Häcker"
 
@@ -96,25 +96,15 @@ msgstr "Lisää paikallinen asema"
 msgid "Change Station Cover"
 msgstr "Vaihda aseman kansikuva"
 
-#: data/gtk/add_station_dialog.ui:95
-msgid ""
-"This station will only be added to your library. If you want it to be "
-"available to everyone, you should add it to the <a href=\"https://www.radio-"
-"browser.info/add\">public database</a>."
-msgstr ""
-"Tämä asema lisätään vain sinun kirjastoosi. Jos haluat sen olevan saataville "
-"myös muille, lisää asema <a href=\"https://www.radio-browser.info/"
-"add\">julkiseen tietokantaan</a>."
-
-#: data/gtk/add_station_dialog.ui:107
+#: data/gtk/add_station_dialog.ui:106
 msgid "Name"
 msgstr "Nimi"
 
-#: data/gtk/add_station_dialog.ui:115
+#: data/gtk/add_station_dialog.ui:114
 msgid "Stream URL"
 msgstr "Suoratoiston URL-osoite"
 
-#: data/gtk/add_station_dialog.ui:123
+#: data/gtk/add_station_dialog.ui:122
 msgid "Add Station"
 msgstr "Lisää asema"
 
@@ -142,77 +132,141 @@ msgstr "Tuettua Google Cast -laitetta ei löytynyt"
 msgid "Disconnect From Device"
 msgstr "Katkaise yhteys laitteeseen"
 
-#: data/gtk/library_page.ui:4
-msgid "Shortwave"
-msgstr "Shortwave"
-
-#: data/gtk/library_page.ui:15 data/gtk/search_page.ui:4
+#: data/gtk/library_page.ui:14 data/gtk/search_page.ui:4
 msgid "Browse Stations"
 msgstr "Selaa asemia"
 
-#: data/gtk/library_page.ui:23
+#: data/gtk/library_page.ui:22
 msgid "Main Menu"
 msgstr "Päävalikko"
 
-#: data/gtk/library_page.ui:92
+#: data/gtk/library_page.ui:91
 msgid "_Add New Stations"
 msgstr "_Lisää uusia asemia"
 
-#: data/gtk/library_page.ui:115
+#: data/gtk/library_page.ui:114
 msgid "_Sorting"
 msgstr "_Järjestys"
 
-#: data/gtk/library_page.ui:118
+#: data/gtk/library_page.ui:117
 msgid "_Name"
 msgstr "_Nimi"
 
-#: data/gtk/library_page.ui:123
+#: data/gtk/library_page.ui:122
 msgid "_Language"
 msgstr "_Kieli"
 
-#: data/gtk/library_page.ui:128
+#: data/gtk/library_page.ui:127
 msgid "_Country"
 msgstr "_Maa"
 
-#: data/gtk/library_page.ui:133
+#: data/gtk/library_page.ui:132
 msgid "S_tate"
 msgstr "_Osavaltio"
 
-#: data/gtk/library_page.ui:138
+#: data/gtk/library_page.ui:137
 msgid "_Bitrate"
 msgstr "_Bittinopeus"
 
-#: data/gtk/library_page.ui:145
+#: data/gtk/library_page.ui:144
 msgid "_Ascending"
 msgstr "_Nouseva"
 
-#: data/gtk/library_page.ui:150
+#: data/gtk/library_page.ui:149
 msgid "_Descending"
 msgstr "_Laskeva"
 
-#: data/gtk/library_page.ui:159
-msgid "_Open radio-browser.info <sup>↗</sup>"
-msgstr "_Avaa radio-browser.info <sup>↗</sup>"
-
-#: data/gtk/library_page.ui:166
+#: data/gtk/library_page.ui:158
 msgid "_Preferences"
 msgstr "_Asetukset"
 
-#: data/gtk/library_page.ui:170
+#: data/gtk/library_page.ui:162 data/gtk/menus.ui:96
 msgid "_Keyboard Shortcuts"
 msgstr "_Pikanäppäimet"
 
-#: data/gtk/library_page.ui:174
-msgid "_About Shortwave"
-msgstr "_Tietoja - Shortwave"
-
-#: data/gtk/library_page.ui:178
+#: data/gtk/library_page.ui:166
 msgid "_Quit"
 msgstr "_Lopeta"
 
-#: data/gtk/library_page.ui:186
+#: data/gtk/library_page.ui:174 data/gtk/menus.ui:14
 msgid "Add _Local Station"
 msgstr "Lisää _paikallinen asema"
+
+#: data/gtk/menus.ui:5
+msgid "_Library"
+msgstr "_Kirjasto"
+
+#: data/gtk/menus.ui:8
+msgid "_Search Stations"
+msgstr "_Etsi asemia"
+
+#: data/gtk/menus.ui:18
+msgid "Add _Public Station"
+msgstr "Lisää _julkinen asema"
+
+#: data/gtk/menus.ui:25
+msgid "_Edit"
+msgstr "_Muokkaa"
+
+#: data/gtk/menus.ui:28
+msgid "Undo"
+msgstr "Kumoa"
+
+#: data/gtk/menus.ui:32
+msgid "Redo"
+msgstr "Tee uudelleen"
+
+#: data/gtk/menus.ui:38
+msgid "Cut"
+msgstr "Leikkaa"
+
+#: data/gtk/menus.ui:42 data/gtk/station_dialog.ui:231
+msgid "Copy"
+msgstr "Kopioi"
+
+#: data/gtk/menus.ui:46
+msgid "Paste"
+msgstr "Liitä"
+
+#: data/gtk/menus.ui:50
+msgid "Delete"
+msgstr "Poista"
+
+#: data/gtk/menus.ui:54
+msgid "Select All"
+msgstr "Valitse kaikki"
+
+#: data/gtk/menus.ui:60
+msgid "_Playback"
+msgstr "_Toisto"
+
+#: data/gtk/menus.ui:63
+msgid "_Toggle Playback"
+msgstr "Toisto _päällä/pois"
+
+#: data/gtk/menus.ui:69
+msgid "Toggle _Mute"
+msgstr "_Mykistys päällä/pois"
+
+#: data/gtk/menus.ui:73
+msgid "_Increase Volume"
+msgstr "_Lisää äänenvoimakkuutta"
+
+#: data/gtk/menus.ui:77
+msgid "_Decrease Volume"
+msgstr "_Vähennä äänenvoimakkuutta"
+
+#: data/gtk/menus.ui:83
+msgid "_Connect Device"
+msgstr "_Yhdistä laite"
+
+#: data/gtk/menus.ui:89
+msgid "_Window"
+msgstr "_Ikkuna"
+
+#: data/gtk/menus.ui:93
+msgid "_Help"
+msgstr "_Ohje"
 
 #: data/gtk/player_gadget.ui:40 data/gtk/player_toolbar.ui:92
 #: data/gtk/player_view.ui:158 data/gtk/station_row.ui:86
@@ -229,20 +283,16 @@ msgstr "Pysäytä"
 msgid "Buffering…"
 msgstr "Puskoroidaan…"
 
-#: data/gtk/player_gadget.ui:118
-msgid "SHORTWAVE INTERNET RADIO"
-msgstr "SHORTWAVE INTERNET RADIO"
-
-#: data/gtk/player_gadget.ui:140 data/gtk/player_toolbar.ui:29
-#: data/gtk/player_view.ui:58 src/app.rs:254
+#: data/gtk/player_gadget.ui:139 data/gtk/player_toolbar.ui:29
+#: data/gtk/player_view.ui:58 src/app.rs:269
 msgid "No Playback"
 msgstr "Mitään ei toisteta"
 
-#: data/gtk/player_gadget.ui:199
+#: data/gtk/player_gadget.ui:198
 msgid "Close"
 msgstr "Sulje"
 
-#: data/gtk/player_gadget.ui:210
+#: data/gtk/player_gadget.ui:209
 msgid "Restore Window"
 msgstr "Palauta ikkuna"
 
@@ -373,39 +423,29 @@ msgstr "Suositut asemat"
 msgid "Discover New Stations"
 msgstr "Löydä uusia asemia"
 
-#: data/gtk/search_page.ui:118
-msgid ""
-"The displayed information is provided by <a href=\"https://www.radio-"
-"browser.info/\">radio-browser.info</a>.\n"
-"Shortwave has no influence on the listed stations."
-msgstr ""
-"Näytettävät tiedot toimittaa <a href=\"https://www.radio-browser.info/"
-"\">radio-browser.info</a>.\n"
-"Shortwave ei vaikuta lueteltaviin asemiin."
-
-#: data/gtk/search_page.ui:184
+#: data/gtk/search_page.ui:182
 msgid "Loading…"
 msgstr "Ladataan…"
 
-#: data/gtk/search_page.ui:199
+#: data/gtk/search_page.ui:197
 msgid "No Results"
 msgstr "Ei tuloksia"
 
-#: data/gtk/search_page.ui:200
+#: data/gtk/search_page.ui:198
 msgid ""
 "If the station you are looking for is missing, you can add it to the public "
 "database."
 msgstr "Jos etsimäsi asema puuttuu, voit lisätä sen julkiseen tietokantaan."
 
-#: data/gtk/search_page.ui:204
+#: data/gtk/search_page.ui:202
 msgid "Add Missing Station"
 msgstr "Lisää puuttuva asema"
 
-#: data/gtk/search_page.ui:222
+#: data/gtk/search_page.ui:220
 msgid "Unable to Retrieve Station Data"
 msgstr "Aseman tietojen noutaminen ei onnistunut"
 
-#: data/gtk/search_page.ui:225
+#: data/gtk/search_page.ui:223
 msgid "Try Again"
 msgstr "Yritä uudelleen"
 
@@ -450,18 +490,18 @@ msgstr "Äänenvoimakkuus"
 
 #: data/gtk/shortcuts_dialog.ui:61
 msgctxt "shortcut window"
-msgid "Toggle mute"
-msgstr "Mykistys päällä/pois"
-
-#: data/gtk/shortcuts_dialog.ui:67
-msgctxt "shortcut window"
 msgid "Increase volume"
 msgstr "Lisää äänenvoimakkuutta"
 
-#: data/gtk/shortcuts_dialog.ui:73
+#: data/gtk/shortcuts_dialog.ui:67
 msgctxt "shortcut window"
 msgid "Decrease volume"
 msgstr "Vähennä äänenvoimakkuutta"
+
+#: data/gtk/shortcuts_dialog.ui:73
+msgctxt "shortcut window"
+msgid "Toggle mute"
+msgstr "Mykistys päällä/pois"
 
 #: data/gtk/station_dialog.ui:71
 msgid "_Play"
@@ -523,26 +563,22 @@ msgstr "Maa"
 msgid "State"
 msgstr "Tila"
 
-#: data/gtk/station_dialog.ui:216
+#: data/gtk/station_dialog.ui:200
 msgid "Audio"
 msgstr "Ääni"
 
-#: data/gtk/station_dialog.ui:219
+#: data/gtk/station_dialog.ui:203
 msgid "Bitrate"
 msgstr "Bittinopeus"
 
-#: data/gtk/station_dialog.ui:230
+#: data/gtk/station_dialog.ui:214
 msgid "Codec"
 msgstr "Koodekki"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:241
+#: data/gtk/station_dialog.ui:225
 msgid "Stream"
 msgstr "Suoratoisto"
-
-#: data/gtk/station_dialog.ui:247
-msgid "Copy"
-msgstr "Kopioi"
 
 #: data/gtk/track_dialog.ui:76
 msgid "Edit"
@@ -553,7 +589,7 @@ msgid "The recorded track has been saved"
 msgstr "Nauhoitettu kappale on tallennettu"
 
 #: data/gtk/track_dialog.ui:139 data/gtk/track_dialog.ui:210
-#: data/gtk/track_row.ui:10 src/audio/player.rs:448
+#: data/gtk/track_row.ui:10 src/audio/player.rs:445
 msgid "Save Track"
 msgstr "Tallenna kappale"
 
@@ -589,80 +625,75 @@ msgstr "Mykistys päällä/pois"
 msgid "Track no longer available"
 msgstr "Kappale ei ole enää saatavilla"
 
-#: src/app.rs:109 src/app.rs:132
+#: src/app.rs:109 src/app.rs:133
 msgid "This track is currently not being recorded"
 msgstr "Tätä kappaletta ei nauhoiteta tällä hetkellä"
 
-#: src/app.rs:259
-#, rust-format
-msgid "Playing “{}”"
-msgstr "Toistetaan “{}”"
-
-#: src/app.rs:354
+#: src/app.rs:370
 msgid "Active Playback"
 msgstr "Aktiivinen toisto"
 
-#: src/audio/player.rs:458
+#: src/audio/player.rs:455
 msgid "Don't Record"
 msgstr "Älä nauhoita"
 
-#: src/audio/recording_state.rs:54 src/audio/recording_state.rs:56
+#: src/audio/recording_state.rs:53 src/audio/recording_state.rs:55
 msgid "Not Recorded"
 msgstr "Ei nauhoitettu"
 
-#: src/audio/recording_state.rs:55
+#: src/audio/recording_state.rs:54
 msgid "Ignored Track"
 msgstr "Sivuutettu kappale"
 
-#: src/audio/recording_state.rs:58
+#: src/audio/recording_state.rs:57
 msgid "Recording…"
 msgstr "Nauhoitetaan…"
 
-#: src/audio/recording_state.rs:59 src/audio/recording_state.rs:60
+#: src/audio/recording_state.rs:58 src/audio/recording_state.rs:59
 msgid "Recorded"
 msgstr "Nauhoitettu"
 
-#: src/audio/recording_state.rs:62
+#: src/audio/recording_state.rs:61
 msgid "Below Threshold"
 msgstr "Alle rajan"
 
-#: src/audio/recording_state.rs:63
+#: src/audio/recording_state.rs:62
 msgid "Cancelled"
 msgstr "Peruttu"
 
-#: src/audio/recording_state.rs:69
+#: src/audio/recording_state.rs:68
 msgid "Recording is deactivated in preferences"
 msgstr "Nauhoitus on poistettu käytöstä asetuksissa"
 
-#: src/audio/recording_state.rs:71
+#: src/audio/recording_state.rs:70
 msgid "The track contains a word that is on the ignore list"
 msgstr "Kappale sisältää sivuutusluettelossa olevan sanan"
 
-#: src/audio/recording_state.rs:74
+#: src/audio/recording_state.rs:73
 msgid ""
 "The track wasn't played from the beginning, so it can't be fully recorded"
 msgstr ""
 "Kappaletta ei toistettu alusta saakka, joten sitä ei voi täysin nauhoittaa"
 
-#: src/audio/recording_state.rs:77
+#: src/audio/recording_state.rs:76
 msgid "The track will be recorded until a new track gets played"
 msgstr ""
 "Nykyinen kappale nauhoitetaan siihen saakka, kunnes uusi kappale toistetaan"
 
-#: src/audio/recording_state.rs:79
+#: src/audio/recording_state.rs:78
 msgid "The track has been temporarily recorded"
 msgstr "Kappale on nauhoitettu väliaikaisesti"
 
-#: src/audio/recording_state.rs:81
+#: src/audio/recording_state.rs:80
 msgid "The maximum recording duration has been reached"
 msgstr "Nauhoituksen enimmäisraja tuli vastaan"
 
-#: src/audio/recording_state.rs:84
+#: src/audio/recording_state.rs:83
 msgid ""
 "The track has been discarded as the duration was below the set threshold"
 msgstr "Kappale hylättiin, koska sen kesto oli alle asetetun vähimmäisrajan"
 
-#: src/audio/recording_state.rs:86
+#: src/audio/recording_state.rs:85
 msgid "Recording has been cancelled"
 msgstr "Nauhoitus on peruttu"
 
@@ -674,96 +705,146 @@ msgstr "Google Cast -laite"
 msgid "Unknown Model"
 msgstr "Tuntematon malli"
 
-#: src/ui/about_dialog.rs:45
+#: src/ui/about_dialog.rs:55
 msgid "translator-credits"
 msgstr "Jiri Grönroos"
 
-#: src/ui/about_dialog.rs:46
+#: src/ui/about_dialog.rs:56
 msgid "Donate"
 msgstr "Lahjoita"
 
-#: src/ui/add_station_dialog.rs:94
+#: src/ui/add_station_dialog.rs:92
+#, rust-format
+msgid ""
+"This station will only be added to your library. If you want it to be "
+"available to everyone, you should add it to the <a href=\"{}\">public "
+"database</a>."
+msgstr ""
+"Tämä asema lisätään vain sinun kirjastoosi. Jos haluat sen olevan saataville "
+"myös muille, lisää asema <a href=\"{}\">julkiseen tietokantaan</a>."
+
+#: src/ui/add_station_dialog.rs:105
 msgid "Select Station Cover"
 msgstr "Valitse aseman kansikuva"
 
-#: src/ui/display_error.rs:50
+#: src/ui/display_error.rs:51
 msgid "Show Details"
 msgstr "Näytä tiedot"
 
-#: src/ui/pages/library_page.rs:111
+#: src/ui/pages/library_page.rs:114
 #, rust-format
 msgid "Welcome to {}"
 msgstr "Tervetuloa, käytössäsi on {}"
 
-#: src/ui/preferences_dialog.rs:139
+#: src/ui/pages/library_page.rs:121
+#, rust-format
+msgid "_About {}"
+msgstr "_Tietoja - {}"
+
+#: src/ui/pages/search_page.rs:107
+#, rust-format
+msgid ""
+"The displayed information is provided by {}.\n"
+"{} has no influence on the listed stations."
+msgstr ""
+"Näytettävät tiedot toimittaa {}.\n"
+"{} ei vaikuta lueteltaviin asemiin."
+
+#: src/ui/player/player_gadget.rs:68
+#, rust-format
+#| msgid "SHORTWAVE INTERNET RADIO"
+msgid "{} INTERNET RADIO"
+msgstr "{}-NETTIRADIO"
+
+#: src/ui/preferences_dialog.rs:140
 msgid "Select Save Directory"
 msgstr "Valitse tallennuskansio"
 
-#: src/ui/preferences_dialog.rs:140
+#: src/ui/preferences_dialog.rs:141
 msgid "_Select"
 msgstr "_Valitse"
 
-#: src/ui/preferences_dialog.rs:163
+#: src/ui/preferences_dialog.rs:164
 #, rust-format
 msgid "{} min"
 msgid_plural "{} min"
 msgstr[0] "{} min"
 msgstr[1] "{} min"
 
-#: src/ui/preferences_dialog.rs:172
+#: src/ui/preferences_dialog.rs:173
 #, rust-format
 msgid "{} sec"
 msgid_plural "{} sec"
 msgstr[0] "{} s"
 msgstr[1] "{} s"
 
-#: src/ui/station_dialog.rs:207
+#: src/ui/station_dialog.rs:206
 #, rust-format
 msgid "{} kbit/s"
 msgstr "{} kbit/s"
 
-#: src/ui/station_dialog.rs:292
+#: src/ui/station_dialog.rs:308
 msgid "Copied"
 msgstr "Kopioitu"
 
-#: src/ui/window.rs:226
-msgid "No Permission for Background Playback"
-msgstr "Ei oikeutta taustatoistoon"
-
-#: src/ui/window.rs:228
-msgid "“Run in Background” must be allowed for this app in system settings."
-msgstr ""
-"“Suorita taustalla” tulee olla sallittu tämän sovelluksen osalta "
-"järjestelmän asetuksissa."
-
-#: src/ui/window.rs:232
-msgid "Try Anyway"
-msgstr "Yritä silti"
-
-#: src/ui/window.rs:233
-msgid "Disable Background Playback"
-msgstr "Poista taustatoisto käytöstä"
-
-#: src/utils.rs:51
+#: src/utils.rs:50
 #, rust-format
 msgid "{} hour"
 msgid_plural "{} hours"
 msgstr[0] "{} tunti"
 msgstr[1] "{} tuntia"
 
-#: src/utils.rs:57
+#: src/utils.rs:56
 #, rust-format
 msgid "{} minute"
 msgid_plural "{} minutes"
 msgstr[0] "{} minuutti"
 msgstr[1] "{} minuuttia"
 
-#: src/utils.rs:62
+#: src/utils.rs:61
 #, rust-format
 msgid "{} second"
 msgid_plural "{} seconds"
 msgstr[0] "{} sekunti"
 msgstr[1] "{} sekuntia"
+
+#: src/utils.rs:71
+#, rust-format
+msgid "{hours} {mins} {secs}"
+msgstr "{hours} {mins} {secs}"
+
+#. Translators: Do NOT translate the content between '{' and '}', this is a variable name.
+#: src/utils.rs:79
+#, rust-format
+msgid "{mins} {secs}"
+msgstr "{mins} {secs}"
+
+#~ msgid "Shortwave"
+#~ msgstr "Shortwave"
+
+#~ msgid "_Open radio-browser.info <sup>↗</sup>"
+#~ msgstr "_Avaa radio-browser.info <sup>↗</sup>"
+
+#~ msgid "_About Shortwave"
+#~ msgstr "_Tietoja - Shortwave"
+
+#, rust-format
+#~ msgid "Playing “{}”"
+#~ msgstr "Toistetaan “{}”"
+
+#~ msgid "No Permission for Background Playback"
+#~ msgstr "Ei oikeutta taustatoistoon"
+
+#~ msgid "“Run in Background” must be allowed for this app in system settings."
+#~ msgstr ""
+#~ "“Suorita taustalla” tulee olla sallittu tämän sovelluksen osalta "
+#~ "järjestelmän asetuksissa."
+
+#~ msgid "Try Anyway"
+#~ msgstr "Yritä silti"
+
+#~ msgid "Disable Background Playback"
+#~ msgstr "Poista taustatoisto käytöstä"
 
 #~ msgid "0 seconds"
 #~ msgstr "0 sekuntia"
@@ -807,9 +888,6 @@ msgstr[1] "{} sekuntia"
 #~ msgstr ""
 #~ "Voit päättää, onko uusi asema näkyvissä kaikille käyttäjille "
 #~ "maailmanlaajuisesti vai haluatko luoda paikallisen aseman."
-
-#~ msgid "Create _Public Station"
-#~ msgstr "Luo _julkinen asema"
 
 #~ msgid "Create _Local Station"
 #~ msgstr "Luo _paikallinen asema"
@@ -864,9 +942,6 @@ msgstr[1] "{} sekuntia"
 
 #~ msgid "Next"
 #~ msgstr "Seuraava"
-
-#~ msgid "Library"
-#~ msgstr "Kirjasto"
 
 #~ msgid "No Songs Detected"
 #~ msgstr "Kappaleita ei havaittu"
