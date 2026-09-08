@@ -70,7 +70,7 @@ impl SwRecordingState {
                 gettext("The track contains a word that is on the ignore list")
             }
             SwRecordingState::IdleIncomplete => {
-                gettext("The track wasn't played from the beginning, so it can't be fully recorded")
+                gettext("The track wasn’t played from the beginning, so it can’t be fully recorded")
             }
             SwRecordingState::Recording => {
                 gettext("The track will be recorded until a new track gets played")

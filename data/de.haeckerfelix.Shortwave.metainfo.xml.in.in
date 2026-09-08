@@ -209,7 +209,7 @@
         <ul>
           <li>Small user interface improvements</li>
           <li>Use new Adwaita about dialog</li>
-          <li>Fixed a crash when the "Music" directory is not available</li>
+          <li>Fixed a crash when the “Music” directory is not available</li>
           <li>Updated translations</li>
         </ul>
       </description>
@@ -300,7 +300,7 @@
           <li>Add support for non pulseaudio systems / environments.</li>
           <li>Add support for additional mouse buttons to switch between views.</li>
           <li>Improve stability of audio/recording backend.</li>
-          <li>Fixed issue that the volume didn't get calculated correctly (linear/cubic).</li>
+          <li>Fixed issue that the volume didn’t get calculated correctly (linear/cubic).</li>
           <li>Fixed issue that broken stations are getting displayed in search results.</li>
           <li>Fixed issue with random scrolling in search page.</li>
           <li>Fixed issues which prevented to import Gradio databases.</li>

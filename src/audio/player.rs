@@ -452,7 +452,7 @@ mod imp {
                     || self.obj().recording_mode() == SwRecordingMode::Decide
                 {
                     notification.add_button_with_target_value(
-                        &gettext("Don't Record"),
+                        &gettext("Don’t Record"),
                         "app.cancel-recording",
                         Some(&target),
                     );
