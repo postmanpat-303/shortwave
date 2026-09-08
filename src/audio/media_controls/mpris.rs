@@ -158,6 +158,12 @@ impl Mpris {
             });
         });
 
+        self.mpris.connect_pause(|_| {
+            glib::spawn_future_local(async move {
+                SwApplication::default().player().stop_playback().await;
+            });
+        });
+
         self.mpris.connect_set_volume(|_, volume| {
             SwApplication::default().player().set_volume(volume);
         });
