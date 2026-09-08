@@ -162,6 +162,9 @@ mod imp {
             self.parent_constructed();
             let obj = self.obj();
 
+            // Window title
+            obj.set_title(Some(*config::NAME));
+
             // Add devel style class for development or beta builds
             if *config::PROFILE == "development" || *config::PROFILE == "beta" {
                 obj.add_css_class("devel");
