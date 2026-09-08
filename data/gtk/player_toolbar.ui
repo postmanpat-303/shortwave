@@ -53,6 +53,7 @@
                     <property name="margin_top">3</property>
                     <property name="ellipsize">end</property>
                     <property name="xalign">0</property>
+                    <property name="use_markup">False</property>
                     <binding name="label">
                       <lookup name="title" type="SwTrack">
                         <lookup name="playing-track" type="SwPlayer">
