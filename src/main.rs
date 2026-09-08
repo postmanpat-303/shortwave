@@ -35,7 +35,6 @@ mod utils;
 mod app;
 mod config;
 mod path;
-mod platform;
 
 use gettextrs::*;
 use gtk::{gio, glib};
@@ -51,9 +50,6 @@ fn main() -> glib::ExitCode {
 
     // Initialize GTK
     gtk::init().unwrap_or_else(|_| panic!("Failed to initialize GTK."));
-
-    // Initialize platform specific features / tweaks
-    platform::init();
 
     // Initialize Gstreamer
     gstreamer::init().expect("Failed to initialize Gstreamer");
