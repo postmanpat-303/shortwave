@@ -43,6 +43,7 @@ app = { cmd = "shortwave", depends-on = ["install"] }
 c-compiler = "*"
 cargo-deny = "*"
 expat = "*"
+font-ttf-adwaita = "*"
 freetype = "*"
 gettext = "*"
 glycin-gtk4 = "*"
