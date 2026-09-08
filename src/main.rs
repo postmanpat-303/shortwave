@@ -69,9 +69,13 @@ fn main() -> glib::ExitCode {
     // TODO: Remove once gettext-rs#107 is fixed, and use LcAll for all platforms
     // https://github.com/gettext-rs/gettext-rs/issues/107
     #[cfg(not(any(windows, target_os = "macos")))]
-    setlocale(LocaleCategory::LcAll, "");
+    unsafe {
+        setlocale(LocaleCategory::LcAll, "");
+    }
     #[cfg(any(windows, target_os = "macos"))]
-    setlocale(LocaleCategory::LcCType, "");
+    unsafe {
+        setlocale(LocaleCategory::LcCType, "");
+    }
 
     // Load app resources
     let path = &format!(
