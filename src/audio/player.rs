@@ -476,19 +476,23 @@ impl SwPlayer {
     pub fn init_media_controls(&self, #[allow(unused)] window: &SwApplicationWindow) {
         // MPRIS
         #[cfg(all(unix, not(target_os = "macos")))]
-        gtk::glib::spawn_future_local(async move {
-            media_controls::mpris::MprisServer::start()
-                .await
-                .handle_error("Unable to start MPRIS media controls");
-        });
+        gtk::glib::spawn_future_local(clone!(
+            #[weak(rename_to = player)]
+            self,
+            async move {
+                media_controls::mpris::Mpris::start(&player)
+                    .await
+                    .handle_error("Unable to start MPRIS media controls");
+            }
+        ));
 
         // MpNowPlaying
         #[cfg(target_os = "macos")]
-        media_controls::mpnowplaying::MpNowPlayingController::start(self);
+        media_controls::mpnowplaying::MpNowPlaying::start(self);
 
         // SMTC
         #[cfg(target_os = "windows")]
-        media_controls::smtc::SmtcController::start(
+        media_controls::smtc::Smtc::start(
             self,
             window
                 .surface()

@@ -26,7 +26,7 @@ use glib::{Properties, clone};
 use gtk::glib::VariantTy;
 use gtk::{gio, glib};
 
-use crate::api::CoverLoader;
+use crate::api::cache;
 use crate::api::client;
 use crate::audio::{SwPlaybackState, SwPlayer, SwRecordingState, SwTrack};
 use crate::config;
@@ -49,7 +49,6 @@ mod imp {
         #[property(get, set=Self::set_background_playback)]
         background_playback: Cell<bool>,
 
-        pub cover_loader: CoverLoader,
         pub inhibit_cookie: Cell<u32>,
         pub background_hold: RefCell<Option<gio::ApplicationHoldGuard>>,
         #[cfg(all(unix, not(target_os = "macos")))]
@@ -199,7 +198,7 @@ mod imp {
             self.parent_shutdown();
             debug!("gio::Application -> shutdown()");
 
-            super::SwApplication::default().cover_loader().prune_cache();
+            cache::prune();
         }
     }
 
@@ -352,10 +351,6 @@ impl SwApplication {
             info!("Created application window.");
             window
         }
-    }
-
-    pub fn cover_loader(&self) -> CoverLoader {
-        self.imp().cover_loader.clone()
     }
 
     pub fn set_inhibit(&self, inhibit: bool) {

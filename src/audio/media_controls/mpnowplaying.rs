@@ -14,6 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+use std::cell::RefCell;
 use std::ptr::NonNull;
 use std::rc::Rc;
 
@@ -24,7 +25,7 @@ use objc2::AnyThread;
 use objc2::rc::Retained;
 use objc2::runtime::AnyObject;
 use objc2_app_kit::NSImage;
-use objc2_foundation::{NSDictionary, NSNumber, NSString, NSURL};
+use objc2_foundation::{NSData, NSDictionary, NSNumber, NSString};
 use objc2_media_player::{
     MPMediaItemArtwork, MPMediaItemPropertyArtist, MPMediaItemPropertyArtwork,
     MPMediaItemPropertyTitle, MPNowPlayingInfoCenter, MPNowPlayingInfoPropertyIsLiveStream,
@@ -32,25 +33,29 @@ use objc2_media_player::{
     MPRemoteCommandHandlerStatus,
 };
 
-use crate::api::SwStation;
-use crate::audio::{SwPlaybackState, SwPlayer};
+use crate::api::{StationCover, SwStation};
+use crate::audio::media_controls::COVER_SIZE;
+use crate::audio::{SwPlayer, SwTrack};
+use crate::utils;
 
 // Gets used on Apple platforms, mainly macOS
 // See https://developer.apple.com/documentation/mediaplayer/mpnowplayinginfocenter
 
 #[derive(Debug, Clone)]
-pub struct MpNowPlayingController {
+pub struct MpNowPlaying {
     info_center: Rc<Retained<MPNowPlayingInfoCenter>>,
     player: SwPlayer,
+    cover: Rc<RefCell<StationCover>>,
 }
 
-impl MpNowPlayingController {
+impl MpNowPlaying {
     pub fn start(player: &SwPlayer) -> Self {
         let info_center = unsafe { MPNowPlayingInfoCenter::defaultCenter() };
 
         let controller = Self {
             info_center: Rc::new(info_center),
             player: player.clone(),
+            cover: Rc::new(RefCell::new(StationCover::new(None, COVER_SIZE))),
         };
 
         // Shortwave side callbacks
@@ -67,26 +72,27 @@ impl MpNowPlayingController {
 
     fn setup_player_callbacks(&self) {
         self.player.connect_state_notify(clone!(
-            #[strong(rename_to = controller)]
+            #[strong(rename_to = c)]
             self,
             move |_| {
-                controller.update_playback_status();
+                c.update_playback_status();
             }
         ));
 
         self.player.connect_station_notify(clone!(
-            #[strong(rename_to = controller)]
+            #[strong(rename_to = c)]
             self,
             move |_| {
-                controller.update_metadata();
+                *c.cover.borrow_mut() = StationCover::new(c.player.station(), COVER_SIZE);
+                c.update_metadata();
             }
         ));
 
         self.player.connect_playing_track_notify(clone!(
-            #[strong(rename_to = controller)]
+            #[strong(rename_to = c)]
             self,
             move |_| {
-                controller.update_metadata();
+                c.update_metadata();
             }
         ));
     }
@@ -149,41 +155,54 @@ impl MpNowPlayingController {
         }
     }
 
-    fn update_metadata(&self) {
-        let player = &self.player;
+    fn update_playback_status(&self) {
+        let playback_state = if self.player.state().is_active() {
+            MPNowPlayingPlaybackState::Playing
+        } else {
+            MPNowPlayingPlaybackState::Stopped
+        };
 
-        let Some(station) = player.station() else {
+        unsafe {
+            self.info_center.setPlaybackState(playback_state);
+        }
+    }
+
+    fn update_metadata(&self) {
+        let Some(station) = self.player.station() else {
             unsafe { self.info_center.setNowPlayingInfo(None) };
             return;
         };
 
-        let artwork = Self::load_artwork(&station);
-        let track_title = player.playing_track().map(|track| track.title());
+        let track = self.player.playing_track();
+        let artwork = self.load_artwork();
 
+        self.apply_metadata(&station, &track, artwork);
+    }
+
+    fn apply_metadata(
+        &self,
+        station: &SwStation,
+        track: &Option<SwTrack>,
+        artwork: Retained<AnyObject>,
+    ) {
+        let (title, artist) = utils::title_and_artist(station, track);
         let mut info: Vec<(&NSString, Retained<AnyObject>)> = Vec::new();
 
         unsafe {
             // Station name / current title
-            if let Some(title) = &track_title {
-                info.push((
-                    MPMediaItemPropertyTitle,
-                    Retained::cast_unchecked(NSString::from_str(title)),
-                ));
+            info.push((
+                MPMediaItemPropertyTitle,
+                Retained::cast_unchecked(NSString::from_str(&title)),
+            ));
+            if let Some(artist) = artist {
                 info.push((
                     MPMediaItemPropertyArtist,
-                    Retained::cast_unchecked(NSString::from_str(&station.title())),
-                ));
-            } else {
-                info.push((
-                    MPMediaItemPropertyTitle,
-                    Retained::cast_unchecked(NSString::from_str(&station.title())),
+                    Retained::cast_unchecked(NSString::from_str(&artist)),
                 ));
             }
 
             // Station cover
-            if let Some(artwork) = artwork {
-                info.push((MPMediaItemPropertyArtwork, artwork));
-            }
+            info.push((MPMediaItemPropertyArtwork, artwork));
 
             // We only play live streams
             info.push((
@@ -198,40 +217,38 @@ impl MpNowPlayingController {
         }
     }
 
-    // TODO: Route this through the cached/rendered cover loader pipeline
-    fn load_artwork(station: &SwStation) -> Option<Retained<AnyObject>> {
-        let favicon_url = station.metadata().favicon?;
+    fn load_artwork(&self) -> Retained<AnyObject> {
+        let bytes = self.cover.borrow().load_bytes(clone!(
+            #[strong(rename_to = controller)]
+            self,
+            move |bytes| {
+                let Some(station) = controller.player.station() else {
+                    return;
+                };
+
+                let track = controller.player.playing_track();
+                let artwork = Self::bytes_to_artwork(bytes);
+
+                controller.apply_metadata(&station, &track, artwork);
+            }
+        ));
+
+        Self::bytes_to_artwork(bytes)
+    }
+
+    fn bytes_to_artwork(bytes: Vec<u8>) -> Retained<AnyObject> {
+        let data = NSData::with_bytes(&bytes);
+        let image = NSImage::initWithData(NSImage::alloc(), &data).unwrap();
+        let size = image.size();
 
         unsafe {
-            let url_string = NSString::from_str(favicon_url.as_str());
-            let url = NSURL::URLWithString(&url_string)?;
-            let image = NSImage::initWithContentsOfURL(NSImage::alloc(), &url)?;
-            let size = image.size();
-
             let artwork = MPMediaItemArtwork::initWithBoundsSize_requestHandler(
                 MPMediaItemArtwork::alloc(),
                 size,
                 &RcBlock::new(move |_size| -> NonNull<NSImage> { NonNull::from(&*image) }),
             );
 
-            Some(Retained::cast_unchecked(artwork))
-        }
-    }
-
-    fn update_playback_status(&self) {
-        let player = &self.player;
-
-        let playback_state = match player.state() {
-            SwPlaybackState::Playing | SwPlaybackState::Loading => {
-                MPNowPlayingPlaybackState::Playing
-            }
-            SwPlaybackState::Stopped | SwPlaybackState::Failure => {
-                MPNowPlayingPlaybackState::Stopped
-            }
-        };
-
-        unsafe {
-            self.info_center.setPlaybackState(playback_state);
+            Retained::cast_unchecked(artwork)
         }
     }
 }

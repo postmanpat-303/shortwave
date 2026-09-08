@@ -93,11 +93,7 @@ mod imp {
                 };
 
                 // Station favicon
-                let favicon = if let Some(data) = entry.favicon {
-                    gtk::gdk::Texture::from_bytes(&glib::Bytes::from_owned(data)).ok()
-                } else {
-                    None
-                };
+                let favicon = entry.favicon.map(glib::Bytes::from_owned);
 
                 let station = SwStation::new(&entry.uuid, entry.is_local, metadata, favicon);
                 stations.insert(entry.uuid, station);

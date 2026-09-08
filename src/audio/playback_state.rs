@@ -1,5 +1,5 @@
 // Shortwave - playback_state.rs
-// Copyright (C) 2024  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2024-2026  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -27,4 +27,10 @@ pub enum SwPlaybackState {
     Playing,
     Loading,
     Failure,
+}
+
+impl SwPlaybackState {
+    pub fn is_active(self) -> bool {
+        matches!(self, Self::Playing | Self::Loading)
+    }
 }

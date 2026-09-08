@@ -19,9 +19,9 @@ use std::sync::OnceLock;
 use std::sync::RwLock;
 
 use glib::Properties;
+use gtk::glib;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
-use gtk::{gdk, glib};
 
 use crate::api::StationMetadata;
 
@@ -41,7 +41,7 @@ mod imp {
         #[property(get=Self::title)]
         title: PhantomData<String>,
         #[property(get, set, nullable)]
-        custom_cover: RwLock<Option<gdk::Texture>>,
+        custom_cover: RwLock<Option<glib::Bytes>>,
         #[property(get, set)]
         is_orphaned: RwLock<bool>,
     }
@@ -78,7 +78,7 @@ impl SwStation {
         uuid: &str,
         is_local: bool,
         metadata: StationMetadata,
-        custom_cover: Option<gdk::Texture>,
+        custom_cover: Option<glib::Bytes>,
     ) -> Self {
         glib::Object::builder()
             .property("uuid", uuid)

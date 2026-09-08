@@ -14,8 +14,6 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use gtk::prelude::*;
-
 use super::schema::*;
 use crate::api::SwStation;
 
@@ -42,9 +40,7 @@ impl StationEntry {
     pub fn for_station(station: &SwStation) -> Self {
         let metadata = station.metadata();
 
-        let favicon = station
-            .custom_cover()
-            .map(|texture| texture.save_to_png_bytes().to_vec());
+        let favicon = station.custom_cover().map(|bytes| bytes.to_vec());
 
         Self {
             uuid: station.uuid(),

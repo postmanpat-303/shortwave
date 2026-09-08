@@ -20,3 +20,6 @@ pub mod mpnowplaying;
 pub mod mpris;
 #[cfg(target_os = "windows")]
 pub mod smtc;
+
+// Size for media control covers
+pub const COVER_SIZE: i32 = 512;

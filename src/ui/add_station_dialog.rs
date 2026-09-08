@@ -1,5 +1,5 @@
 // Shortwave - station_dialog.rs
-// Copyright (C) 2021-2025  Felix Häcker <haeckerfelix@gnome.org>
+// Copyright (C) 2021-2026  Felix Häcker <haeckerfelix@gnome.org>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@ use adw::subclass::prelude::*;
 use formatx::formatx;
 use gettextrs::gettext;
 use glib::{Properties, clone, subclass};
-use gtk::{CompositeTemplate, gdk, gio, glib};
+use gtk::{CompositeTemplate, gio, glib};
 use url::Url;
 use uuid::Uuid;
 
@@ -120,16 +120,25 @@ mod imp {
                     self,
                     move |res| {
                         match res {
-                            Ok(file) => match gdk::Texture::from_file(&file) {
-                                Ok(texture) => {
-                                    imp.obj().station().set_custom_cover(Some(texture));
-                                    imp.remove_cover_button.set_visible(true);
-                                }
-                                Err(err) => {
-                                    error!("Unable to open cover file: {err}");
-                                }
-                            },
-                            Err(err) => error!("Could not get file {err}"),
+                            Ok(file) => {
+                                glib::spawn_future_local(clone!(
+                                    #[weak]
+                                    imp,
+                                    async move {
+                                        match file.load_contents_future().await {
+                                            Ok((data, _)) => {
+                                                let bytes = glib::Bytes::from_owned(data);
+                                                imp.obj().station().set_custom_cover(Some(bytes));
+                                                imp.remove_cover_button.set_visible(true);
+                                            }
+                                            Err(err) => {
+                                                error!("Unable to read file: {err}");
+                                            }
+                                        }
+                                    }
+                                ));
+                            }
+                            Err(err) => error!("Unable to get file: {err}"),
                         }
                     }
                 ),
@@ -138,7 +147,7 @@ mod imp {
 
         #[template_callback]
         fn remove_cover(&self) {
-            self.obj().station().set_custom_cover(gdk::Texture::NONE);
+            self.obj().station().set_custom_cover(None::<glib::Bytes>);
             self.remove_cover_button.set_visible(false);
         }
 

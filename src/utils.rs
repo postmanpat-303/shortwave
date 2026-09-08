@@ -16,7 +16,13 @@
 
 use formatx::formatx;
 use gettextrs::{gettext, ngettext};
-use gtk::glib;
+use glycin::Loader;
+use gtk::graphene::Rect;
+use gtk::prelude::*;
+use gtk::{gdk, glib, gsk};
+
+use crate::api::SwStation;
+use crate::audio::SwTrack;
 
 pub fn send<T: 'static>(sender: &async_channel::Sender<T>, message: T) {
     let fut = glib::clone!(
@@ -83,6 +89,36 @@ pub fn format_duration(d: u64, short: bool) -> String {
             secs_str
         }
     }
+}
+
+// Falls back to the station name when there's no track playing
+pub fn title_and_artist(station: &SwStation, track: &Option<SwTrack>) -> (String, Option<String>) {
+    match track.as_ref().map(|t| t.title()) {
+        Some(title) => (title, Some(station.title())),
+        None => (station.title(), None),
+    }
+}
+
+pub async fn decode_untrusted_image(bytes: glib::Bytes) -> anyhow::Result<gdk::Texture> {
+    let loader = Loader::for_bytes(&bytes);
+    let image = loader.load_future().await?;
+    let frame = image.next_frame_future().await?;
+
+    Ok(glycin_gtk4::frame_get_texture(&frame))
+}
+
+pub fn node_to_texture(node: &gsk::RenderNode, size: i32) -> gdk::Texture {
+    let renderer = gsk::CairoRenderer::new();
+    let display = gdk::Display::default().expect("No default display available");
+    renderer
+        .realize_for_display(&display)
+        .expect("Unable to realize renderer for default display");
+
+    let rect = Rect::new(0.0, 0.0, size as f32, size as f32);
+    let texture = renderer.render_texture(node, Some(&rect));
+    renderer.unrealize();
+
+    texture
 }
 
 /// Ellipsizes a string at the end so that it is `max_len` characters long

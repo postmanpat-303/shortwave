@@ -18,22 +18,26 @@ static STATION_SEARCH: &str = "json/stations/search";
 static STATION_BY_UUID: &str = "json/stations/byuuid";
 static STATS: &str = "json/stats";
 
+pub mod cache;
 pub mod client;
-mod cover_loader;
-mod error;
 pub mod http;
+
+mod error;
 mod station;
+mod station_cover;
 mod station_metadata;
 mod station_model;
 mod station_request;
 mod station_sorter;
 mod stats;
+mod texture_loader;
 
-pub use cover_loader::CoverLoader;
 pub use error::Error;
 pub use station::SwStation;
+pub use station_cover::StationCover;
 pub use station_metadata::StationMetadata;
 pub use station_model::SwStationModel;
 pub use station_request::StationRequest;
 pub use station_sorter::{SwStationSorter, SwStationSorting, SwStationSortingType};
 pub use stats::Stats;
+pub use texture_loader::TextureLoader;
