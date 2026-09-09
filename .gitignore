@@ -46,3 +46,4 @@ shortwave.pot
 .pixi/*
 !.pixi/config.toml
 xdg-home
+*.conda
