@@ -4,6 +4,7 @@ cargo_build_script = find_program(meson.project_source_root() / 'build-aux' / 'c
 
 cargo_env = environment()
 cargo_env.set('CARGO_HOME', meson.project_build_root() / 'cargo-home')
+cargo_env.set('CARGO_TARGET_DIR', meson.project_build_root() / 'target')
 cargo_env.set('MESON_NAME', name)
 cargo_env.set('MESON_PKGNAME', meson.project_name())
 cargo_env.set('MESON_APP_ID', app_id)
@@ -15,20 +16,19 @@ cargo_env.set('MESON_LOCALEDIR', localedir)
 cargo_env.set('MESON_DATADIR', datadir)
 
 cargo_options = [ '--manifest-path', meson.project_source_root() / 'Cargo.toml' ]
-cargo_options += [ '--target-dir', meson.project_build_root() / 'target' ]
 
 if get_option('profile') == 'default'
   cargo_options += [ '--release' ]
-  rust_target = 'release'
+  cargo_profile = 'release'
   message('Building in release mode')
 else
-  rust_target = 'debug'
+  cargo_profile = 'debug'
   message('Building in debug mode')
 endif
 
 exe_suffix = (host_machine.system() == 'windows') ? '.exe' : ''
 
-cargo_release = custom_target(
+custom_target(
   'cargo-build',
   build_by_default: true,
   build_always_stale: true,
@@ -40,7 +40,7 @@ cargo_release = custom_target(
   command: [
     cargo_build_script,
     '--cargo', cargo,
-    '--binary', 'target' / rust_target / (meson.project_name() + exe_suffix),
+    '--profile', cargo_profile,
     '--output', '@OUTPUT@',
     '--', cargo_options,
   ]

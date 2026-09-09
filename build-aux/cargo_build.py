@@ -4,13 +4,14 @@
 # https://github.com/rust-lang/cargo/issues/6790
 
 import argparse
+import os
 import shutil
 import subprocess
 import sys
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--cargo')
-parser.add_argument('--binary')
+parser.add_argument('--profile')
 parser.add_argument('--output')
 parser.add_argument('cargo_options', nargs='*')
 args = parser.parse_args()
@@ -21,4 +22,7 @@ if result.returncode != 0:
     sys.exit(result.returncode)
 
 # 2. Copy binary to the location meson expects
-shutil.copy2(args.binary, args.output)
+target_dir = os.environ['CARGO_TARGET_DIR']
+triple = os.environ.get('CARGO_BUILD_TARGET', '')
+binary = os.path.join(target_dir, triple, args.profile, os.path.basename(args.output))
+shutil.copy2(binary, args.output)
