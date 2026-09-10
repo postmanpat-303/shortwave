@@ -2,7 +2,12 @@
 name = "Shortwave"
 authors = ["Felix Häcker haeckerfelix@gnome.org"]
 channels = ["conda-forge"]
-platforms = ["linux-64", "linux-aarch64", "osx-arm64", "win-64"]
+platforms = [
+    { platform = "linux-64", glibc = "2.34" },
+    { platform = "linux-aarch64", glibc = "2.34" },
+    "osx-arm64",
+    "win-64",
+]
 
 [activation.env]
 RUST_LOG = "shortwave=debug,cast_sender=debug"
@@ -24,9 +29,6 @@ XDG_DATA_HOME = "%PIXI_PROJECT_ROOT%\\xdg-home\\data"
 XDG_CACHE_HOME = "%PIXI_PROJECT_ROOT%\\xdg-home\\cache"
 XDG_CONFIG_HOME = "%PIXI_PROJECT_ROOT%\\xdg-home\\config"
 XDG_DATA_DIRS = "%CONDA_PREFIX%\\Library\\share;%XDG_DATA_DIRS%"
-
-[system-requirements]
-libc = { family = "glibc", version = "2.34" }
 
 [tasks]
 setup = { cmd = "meson setup build --prefix=$MESON_PREFIX -Dprofile=development --reconfigure", outputs = [
@@ -63,5 +65,4 @@ libxml2-devel = "*"
 libshumate = "*"
 
 [target.linux.dependencies]
-sysroot_linux-64 = ">=2.34"
 glycin-loaders = "*"
