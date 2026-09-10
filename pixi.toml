@@ -2,7 +2,7 @@
 name = "Shortwave"
 authors = ["Felix Häcker haeckerfelix@gnome.org"]
 channels = ["conda-forge"]
-platforms = ["linux-64", "linux-aarch64"]
+platforms = ["linux-64", "linux-aarch64", "osx-arm64", "win-64"]
 
 [activation.env]
 RUST_LOG = "shortwave=debug,cast_sender=debug"
@@ -40,31 +40,30 @@ install = { cmd = "ninja -C build install", depends-on = ["build"] }
 app = { cmd = "shortwave", depends-on = ["install"] }
 
 [dependencies]
-c-compiler = "*"
-cargo-deny = "*"
-expat = "*"
-font-ttf-adwaita = "*"
-freetype = "*"
-gettext = "*"
 glycin-gtk4 = "*"
 gst-plugins-bad = "*"
 gst-plugins-base = "*"
 gst-plugins-good = "*"
 gst-plugins-ugly = "*"
 gstreamer = "*"
-gtk4 = "*"
 libadwaita = "*"
 libsqlite = "*"
-libxml2-devel = "*"
+
+c-compiler = "*"
+cargo-deny = "*"
+gettext = "*"
 meson = "*"
 pkgconfig = "*"
 rust = "*"
 rust-src = "*"
+
+expat = "*"
 zlib = "*"
+freetype = "*"
+libxml2-devel = "*"
 
 [target.unix.dependencies]
 libshumate = "*"
-dbus = "*"
 
 [target.linux.dependencies]
 sysroot_linux-64 = ">=2.34"
