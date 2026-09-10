@@ -63,6 +63,7 @@ fn main() -> glib::ExitCode {
 
     // Setup translations
     bindtextdomain(*config::PKGNAME, &*config::LOCALEDIR).unwrap();
+    bind_textdomain_codeset(*config::PKGNAME, "UTF-8").unwrap();
     textdomain(*config::PKGNAME).unwrap();
 
     // TODO: Remove once gettext-rs#107 is fixed, and use LcAll for all platforms
