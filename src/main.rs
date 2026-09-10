@@ -14,6 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+// Hide console window on Windows for release builds
+#![cfg_attr(all(windows, not(debug_assertions)), windows_subsystem = "windows")]
+
 #[macro_use]
 extern crate log;
 extern crate pretty_env_logger;
