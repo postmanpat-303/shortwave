@@ -50,7 +50,6 @@ libsqlite = "*"
 
 c-compiler = "*"
 cargo-deny = "*"
-gettext = "*"
 meson = "*"
 pkgconfig = "*"
 rust = "*"
