@@ -25,9 +25,6 @@ XDG_CACHE_HOME = "%PIXI_PROJECT_ROOT%\\xdg-home\\cache"
 XDG_CONFIG_HOME = "%PIXI_PROJECT_ROOT%\\xdg-home\\config"
 XDG_DATA_DIRS = "%CONDA_PREFIX%\\Library\\share;%XDG_DATA_DIRS%"
 
-[target.osx.activation.env]
-RUSTFLAGS = "-C link-arg=-Wl,-rpath,$CONDA_PREFIX/lib"
-
 [system-requirements]
 libc = { family = "glibc", version = "2.34" }
 
