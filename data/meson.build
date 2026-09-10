@@ -123,8 +123,9 @@ gnome.compile_resources(
 )
 
 # Run required post-install steps
+update_desktop_database = find_program('update-desktop-database', required: false)
 gnome.post_install(
   gtk_update_icon_cache: true,
   glib_compile_schemas: true,
-  update_desktop_database: host_machine.system() == 'linux',
+  update_desktop_database: update_desktop_database.found(),
 )
