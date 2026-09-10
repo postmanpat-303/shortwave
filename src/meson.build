@@ -11,13 +11,14 @@ cargo_env.set('MESON_APP_ID', app_id)
 cargo_env.set('MESON_PATH_ID', path_id)
 cargo_env.set('MESON_VERSION', meson.project_version())
 cargo_env.set('MESON_PROFILE', profile)
-cargo_env.set('MESON_VCS_TAG', vcs_tag)
-cargo_env.set('MESON_LOCALEDIR', localedir)
-cargo_env.set('MESON_DATADIR', datadir)
+cargo_env.set('MESON_VCS_TAG', run_command('git', 'rev-parse', '--short', 'HEAD', check: false).stdout().strip())
+cargo_env.set('MESON_BINDIR', get_option('bindir'))
+cargo_env.set('MESON_LOCALEDIR', get_option('localedir'))
+cargo_env.set('MESON_DATADIR', get_option('datadir'))
 
 cargo_options = [ '--manifest-path', meson.project_source_root() / 'Cargo.toml' ]
 
-if get_option('profile') == 'default'
+if profile == 'default'
   cargo_options += [ '--release' ]
   cargo_profile = 'release'
   message('Building in release mode')

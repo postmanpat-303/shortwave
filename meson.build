@@ -33,10 +33,8 @@ name       = 'Shortwave'
 base_id    = 'de.haeckerfelix.Shortwave'
 path_id    = '/de/haeckerfelix/Shortwave'
 app_id     = base_id
-vcs_tag    = run_command('git', 'rev-parse', '--short', 'HEAD', check: false).stdout().strip()
 profile    = get_option('profile')
 datadir    = join_paths(get_option('prefix'), get_option('datadir'))
-localedir  = join_paths(get_option('prefix'), get_option('localedir'))
 bindir     = join_paths(get_option('prefix'), get_option('bindir'))
 
 # Change app id for development builds

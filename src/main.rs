@@ -59,7 +59,7 @@ fn main() -> glib::ExitCode {
     gtk::Window::set_default_icon_name(*config::APP_ID);
 
     // Setup translations
-    bindtextdomain(*config::PKGNAME, *config::LOCALEDIR).unwrap();
+    bindtextdomain(*config::PKGNAME, &*config::LOCALEDIR).unwrap();
     textdomain(*config::PKGNAME).unwrap();
 
     // TODO: Remove once gettext-rs#107 is fixed, and use LcAll for all platforms
@@ -74,13 +74,10 @@ fn main() -> glib::ExitCode {
     }
 
     // Load app resources
-    let path = &format!(
-        "{}/{}/{}.gresource",
-        *config::DATADIR,
-        *config::PKGNAME,
-        *config::APP_ID
-    );
-    let res = gio::Resource::load(path).expect("Could not load resources");
+    let path = config::DATADIR
+        .join(*config::PKGNAME)
+        .join(format!("{}.gresource", *config::APP_ID));
+    let res = gio::Resource::load(&path).expect("Could not load resources");
     gio::resources_register(&res);
 
     // Run app itself
