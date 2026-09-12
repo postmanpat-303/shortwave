@@ -1,27 +1,26 @@
 # Norwegian Nynorsk translation for shortwave.
 # Copyright (C) 2025 shortwave's COPYRIGHT HOLDER
 # This file is distributed under the same license as the shortwave package.
-# Bjørn Mørkedal <gnome@morkedal.com>, 2025.
+# Bjørn Mørkedal <gnome@morkedal.com>, 2025-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: shortwave main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2025-08-11 00:16+0000\n"
-"PO-Revision-Date: 2025-09-07 20:43+0200\n"
+"POT-Creation-Date: 2026-09-10 18:18+0000\n"
+"PO-Revision-Date: 2026-09-10 21:47+0200\n"
 "Last-Translator: Bjørn Mørkedal <gnome@morkedal.com>\n"
-"Language-Team: Norwegian Nynorsk\n"
+"Language-Team: Norwegian Nynorsk <i18n-no@lister.ping.uio.no>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 48.0\n"
+"X-Generator: Gtranslator 50.0\n"
 
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:2
-#: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:5
 msgid "@NAME@"
-msgstr ""
+msgstr "Kortbølgje"
 
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:3
 msgid "Internet Radio Player"
@@ -36,13 +35,15 @@ msgstr "Høyr på nettradio"
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:13
 msgid "Gradio;Radio;Stream;Wave;"
-msgstr "Gradio;Radio;Straum;Bølgje;Wave;"
+msgstr "Gradio;Radio;Straum;Bølgje;Wave;Shortwave;Kortbølgje"
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:12
 msgid ""
-"Shortwave is an internet radio player that provides access to a station "
+"@NAME@ is an internet radio player that provides access to a station "
 "database with over 50,000 stations."
-msgstr "Shortwave er ein nettradio-spelar som gjev tilgang til ein stasjonsdatabase med over 50 000 stasjonar."
+msgstr ""
+"Kortbølgje er ein nettradio-spelar som gjev tilgang til ein stasjonsdatabase "
+"med over 50 000 stasjonar."
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:15
 msgid "Features:"
@@ -79,6 +80,7 @@ msgstr "Saumlaus integrasjon i GNOME-skrivebordet"
 
 #. Branding
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:28
+#: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:30
 msgid "Felix Häcker"
 msgstr "Felix Häcker"
 
@@ -90,26 +92,19 @@ msgstr "Legg til lokal stasjon"
 msgid "Change Station Cover"
 msgstr "Endre stasjonsomslag"
 
-#: data/gtk/add_station_dialog.ui:95
-msgid ""
-"This station will only be added to your library. If you want it to be "
-"available to everyone, you should add it to the <a href=\"https://www.radio-"
-"browser.info/add\">public database</a>."
-msgstr "Denne stasjonen vert berre lagd til i biblioteket ditt. Viss du vil at han skal vere tilgjengeleg for alle, bør du leggje han til i den <a href=\"https://www.radio-browser.info/add\">offentlege databasen</a>."
-
-#: data/gtk/add_station_dialog.ui:107
+#: data/gtk/add_station_dialog.ui:106
 msgid "Name"
 msgstr "Namn"
 
-#: data/gtk/add_station_dialog.ui:115
+#: data/gtk/add_station_dialog.ui:114
 msgid "Stream URL"
 msgstr "Straumadresse"
 
-#: data/gtk/add_station_dialog.ui:123
+#: data/gtk/add_station_dialog.ui:122
 msgid "Add Station"
 msgstr "Legg til stasjon"
 
-#: data/gtk/device_dialog.ui:7 data/gtk/player_view.ui:132
+#: data/gtk/device_dialog.ui:7 data/gtk/player_view.ui:135
 msgid "Connect Device"
 msgstr "Kople til eining"
 
@@ -133,15 +128,11 @@ msgstr "Fann inga støtta Google Cast-eining"
 msgid "Disconnect From Device"
 msgstr "Kople frå eining"
 
-#: data/gtk/library_page.ui:4
-msgid "Shortwave"
-msgstr "Kortbølgje"
-
-#: data/gtk/library_page.ui:15 data/gtk/search_page.ui:4
+#: data/gtk/library_page.ui:14 data/gtk/search_page.ui:4
 msgid "Browse Stations"
 msgstr "Bla gjennom stasjonar"
 
-#: data/gtk/library_page.ui:23
+#: data/gtk/library_page.ui:22
 msgid "Main Menu"
 msgstr "Hovudmeny"
 
@@ -182,50 +173,114 @@ msgid "_Descending"
 msgstr "_Synkande"
 
 #: data/gtk/library_page.ui:158
-msgid "_Open radio-browser.info <sup>↗</sup>"
-msgstr "_Opna radio-browser.info <sup>↗</sup>"
-
-#: data/gtk/library_page.ui:165
 msgid "_Preferences"
 msgstr "_Innstillingar"
 
-#: data/gtk/library_page.ui:169
+#: data/gtk/library_page.ui:162 data/gtk/menus.ui:96
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastatursnarvegar"
 
-#: data/gtk/library_page.ui:173
-msgid "_About Shortwave"
-msgstr "_Om Kortbølgje"
-
-#: data/gtk/library_page.ui:177
+#: data/gtk/library_page.ui:166
 msgid "_Quit"
 msgstr "_Avslutt"
 
-#: data/gtk/library_page.ui:185
+#: data/gtk/library_page.ui:174 data/gtk/menus.ui:14
 msgid "Add _Local Station"
 msgstr "Legg til _lokal stasjon"
 
-#: data/gtk/player_gadget.ui:40 data/gtk/player_toolbar.ui:92
-#: data/gtk/player_view.ui:156 data/gtk/station_row.ui:86
+#: data/gtk/menus.ui:5
+msgid "_Library"
+msgstr "_Bibliotek"
+
+#: data/gtk/menus.ui:8
+msgid "_Search Stations"
+msgstr "_Søk etter stasjonar"
+
+#: data/gtk/menus.ui:18
+msgid "Add _Public Station"
+msgstr "Legg til _offentleg stasjon"
+
+#: data/gtk/menus.ui:25
+msgid "_Edit"
+msgstr "_Rediger"
+
+#: data/gtk/menus.ui:28
+msgid "Undo"
+msgstr "Angre"
+
+#: data/gtk/menus.ui:32
+msgid "Redo"
+msgstr "Gjer om"
+
+#: data/gtk/menus.ui:38
+msgid "Cut"
+msgstr "Klipp ut"
+
+#: data/gtk/menus.ui:42 data/gtk/station_dialog.ui:231
+msgid "Copy"
+msgstr "Kopier"
+
+#: data/gtk/menus.ui:46
+msgid "Paste"
+msgstr "Lim inn"
+
+#: data/gtk/menus.ui:50
+msgid "Delete"
+msgstr "Slett"
+
+#: data/gtk/menus.ui:54
+msgid "Select All"
+msgstr "_Vel alle"
+
+#: data/gtk/menus.ui:60
+msgid "_Playback"
+msgstr "_Avspeling"
+
+#: data/gtk/menus.ui:63
+msgid "_Toggle Playback"
+msgstr "_Start/stopp avspeling"
+
+#: data/gtk/menus.ui:69
+msgid "Toggle _Mute"
+msgstr "Slå av/på _demping"
+
+#: data/gtk/menus.ui:73
+msgid "_Increase Volume"
+msgstr "_Auk lydstyrken"
+
+#: data/gtk/menus.ui:77
+msgid "_Decrease Volume"
+msgstr "_Minsk lydstyrken"
+
+#: data/gtk/menus.ui:83
+msgid "_Connect Device"
+msgstr "_Kople til eining"
+
+#: data/gtk/menus.ui:89
+msgid "_Window"
+msgstr "_Vindauge"
+
+#: data/gtk/menus.ui:93
+msgid "_Help"
+msgstr "_Hjelp"
+
+#: data/gtk/player_gadget.ui:40 data/gtk/player_toolbar.ui:93
+#: data/gtk/player_view.ui:159 data/gtk/station_row.ui:86
 msgid "Play"
 msgstr "Spel"
 
-#: data/gtk/player_gadget.ui:55 data/gtk/player_toolbar.ui:106
-#: data/gtk/player_view.ui:170
+#: data/gtk/player_gadget.ui:55 data/gtk/player_toolbar.ui:107
+#: data/gtk/player_view.ui:173
 msgid "Stop"
 msgstr "Stopp"
 
-#: data/gtk/player_gadget.ui:71 data/gtk/player_toolbar.ui:121
-#: data/gtk/player_view.ui:185
+#: data/gtk/player_gadget.ui:71 data/gtk/player_toolbar.ui:122
+#: data/gtk/player_view.ui:188
 msgid "Buffering…"
 msgstr "Buffrar …"
 
-#: data/gtk/player_gadget.ui:118
-msgid "SHORTWAVE INTERNET RADIO"
-msgstr "KORTBØLGJE NETTRADIO"
-
-#: data/gtk/player_gadget.ui:140 data/gtk/player_toolbar.ui:29
-#: data/gtk/player_view.ui:58 src/app.rs:251
+#: data/gtk/player_gadget.ui:139 data/gtk/player_toolbar.ui:29
+#: data/gtk/player_view.ui:58 src/app.rs:268
 msgid "No Playback"
 msgstr "Inga avspeling"
 
@@ -241,19 +296,19 @@ msgstr "Gjenopprett vindauge"
 msgid "Enable Gadget Mode"
 msgstr "Slå på gadget-modus"
 
-#: data/gtk/player_view.ui:215
+#: data/gtk/player_view.ui:218
 msgid "Show Station Details"
 msgstr "Vis stasjonsdetaljar"
 
-#: data/gtk/player_view.ui:266
+#: data/gtk/player_view.ui:269
 msgid "No Tracks"
 msgstr "Ingen spor"
 
-#: data/gtk/player_view.ui:277
+#: data/gtk/player_view.ui:280
 msgid "Played tracks will appear here"
 msgstr "Avspelte spor vert viste her"
 
-#: data/gtk/player_view.ui:311
+#: data/gtk/player_view.ui:314
 msgid "An error occurred"
 msgstr "Det oppstod ein feil"
 
@@ -261,7 +316,7 @@ msgstr "Det oppstod ein feil"
 msgid "General"
 msgstr "Generelt"
 
-#: data/gtk/preferences_dialog.ui:12 data/gtk/shortcuts_dialog.ui:41
+#: data/gtk/preferences_dialog.ui:12 data/gtk/shortcuts_dialog.ui:47
 msgid "Playback"
 msgstr "Avspeling"
 
@@ -290,7 +345,9 @@ msgstr "Opptak"
 msgid ""
 "Tracks are automatically recognised based on the station stream metadata and "
 "can be saved."
-msgstr "Spor vert automatisk attkjende basert på metadata frå stasjonsstraumen og kan lagrast."
+msgstr ""
+"Spor vert automatisk attkjende basert på metadata frå stasjonsstraumen og "
+"kan lagrast."
 
 #: data/gtk/preferences_dialog.ui:47
 msgid "Track _Directory"
@@ -336,97 +393,96 @@ msgstr "M_aksimal varigheit"
 msgid "Recording ends when the maximum duration is reached"
 msgstr "Opptaket stoppar når maksimal varigheit er nådd"
 
-#: data/gtk/search_page.ui:23
+#: data/gtk/search_filter.ui:21
 msgid "Search"
 msgstr "Søk"
 
-#: data/gtk/search_page.ui:24
+#: data/gtk/search_filter.ui:22
 msgid "Search stations"
 msgstr "Søk etter stasjonar"
 
-#: data/gtk/search_page.ui:72
+#: data/gtk/search_filter.ui:32
+msgid "Search Filter"
+msgstr "Søkefilter"
+
+#: data/gtk/search_page.ui:55
 msgid "Discover over 50,000 public stations"
 msgstr "Oppdag over 50 000 offentlege stasjonar"
 
-#: data/gtk/search_page.ui:90
+#: data/gtk/search_page.ui:73
 msgid "Popular Stations"
 msgstr "Populære stasjonar"
 
-#: data/gtk/search_page.ui:112
+#: data/gtk/search_page.ui:95
 msgid "Discover New Stations"
 msgstr "Oppdag nye stasjonar"
 
-#: data/gtk/search_page.ui:135
-msgid ""
-"The displayed information is provided by <a href=\"https://www.radio-browser."
-"info/\">radio-browser.info</a>.\n"
-"Shortwave has no influence on the listed stations."
-msgstr "Dei viste opplysningane er leverte av <a href=\"https://www.radio-browser.info/\">radio-browser.info</a>.\nShortwave har ingen påverknad på dei lista stasjonane."
-
-#: data/gtk/search_page.ui:201
+#: data/gtk/search_page.ui:182
 msgid "Loading…"
 msgstr "Lastar …"
 
-#: data/gtk/search_page.ui:216
+#: data/gtk/search_page.ui:197
 msgid "No Results"
 msgstr "Ingen treff"
 
-#: data/gtk/search_page.ui:217
+#: data/gtk/search_page.ui:198
 msgid ""
 "If the station you are looking for is missing, you can add it to the public "
 "database."
-msgstr "Viss stasjonen du leitar etter manglar, kan du leggje han til i den offentlege databasen."
+msgstr ""
+"Viss stasjonen du leitar etter manglar, kan du leggje han til i den "
+"offentlege databasen."
 
-#: data/gtk/search_page.ui:221
+#: data/gtk/search_page.ui:202
 msgid "Add Missing Station"
 msgstr "Legg til manglande stasjon"
 
-#: data/gtk/search_page.ui:239
+#: data/gtk/search_page.ui:220
 msgid "Unable to Retrieve Station Data"
 msgstr "Klarte ikkje å henta stasjonsdata"
 
-#: data/gtk/search_page.ui:242
+#: data/gtk/search_page.ui:223
 msgid "Try Again"
 msgstr "Prøv på nytt"
 
 #: data/gtk/shortcuts_dialog.ui:9
 msgctxt "shortcut window"
+msgid "Search stations"
+msgstr "Søk etter stasjonar"
+
+#: data/gtk/shortcuts_dialog.ui:15
+msgctxt "shortcut window"
 msgid "Open shortcut window"
 msgstr "Opna vindauge for tastatursnarvegar"
 
-#: data/gtk/shortcuts_dialog.ui:16
+#: data/gtk/shortcuts_dialog.ui:22
 msgctxt "shortcut window"
 msgid "Open application menu"
 msgstr "Opna programmeny"
 
-#: data/gtk/shortcuts_dialog.ui:21
+#: data/gtk/shortcuts_dialog.ui:27
 msgctxt "shortcut window"
 msgid "Open preferences"
 msgstr "Opna innstillingar"
 
-#: data/gtk/shortcuts_dialog.ui:27
+#: data/gtk/shortcuts_dialog.ui:33
 msgctxt "shortcut window"
 msgid "Close the window"
 msgstr "Lukk vindauget"
 
-#: data/gtk/shortcuts_dialog.ui:33
+#: data/gtk/shortcuts_dialog.ui:39
 msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Avslutt programmet"
 
-#: data/gtk/shortcuts_dialog.ui:44
+#: data/gtk/shortcuts_dialog.ui:50
 msgctxt "shortcut window"
 msgid "Toggle playback"
 msgstr "Start/stopp avspeling"
 
-#: data/gtk/shortcuts_dialog.ui:52 data/gtk/volume_control.ui:21
+#: data/gtk/shortcuts_dialog.ui:58 data/gtk/volume_control.ui:21
 msgid "Volume"
 msgstr "Lydstyrke"
-
-#: data/gtk/shortcuts_dialog.ui:55
-msgctxt "shortcut window"
-msgid "Toggle mute"
-msgstr "Slå av/på demping"
 
 #: data/gtk/shortcuts_dialog.ui:61
 msgctxt "shortcut window"
@@ -438,117 +494,122 @@ msgctxt "shortcut window"
 msgid "Decrease volume"
 msgstr "Minsk lydstyrken"
 
-#: data/gtk/station_dialog.ui:75
+#: data/gtk/shortcuts_dialog.ui:73
+msgctxt "shortcut window"
+msgid "Toggle mute"
+msgstr "Slå av/på demping"
+
+#: data/gtk/station_dialog.ui:71
 msgid "_Play"
 msgstr "_Spel"
 
-#: data/gtk/station_dialog.ui:91
+#: data/gtk/station_dialog.ui:82
 msgid "_Add to Library"
 msgstr "_Legg til i bibliotek"
 
-#: data/gtk/station_dialog.ui:108
+#: data/gtk/station_dialog.ui:94
 msgid "_Remove From Library"
 msgstr "_Fjern frå bibliotek"
 
-#: data/gtk/station_dialog.ui:127 data/gtk/station_row.ui:57
+#: data/gtk/station_dialog.ui:111 data/gtk/station_row.ui:57
 msgid "Local Station"
 msgstr "Lokal stasjon"
 
-#: data/gtk/station_dialog.ui:128
+#: data/gtk/station_dialog.ui:112
 msgid ""
 "This station exists only in your library, and is not part of the public "
 "database"
-msgstr "Denne stasjonen finst berre i biblioteket ditt og er ikkje del av den offentlege databasen"
+msgstr ""
+"Denne stasjonen finst berre i biblioteket ditt og er ikkje del av den "
+"offentlege databasen"
 
-#: data/gtk/station_dialog.ui:142 data/gtk/station_row.ui:69
+#: data/gtk/station_dialog.ui:126 data/gtk/station_row.ui:69
 msgid "Orphaned Station"
 msgstr "Foreldrlaus stasjon"
 
-#: data/gtk/station_dialog.ui:143
+#: data/gtk/station_dialog.ui:127
 msgid ""
 "The information could not be updated, probably this station was removed from "
 "the public database"
-msgstr "Klarte ikkje å oppdatere informasjonen, truleg er denne stasjonen fjerna frå den offentlege databasen"
+msgstr ""
+"Klarte ikkje å oppdatere informasjonen, truleg er denne stasjonen fjerna frå "
+"den offentlege databasen"
 
-#: data/gtk/station_dialog.ui:154
+#: data/gtk/station_dialog.ui:138
 msgid "Information"
 msgstr "Informasjon"
 
-#: data/gtk/station_dialog.ui:158
+#: data/gtk/station_dialog.ui:142
 msgid "Language"
 msgstr "Språk"
 
-#: data/gtk/station_dialog.ui:169
+#: data/gtk/station_dialog.ui:153
 msgid "Tags"
 msgstr "Stikkord"
 
-#: data/gtk/station_dialog.ui:182
+#: data/gtk/station_dialog.ui:166
 msgid "Location"
 msgstr "Stad"
 
-#: data/gtk/station_dialog.ui:186
+#: data/gtk/station_dialog.ui:170
 msgid "Country"
 msgstr "Land"
 
-#: data/gtk/station_dialog.ui:197
+#: data/gtk/station_dialog.ui:181
 msgid "State"
 msgstr "Delstat"
 
-#: data/gtk/station_dialog.ui:232
+#: data/gtk/station_dialog.ui:200
 msgid "Audio"
 msgstr "Lyd"
 
-#: data/gtk/station_dialog.ui:235
+#: data/gtk/station_dialog.ui:203
 msgid "Bitrate"
 msgstr "Bitrate"
 
-#: data/gtk/station_dialog.ui:246
+#: data/gtk/station_dialog.ui:214
 msgid "Codec"
 msgstr "Kodek"
 
 #. This is a noun/label for the station stream url
-#: data/gtk/station_dialog.ui:257
+#: data/gtk/station_dialog.ui:225
 msgid "Stream"
 msgstr "Straum"
 
-#: data/gtk/station_dialog.ui:263
-msgid "Copy"
-msgstr "Kopier"
-
-#: data/gtk/track_dialog.ui:74
+#: data/gtk/track_dialog.ui:76
 msgid "Edit"
 msgstr "Rediger"
 
-#: data/gtk/track_dialog.ui:121
+#: data/gtk/track_dialog.ui:123
 msgid "The recorded track has been saved"
 msgstr "Det innspelte sporet er lagra"
 
-#: data/gtk/track_dialog.ui:137 data/gtk/track_dialog.ui:208
-#: data/gtk/track_row.ui:9 src/audio/player.rs:447
+#: data/gtk/track_dialog.ui:139 data/gtk/track_dialog.ui:210
+#: data/gtk/track_row.ui:10 src/audio/player.rs:445
 msgid "Save Track"
 msgstr "Lagra spor"
 
-#: data/gtk/track_dialog.ui:148
+#: data/gtk/track_dialog.ui:150
 msgid "Play Track"
 msgstr "Spel spor"
 
-#: data/gtk/track_dialog.ui:159
+#: data/gtk/track_dialog.ui:161
 msgid "Cancel Recording"
 msgstr "Avbryt opptak"
 
-#: data/gtk/track_dialog.ui:175
+#: data/gtk/track_dialog.ui:177
 msgid "Station"
 msgstr "Stasjon"
 
-#: data/gtk/track_dialog.ui:209
+#: data/gtk/track_dialog.ui:211
 msgid "Save this track when recording is complete"
 msgstr "Lagra dette sporet når opptaket er fullført"
 
-#: data/gtk/track_dialog.ui:223
+#: data/gtk/track_dialog.ui:225
 msgid "Recording behaviour can be changed in <a href=\"\">preferences</a>"
 msgstr "Opptaksåtferda kan endrast i <a href=\"\">innstillingane</a>"
 
-#: data/gtk/track_row.ui:20
+#: data/gtk/track_row.ui:21
 msgid "Saved"
 msgstr "Lagra"
 
@@ -556,81 +617,78 @@ msgstr "Lagra"
 msgid "Toggle Mute"
 msgstr "Slå av/på demping"
 
-#: src/app.rs:85
+#: src/app.rs:84
 msgid "Track no longer available"
 msgstr "Spor er ikkje lenger tilgjengeleg"
 
-#: src/app.rs:108 src/app.rs:130
+#: src/app.rs:108 src/app.rs:132
 msgid "This track is currently not being recorded"
 msgstr "Dette sporet vert ikkje teke opp no"
 
-#: src/app.rs:255
-msgid "Playing “{}”"
-msgstr "Spelar «{}»"
-
-#: src/app.rs:349
+#: src/app.rs:365
 msgid "Active Playback"
 msgstr "Aktiv avspeling"
 
-#: src/audio/player.rs:457
-msgid "Don't Record"
+#: src/audio/player.rs:455
+msgid "Don’t Record"
 msgstr "Ikkje ta opp"
 
-#: src/audio/recording_state.rs:54 src/audio/recording_state.rs:56
+#: src/audio/recording_state.rs:53 src/audio/recording_state.rs:55
 msgid "Not Recorded"
 msgstr "Ikkje teke opp"
 
-#: src/audio/recording_state.rs:55
+#: src/audio/recording_state.rs:54
 msgid "Ignored Track"
 msgstr "Ignorert spor"
 
-#: src/audio/recording_state.rs:58
+#: src/audio/recording_state.rs:57
 msgid "Recording…"
 msgstr "Tek opp …"
 
-#: src/audio/recording_state.rs:59 src/audio/recording_state.rs:60
+#: src/audio/recording_state.rs:58 src/audio/recording_state.rs:59
 msgid "Recorded"
 msgstr "Innspelt"
 
-#: src/audio/recording_state.rs:62
+#: src/audio/recording_state.rs:61
 msgid "Below Threshold"
 msgstr "Under terskel"
 
-#: src/audio/recording_state.rs:63
+#: src/audio/recording_state.rs:62
 msgid "Cancelled"
 msgstr "Avbrote"
 
-#: src/audio/recording_state.rs:69
+#: src/audio/recording_state.rs:68
 msgid "Recording is deactivated in preferences"
 msgstr "Opptak er slått av i innstillingane"
 
-#: src/audio/recording_state.rs:71
+#: src/audio/recording_state.rs:70
 msgid "The track contains a word that is on the ignore list"
 msgstr "Sporet inneheld eit ord som står på ignoreringslista"
 
-#: src/audio/recording_state.rs:74
+#: src/audio/recording_state.rs:73
 msgid ""
-"The track wasn't played from the beginning, so it can't be fully recorded"
-msgstr "Sporet vart ikkje spela frå byrjinga, så det kan ikkje spelast inn fullt ut"
+"The track wasn’t played from the beginning, so it can’t be fully recorded"
+msgstr ""
+"Sporet vart ikkje spelt frå byrjinga, så det kan ikkje spelast inn fullt ut"
 
-#: src/audio/recording_state.rs:77
+#: src/audio/recording_state.rs:76
 msgid "The track will be recorded until a new track gets played"
 msgstr "Sporet vert teke opp til eit nytt spor vert spela"
 
-#: src/audio/recording_state.rs:79
+#: src/audio/recording_state.rs:78
 msgid "The track has been temporarily recorded"
 msgstr "Sporet er mellombels teke opp"
 
-#: src/audio/recording_state.rs:81
+#: src/audio/recording_state.rs:80
 msgid "The maximum recording duration has been reached"
 msgstr "Maksimal opptakslengd er nådd"
 
-#: src/audio/recording_state.rs:84
+#: src/audio/recording_state.rs:83
 msgid ""
 "The track has been discarded as the duration was below the set threshold"
 msgstr "Sporet er forkasta fordi lengda var under den fastsette terskelen"
 
-#: src/audio/recording_state.rs:86
+#: src/audio/recording_state.rs:85
 msgid "Recording has been cancelled"
 msgstr "Opptaket er avbrote"
 
@@ -642,84 +700,142 @@ msgstr "Google Cast-eining"
 msgid "Unknown Model"
 msgstr "Ukjend modell"
 
-#: src/ui/about_dialog.rs:41
+#: src/ui/about_dialog.rs:55
 msgid "translator-credits"
 msgstr "Bjørn Mørkedal <gnome@morkedal.com>"
 
-#: src/ui/about_dialog.rs:42
+#: src/ui/about_dialog.rs:56
 msgid "Donate"
 msgstr "Doner"
 
-#: src/ui/add_station_dialog.rs:94
+#: src/ui/add_station_dialog.rs:92
+#, rust-format
+msgid ""
+"This station will only be added to your library. If you want it to be "
+"available to everyone, you should add it to the <a href=\"{}\">public "
+"database</a>."
+msgstr ""
+"Denne stasjonen vert berre lagd til i biblioteket ditt. Viss du vil at han "
+"skal vere tilgjengeleg for alle, bør du leggje han til i den <a href=\"{}"
+"\">offentlege databasen</a>."
+
+#: src/ui/add_station_dialog.rs:105
 msgid "Select Station Cover"
 msgstr "Vel stasjonsomslag"
 
-#: src/ui/display_error.rs:50
+#: src/ui/display_error.rs:51
 msgid "Show Details"
 msgstr "Vis detaljar"
 
-#: src/ui/pages/library_page.rs:111
+#: src/ui/pages/library_page.rs:114
+#, rust-format
 msgid "Welcome to {}"
 msgstr "Velkomen til {}"
 
-#: src/ui/preferences_dialog.rs:139
+#: src/ui/pages/library_page.rs:121
+#, rust-format
+msgid "_About {}"
+msgstr "_Om {}"
+
+#: src/ui/pages/search_page.rs:107
+#, rust-format
+msgid ""
+"The displayed information is provided by {}.\n"
+"{} has no influence on the listed stations."
+msgstr ""
+"Dei viste opplysningane er leverte av {}.\n"
+"{} har ingen påverknad på dei lista stasjonane."
+
+#: src/ui/player/player_gadget.rs:68
+#, rust-format
+msgid "{} INTERNET RADIO"
+msgstr "{} KORTBØLGJE NETTRADIO"
+
+#: src/ui/preferences_dialog.rs:140
 msgid "Select Save Directory"
 msgstr "Vel lagringsmappe"
 
-#: src/ui/preferences_dialog.rs:140
+#: src/ui/preferences_dialog.rs:141
 msgid "_Select"
 msgstr "_Vel"
 
-#: src/ui/preferences_dialog.rs:163
+#: src/ui/preferences_dialog.rs:164
+#, rust-format
 msgid "{} min"
 msgid_plural "{} min"
 msgstr[0] "{} min"
 msgstr[1] "{} min"
 
-#: src/ui/preferences_dialog.rs:172
+#: src/ui/preferences_dialog.rs:173
+#, rust-format
 msgid "{} sec"
 msgid_plural "{} sec"
 msgstr[0] "{} s"
 msgstr[1] "{} s"
 
-#: src/ui/station_dialog.rs:207
+#: src/ui/station_dialog.rs:206
+#, rust-format
 msgid "{} kbit/s"
 msgstr "{} kbit/s"
 
-#: src/ui/station_dialog.rs:292
+#: src/ui/station_dialog.rs:308
 msgid "Copied"
 msgstr "Kopiert"
 
-#: src/ui/window.rs:221
-msgid "No Permission for Background Playback"
-msgstr "Manglar løyve til avspeling i bakgrunnen"
-
-#: src/ui/window.rs:223
-msgid "“Run in Background” must be allowed for this app in system settings."
-msgstr "«Køyr i bakgrunnen» må vere tillate for denne appen i systeminnstillingane."
-
-#: src/ui/window.rs:227
-msgid "Try Anyway"
-msgstr "Prøv likevel"
-
-#: src/ui/window.rs:228
-msgid "Disable Background Playback"
-msgstr "Slå av avspeling i bakgrunnen"
-
-#: src/utils.rs:51
+#: src/utils.rs:56
+#, rust-format
 msgid "{} hour"
 msgid_plural "{} hours"
 msgstr[0] "{} time"
 msgstr[1] "{} timar"
 
-#: src/utils.rs:57
+#: src/utils.rs:62
+#, rust-format
 msgid "{} minute"
 msgid_plural "{} minutes"
 msgstr[0] "{} minutt"
 msgstr[1] "{} minutt"
 
-#: src/utils.rs:62
+#: src/utils.rs:67
+#, rust-format
 msgid "{} second"
 msgid_plural "{} seconds"
 msgstr[0] "{} sekund"
 msgstr[1] "{} sekund"
+
+#: src/utils.rs:77
+#, rust-format
+msgid "{hours} {mins} {secs}"
+msgstr "{hours} {mins} {secs}"
+
+#. Translators: Do NOT translate the content between '{' and '}', this is a variable name.
+#: src/utils.rs:85
+#, rust-format
+msgid "{mins} {secs}"
+msgstr "{mins} {secs}"
+
+#~ msgid "Shortwave"
+#~ msgstr "Kortbølgje"
+
+#~ msgid "_Open radio-browser.info <sup>↗</sup>"
+#~ msgstr "_Opna radio-browser.info <sup>↗</sup>"
+
+#~ msgid "_About Shortwave"
+#~ msgstr "_Om Kortbølgje"
+
+#~ msgid "Playing “{}”"
+#~ msgstr "Spelar «{}»"
+
+#~ msgid "No Permission for Background Playback"
+#~ msgstr "Manglar løyve til avspeling i bakgrunnen"
+
+#~ msgid "“Run in Background” must be allowed for this app in system settings."
+#~ msgstr ""
+#~ "«Køyr i bakgrunnen» må vere tillate for denne appen i "
+#~ "systeminnstillingane."
+
+#~ msgid "Try Anyway"
+#~ msgstr "Prøv likevel"
+
+#~ msgid "Disable Background Playback"
+#~ msgstr "Slå av avspeling i bakgrunnen"
