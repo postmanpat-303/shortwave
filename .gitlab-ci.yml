@@ -61,10 +61,27 @@ potfiles:
     - apk add --no-cache git
     - ./build-aux/checks.sh potfiles
 
-pixi-build:
+pixi:linux:
   image: ghcr.io/prefix-dev/pixi:latest
   before_script:
     - apt-get update -qq && apt-get install -y --no-install-recommends git
+  script:
+    - pixi publish --path .
+  artifacts:
+    paths:
+      - "*.conda"
+
+pixi:macos:
+  tags:
+    - macos
+    - arm64
+  variables:
+    ORKA_RUNNER: sonoma-5
+    PIXI_HOME: "${CI_PROJECT_DIR}/.pixi-home"
+    PIXI_NO_PATH_UPDATE: "1"
+  before_script:
+    - curl -fsSL https://pixi.sh/install.sh | sh
+    - export PATH="${PIXI_HOME}/bin:$PATH"
   script:
     - pixi publish --path .
   artifacts:
