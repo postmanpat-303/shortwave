@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2026-07-23 09:41+0000\n"
-"PO-Revision-Date: 2026-08-13 07:38+0200\n"
+"POT-Creation-Date: 2026-09-10 18:18+0000\n"
+"PO-Revision-Date: 2026-09-13 17:56+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <(nothing)>\n"
 "Language: ka\n"
@@ -108,7 +108,7 @@ msgstr "ნაკადის URL"
 msgid "Add Station"
 msgstr "სადგურის დამატება"
 
-#: data/gtk/device_dialog.ui:7 data/gtk/player_view.ui:134
+#: data/gtk/device_dialog.ui:7 data/gtk/player_view.ui:135
 msgid "Connect Device"
 msgstr "მოწყობილობის მიერთება"
 
@@ -268,31 +268,31 @@ msgstr "_ფანჯარა"
 msgid "_Help"
 msgstr "_დახმარება"
 
-#: data/gtk/player_gadget.ui:40 data/gtk/player_toolbar.ui:92
-#: data/gtk/player_view.ui:158 data/gtk/station_row.ui:86
+#: data/gtk/player_gadget.ui:40 data/gtk/player_toolbar.ui:93
+#: data/gtk/player_view.ui:159 data/gtk/station_row.ui:86
 msgid "Play"
 msgstr "დაკვრა"
 
-#: data/gtk/player_gadget.ui:55 data/gtk/player_toolbar.ui:106
-#: data/gtk/player_view.ui:172
+#: data/gtk/player_gadget.ui:55 data/gtk/player_toolbar.ui:107
+#: data/gtk/player_view.ui:173
 msgid "Stop"
 msgstr "შეჩერება"
 
-#: data/gtk/player_gadget.ui:71 data/gtk/player_toolbar.ui:121
-#: data/gtk/player_view.ui:187
+#: data/gtk/player_gadget.ui:71 data/gtk/player_toolbar.ui:122
+#: data/gtk/player_view.ui:188
 msgid "Buffering…"
 msgstr "ბუფერის შევსება…"
 
 #: data/gtk/player_gadget.ui:139 data/gtk/player_toolbar.ui:29
-#: data/gtk/player_view.ui:58 src/app.rs:269
+#: data/gtk/player_view.ui:58 src/app.rs:268
 msgid "No Playback"
 msgstr "არ ვუკრავ"
 
-#: data/gtk/player_gadget.ui:198
+#: data/gtk/player_gadget.ui:199
 msgid "Close"
 msgstr "დახურვა"
 
-#: data/gtk/player_gadget.ui:209
+#: data/gtk/player_gadget.ui:210
 msgid "Restore Window"
 msgstr "ფანჯრის აღდგენა"
 
@@ -300,19 +300,19 @@ msgstr "ფანჯრის აღდგენა"
 msgid "Enable Gadget Mode"
 msgstr "გაჯეტის რეჟიმის ჩართვა"
 
-#: data/gtk/player_view.ui:217
+#: data/gtk/player_view.ui:218
 msgid "Show Station Details"
 msgstr "სადგურის დეტალების ჩვენება"
 
-#: data/gtk/player_view.ui:268
+#: data/gtk/player_view.ui:269
 msgid "No Tracks"
 msgstr "ტრეკების გარეშე"
 
-#: data/gtk/player_view.ui:279
+#: data/gtk/player_view.ui:280
 msgid "Played tracks will appear here"
 msgstr "დაკრული სიმღერები აქ გამოჩნდება"
 
-#: data/gtk/player_view.ui:313
+#: data/gtk/player_view.ui:314
 msgid "An error occurred"
 msgstr "შეცდომა"
 
@@ -622,21 +622,21 @@ msgstr "შენახულია"
 msgid "Toggle Mute"
 msgstr "დადუმების გადართვა"
 
-#: src/app.rs:85
+#: src/app.rs:84
 msgid "Track no longer available"
 msgstr "ტრეკი ხელმისაწვდომი აღარაა"
 
-#: src/app.rs:109 src/app.rs:133
+#: src/app.rs:108 src/app.rs:132
 msgid "This track is currently not being recorded"
 msgstr "ამ ტრეკის ჩაწერა, ამჟამად, არ მიმდინარეობს"
 
-#: src/app.rs:370
+#: src/app.rs:365
 msgid "Active Playback"
 msgstr "აქტიური დაკვრა"
 
 #: src/audio/player.rs:455
-msgid "Don't Record"
-msgstr "ჩაწერის გარეშე"
+msgid "Don’t Record"
+msgstr "არ ჩაწერო"
 
 #: src/audio/recording_state.rs:53 src/audio/recording_state.rs:55
 msgid "Not Recorded"
@@ -672,7 +672,7 @@ msgstr "სიმღერის სახელი გამოსატოვ�
 
 #: src/audio/recording_state.rs:73
 msgid ""
-"The track wasn't played from the beginning, so it can't be fully recorded"
+"The track wasn’t played from the beginning, so it can’t be fully recorded"
 msgstr "ეს ტრეკი თავიდან არ დაგიკრავთ, ამიტომ სრულად ვერ ჩაიწერთ"
 
 #: src/audio/recording_state.rs:76
@@ -752,7 +752,6 @@ msgstr ""
 
 #: src/ui/player/player_gadget.rs:68
 #, rust-format
-#| msgid "SHORTWAVE INTERNET RADIO"
 msgid "{} INTERNET RADIO"
 msgstr "{} INTERNET RADIO"
 
@@ -785,31 +784,31 @@ msgstr "{} კბიტ/წმ"
 msgid "Copied"
 msgstr "დაკოპირდა"
 
-#: src/utils.rs:50
+#: src/utils.rs:56
 #, rust-format
 msgid "{} hour"
 msgid_plural "{} hours"
 msgstr[0] "{} საათი"
 
-#: src/utils.rs:56
+#: src/utils.rs:62
 #, rust-format
 msgid "{} minute"
 msgid_plural "{} minutes"
 msgstr[0] "{} წუთი"
 
-#: src/utils.rs:61
+#: src/utils.rs:67
 #, rust-format
 msgid "{} second"
 msgid_plural "{} seconds"
 msgstr[0] "{} წამი"
 
-#: src/utils.rs:71
+#: src/utils.rs:77
 #, rust-format
 msgid "{hours} {mins} {secs}"
 msgstr "{hours} {mins} {secs}"
 
 #. Translators: Do NOT translate the content between '{' and '}', this is a variable name.
-#: src/utils.rs:79
+#: src/utils.rs:85
 #, rust-format
 msgid "{mins} {secs}"
 msgstr "{mins} {secs}"
