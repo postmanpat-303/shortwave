@@ -1,5 +1,5 @@
 [workspace]
-name = "Shortwave"
+name = "shortwave"
 authors = ["Felix Häcker haeckerfelix@gnome.org"]
 channels = ["conda-forge"]
 platforms = [
@@ -8,6 +8,7 @@ platforms = [
     "osx-arm64",
     "win-64",
 ]
+preview = ["pixi-build"]
 
 [activation.env]
 RUST_LOG = "shortwave=debug,cast_sender=debug"
@@ -65,3 +66,7 @@ libshumate = "*"
 
 [target.linux.dependencies]
 glycin-loaders = "*"
+
+[package]
+build.backend = { name = "pixi-build-rattler-build", version = "*" }
+build.config = { recipe = "build-aux/conda/recipe.yaml", experimental = true }

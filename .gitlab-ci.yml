@@ -60,3 +60,13 @@ potfiles:
   script:
     - apk add --no-cache git
     - ./build-aux/checks.sh potfiles
+
+pixi-build:
+  image: ghcr.io/prefix-dev/pixi:latest
+  before_script:
+    - apt-get update -qq && apt-get install -y --no-install-recommends git
+  script:
+    - pixi publish --path .
+  artifacts:
+    paths:
+      - "*.conda"
