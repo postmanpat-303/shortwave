@@ -56,6 +56,9 @@ pixi-build@windows-x86_64:
   variables:
     PIXI_HOME: "${CI_PROJECT_DIR}/.pixi-home"
     PIXI_NO_PATH_UPDATE: "1"
+    GIT_CONFIG_COUNT: "1"
+    GIT_CONFIG_KEY_0: "core.longpaths"
+    GIT_CONFIG_VALUE_0: "true"
   before_script:
     - iwr -useb https://pixi.sh/install.ps1 | iex
     - $env:Path = "$env:PIXI_HOME\bin;$env:Path"
