@@ -61,7 +61,7 @@ potfiles:
     - apk add --no-cache git
     - ./build-aux/checks.sh potfiles
 
-pixi:linux:
+pixi@linux:
   image: ghcr.io/prefix-dev/pixi:latest
   before_script:
     - apt-get update -qq && apt-get install -y --no-install-recommends git
@@ -71,7 +71,22 @@ pixi:linux:
     paths:
       - "*.conda"
 
-pixi:macos:
+pixi@windows:
+  tags:
+    - win32-ps
+  variables:
+    PIXI_HOME: "${CI_PROJECT_DIR}/.pixi-home"
+    PIXI_NO_PATH_UPDATE: "1"
+  before_script:
+    - iwr -useb https://pixi.sh/install.ps1 | iex
+    - $env:Path = "$env:PIXI_HOME\bin;$env:Path"
+  script:
+    - pixi publish --path .
+  artifacts:
+    paths:
+      - "*.conda"
+
+pixi@macos:
   tags:
     - macos
     - arm64

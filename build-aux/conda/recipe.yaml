@@ -39,11 +39,16 @@ requirements:
   build:
     - ${{ compiler('c') }}
     - ${{ compiler('rust') }}
-    - ${{ stdlib('c') }}
     - brush
     - cargo-bundle-licenses
     - meson
     - pkg-config
+    - if: unix
+      then:
+        - ${{ stdlib('c') }}
+    - if: win
+      then:
+        - m2-base
   host:
     - glycin-gtk4
     - gst-plugins-bad
