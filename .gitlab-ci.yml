@@ -29,6 +29,7 @@ flatpak-publish@linux-aarch64:
 # Pixi Builds
 
 .pixi-build: &pixi-build
+  allow_failure: true
   script:
     - pixi publish --path .
   artifacts:
@@ -75,6 +76,18 @@ pixi-build@macos-arm64:
   before_script:
     - curl -fsSL https://pixi.sh/install.sh | sh
     - export PATH="${PIXI_HOME}/bin:$PATH"
+
+pixi-publish:
+  image: ghcr.io/prefix-dev/pixi:latest
+  needs:
+    - pixi-build@linux-x86_64
+    - pixi-build@linux-aarch64
+    - pixi-build@windows-x86_64
+    - pixi-build@macos-arm64
+#  rules:
+#    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+  script:
+    - pixi upload prefix --channel haecker-felix/shortwave *.conda
 
 # Checks
 
