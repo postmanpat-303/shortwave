@@ -40,11 +40,11 @@ build:
           -e "s|@VERSION@|${{ version }}|g" \
           "${RECIPE_DIR}/menu.json" > "${PREFIX}/Menu/${PKG_NAME}_menu.json"
       - if: osx
-        then: install -m0644 "${RECIPE_DIR}/shortwave.icns" "${PREFIX}/Menu/icon.icns"
+        then: python3 "${RECIPE_DIR}/generate-icon.py" "data/icons/hicolor/scalable/apps/${{ app_id }}.svg" "${PREFIX}/Menu/icon.icns"
       - if: linux
-        then: install -m0644 "${RECIPE_DIR}/shortwave.png" "${PREFIX}/Menu/icon.png"
+        then: python3 "${RECIPE_DIR}/generate-icon.py" "data/icons/hicolor/scalable/apps/${{ app_id }}.svg" "${PREFIX}/Menu/icon.png"
       - if: win
-        then: cp "${RECIPE_DIR}/shortwave.ico" "${PREFIX}/Menu/icon.ico"
+        then: python "${RECIPE_DIR}/generate-icon.py" "data/icons/hicolor/scalable/apps/${{ app_id }}.svg" "${PREFIX}/Menu/icon.ico"
 
 requirements:
   build:
@@ -54,6 +54,8 @@ requirements:
     - cargo-bundle-licenses
     - meson
     - pkg-config
+    - pillow
+    - resvg
     - if: unix
       then:
         - ${{ stdlib('c') }}
