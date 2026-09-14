@@ -45,6 +45,10 @@ pub fn init() -> std::io::Result<()> {
 /// Older versions used `config::NAME` instead of `config::PKGNAME`
 /// TODO: Drop migration step again with next major release
 fn migrate_legacy_paths() {
+    if *config::PROFILE == "development" {
+        return;
+    }
+
     let legacy_data = glib::user_data_dir().join(*config::NAME);
     if legacy_data.exists() && !DATA.exists() {
         info!("Migrate data directory...");

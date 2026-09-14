@@ -7,7 +7,7 @@
         "org.freedesktop.Sdk.Extension.rust-stable",
         "org.freedesktop.Sdk.Extension.llvm21"
     ],
-    "command": "shortwave",
+    "command": "shortwave-devel",
     "tags": [
         "nightly"
     ],

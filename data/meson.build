@@ -4,7 +4,7 @@ subdir('icons')
 # Desktop file
 conf = configuration_data()
 conf.set('APP_ID', app_id)
-conf.set('PKGNAME', meson.project_name())
+conf.set('PKGNAME', pkgname)
 conf.set('NAME', name)
 desktop_file = i18n.merge_file(
   input: configure_file(
@@ -30,7 +30,7 @@ endif
 # Appdata
 conf = configuration_data()
 conf.set('APP_ID', app_id)
-conf.set('PKGNAME', meson.project_name())
+conf.set('PKGNAME', pkgname)
 conf.set('NAME', name)
 # TODO: Remove once gettext-feedstock#45 is fixed
 # https://github.com/conda-forge/gettext-feedstock/issues/45
@@ -71,7 +71,7 @@ endif
 conf = configuration_data()
 conf.set('APP_ID', app_id)
 conf.set('PATH_ID', path_id)
-conf.set('PKGNAME', meson.project_name())
+conf.set('PKGNAME', pkgname)
 configure_file(
   input: '@0@.gschema.xml.in'.format(base_id),
   output: '@0@.gschema.xml'.format(app_id),
@@ -94,7 +94,7 @@ endif
 # DBus service
 conf = configuration_data()
 conf.set('APP_ID', app_id)
-conf.set('PKGNAME', meson.project_name())
+conf.set('PKGNAME', pkgname)
 conf.set('BINDIR', bindir)
 configure_file(
   input: '@0@.service.in'.format(base_id),
@@ -118,7 +118,7 @@ gnome.compile_resources(
   gresource_bundle: true,
   source_dir: join_paths(meson.project_build_root(), 'data'),
   install: true,
-  install_dir: join_paths(datadir, meson.project_name()),
+  install_dir: join_paths(datadir, pkgname),
   dependencies: appdata_file,
 )
 
