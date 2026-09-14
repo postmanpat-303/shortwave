@@ -1,9 +1,14 @@
 context:
-  name: shortwave
+  is_devel: ${{ profile == "development" }}
+
+  name: shortwave${{ "-devel" if is_devel else "" }}
+  app_id: de.haeckerfelix.Shortwave${{ ".Devel" if is_devel else "" }}
+  display_name: Shortwave${{ " (Devel)" if is_devel else "" }}
+  summary: Listen to internet radio
+
   git_tag: ${{ git.latest_tag("") }}
   git_tag_distance: ${{ git.latest_tag_distance("") }}
-  git_rev: ${{ git.head_rev("") }}
-  version: ${{ git_tag }}.devel.${{ git_tag_distance }}.${{ git_rev }}
+  version: ${{ git_tag }}${{ ("." ~ git_tag_distance) if is_devel else "" }}
 
 package:
   name: ${{ name }}
@@ -22,12 +27,18 @@ build:
         export GETTEXT_DIR="${PREFIX}"
 
         cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
-        meson setup ${MESON_ARGS} --prefix="${LIBRARY_PREFIX:-${PREFIX}}" --wrap-mode=nofallback builddir
+        meson setup -Dprofile=${{ profile }} ${MESON_ARGS} --prefix="${LIBRARY_PREFIX:-${PREFIX}}" --wrap-mode=nofallback builddir
         ninja -v -C builddir -j "${CPU_COUNT}"
         ninja -C builddir install -j "${CPU_COUNT}"
       - |
         mkdir -p "${PREFIX}/Menu"
-        cp "${RECIPE_DIR}/menu.json" "${PREFIX}/Menu/${PKG_NAME}_menu.json"
+        sed \
+          -e "s|@BIN_NAME@|${{ name }}|g" \
+          -e "s|@APP_ID@|${{ app_id }}|g" \
+          -e "s|@DISPLAY_NAME@|${{ display_name }}|g" \
+          -e "s|@SUMMARY@|${{ summary }}|g" \
+          -e "s|@VERSION@|${{ version }}|g" \
+          "${RECIPE_DIR}/menu.json" > "${PREFIX}/Menu/${PKG_NAME}_menu.json"
       - if: osx
         then: install -m0644 "${RECIPE_DIR}/shortwave.icns" "${PREFIX}/Menu/icon.icns"
       - if: linux
@@ -73,7 +84,7 @@ requirements:
 tests:
   - package_contents:
       bin:
-        - shortwave
+        - ${{ name }}
 
 about:
   homepage: https://apps.gnome.org/Shortwave/
@@ -81,7 +92,7 @@ about:
   license_file:
     - COPYING.md
     - THIRDPARTY.yml
-  summary: Listen to internet radio
+  summary: ${{ summary }}
   description: |
     Shortwave is an internet radio player that provides access to a station 
     database with over 50,000 stations.

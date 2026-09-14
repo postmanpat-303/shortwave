@@ -30,8 +30,14 @@ flatpak-publish@linux-aarch64:
 
 .pixi-build: &pixi-build
   allow_failure: true
+  rules:
+    - if: '$CI_COMMIT_TAG'
+      variables:
+        PROFILE: "default"
+    - variables:
+        PROFILE: "development"
   script:
-    - pixi publish --path .
+    - pixi publish --path . --variant profile=$PROFILE
   artifacts:
     paths:
       - "*.conda"
