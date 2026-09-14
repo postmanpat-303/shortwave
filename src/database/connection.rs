@@ -36,7 +36,7 @@ type Pool = r2d2::Pool<ConnectionManager<SqliteConnection>>;
 // Database path
 pub static DB_PATH: LazyLock<PathBuf> = LazyLock::new(|| {
     let mut path = path::DATA.clone();
-    path.push(format!("{}.db", *config::NAME));
+    path.push(format!("{}.db", *config::PKGNAME));
     path
 });
 
