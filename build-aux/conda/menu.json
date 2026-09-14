@@ -17,6 +17,7 @@
         },
         "osx": {
           "precommand": "export CFProcessPath=\"{{ MENU_ITEM_LOCATION }}/Contents/MacOS/@BIN_NAME@\"",
+          "CFBundleName": "@DISPLAY_NAME@",
           "CFBundleIdentifier": "@APP_ID@",
           "CFBundleVersion": "@VERSION@",
           "info_plist_extra": {
