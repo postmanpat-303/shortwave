@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shortwave main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/Shortwave/issues\n"
-"POT-Creation-Date: 2026-07-23 09:41+0000\n"
-"PO-Revision-Date: 2026-08-13 03:09+0330\n"
+"POT-Creation-Date: 2026-09-10 18:18+0000\n"
+"PO-Revision-Date: 2026-09-20 16:03+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Poedit 3.6\n"
 
 #: data/de.haeckerfelix.Shortwave.desktop.in.in:2
 msgid "@NAME@"
@@ -42,8 +42,8 @@ msgid ""
 "@NAME@ is an internet radio player that provides access to a station database "
 "with over 50,000 stations."
 msgstr ""
-"‏@NAME@ پخش‌کنندهٔ رادیو اینترنتی‌ای است که دسترسی به پایگاه داده‌ای با بیش از ۵۰٫۰۰۰ "
-"ایستگاه را فراهم می‌کند."
+"‏@NAME@ پخش‌کنندهٔ رادیو اینترنتی‌ای است که دسترسی به پایگاه داده‌ای با بیش از "
+"۵۰٫۰۰۰ ایستگاه را فراهم می‌کند."
 
 #: data/de.haeckerfelix.Shortwave.metainfo.xml.in.in:15
 msgid "Features:"
@@ -103,7 +103,7 @@ msgstr "نشانی جریان"
 msgid "Add Station"
 msgstr "افزودن ایستگاه"
 
-#: data/gtk/device_dialog.ui:7 data/gtk/player_view.ui:134
+#: data/gtk/device_dialog.ui:7 data/gtk/player_view.ui:135
 msgid "Connect Device"
 msgstr "وصل کردن افزاره"
 
@@ -263,31 +263,31 @@ msgstr "_پنجره"
 msgid "_Help"
 msgstr "_راهنما"
 
-#: data/gtk/player_gadget.ui:40 data/gtk/player_toolbar.ui:92
-#: data/gtk/player_view.ui:158 data/gtk/station_row.ui:86
+#: data/gtk/player_gadget.ui:40 data/gtk/player_toolbar.ui:93
+#: data/gtk/player_view.ui:159 data/gtk/station_row.ui:86
 msgid "Play"
 msgstr "پخش"
 
-#: data/gtk/player_gadget.ui:55 data/gtk/player_toolbar.ui:106
-#: data/gtk/player_view.ui:172
+#: data/gtk/player_gadget.ui:55 data/gtk/player_toolbar.ui:107
+#: data/gtk/player_view.ui:173
 msgid "Stop"
 msgstr "توقّف"
 
-#: data/gtk/player_gadget.ui:71 data/gtk/player_toolbar.ui:121
-#: data/gtk/player_view.ui:187
+#: data/gtk/player_gadget.ui:71 data/gtk/player_toolbar.ui:122
+#: data/gtk/player_view.ui:188
 msgid "Buffering…"
 msgstr "میانگیری…"
 
 #: data/gtk/player_gadget.ui:139 data/gtk/player_toolbar.ui:29
-#: data/gtk/player_view.ui:58 src/app.rs:269
+#: data/gtk/player_view.ui:58 src/app.rs:268
 msgid "No Playback"
 msgstr "بدون پخش"
 
-#: data/gtk/player_gadget.ui:198
+#: data/gtk/player_gadget.ui:199
 msgid "Close"
 msgstr "بستن"
 
-#: data/gtk/player_gadget.ui:209
+#: data/gtk/player_gadget.ui:210
 msgid "Restore Window"
 msgstr "بازگرداندن پنجره"
 
@@ -295,19 +295,19 @@ msgstr "بازگرداندن پنجره"
 msgid "Enable Gadget Mode"
 msgstr "به کار انداختن حالت ابزارکی"
 
-#: data/gtk/player_view.ui:217
+#: data/gtk/player_view.ui:218
 msgid "Show Station Details"
 msgstr "نمایش جزییات ایستگاه"
 
-#: data/gtk/player_view.ui:268
+#: data/gtk/player_view.ui:269
 msgid "No Tracks"
 msgstr "بدون قطعه"
 
-#: data/gtk/player_view.ui:279
+#: data/gtk/player_view.ui:280
 msgid "Played tracks will appear here"
 msgstr "قطعه‌های پخش شده این‌جا ظاهر خواهند شد"
 
-#: data/gtk/player_view.ui:313
+#: data/gtk/player_view.ui:314
 msgid "An error occurred"
 msgstr "خطایی پیش آمد"
 
@@ -342,8 +342,8 @@ msgstr "ضبط کردن"
 
 #: data/gtk/preferences_dialog.ui:44
 msgid ""
-"Tracks are automatically recognised based on the station stream metadata and can "
-"be saved."
+"Tracks are automatically recognised based on the station stream metadata and "
+"can be saved."
 msgstr ""
 "قطعه‌ها به صورت خودکار با استفاده از فرادادهٔ جریان بازشناسی شده و قابل ذخیره‌اند."
 
@@ -514,7 +514,8 @@ msgstr "ایستگاه محلّی"
 
 #: data/gtk/station_dialog.ui:112
 msgid ""
-"This station exists only in your library, and is not part of the public database"
+"This station exists only in your library, and is not part of the public "
+"database"
 msgstr ""
 "ایستگاه فقط در کتاب‌خانه‌تان وجود داشته و بخشی از پایگاه دادهٔ همگانی ایستگاه‌های "
 "برخط نیست"
@@ -525,8 +526,8 @@ msgstr "ایستگاه یتیم"
 
 #: data/gtk/station_dialog.ui:127
 msgid ""
-"The information could not be updated, probably this station was removed from the "
-"public database"
+"The information could not be updated, probably this station was removed from "
+"the public database"
 msgstr ""
 "اطّلاعات نتوانستند به‌روز شوند. احتمالاً این ایستگاه از پایگاه دادهٔ همگانی "
 "ایستگاه‌های برخط برداشته شده"
@@ -613,20 +614,20 @@ msgstr "ذخیره شده"
 msgid "Toggle Mute"
 msgstr "تغییر حالت خموشی"
 
-#: src/app.rs:85
+#: src/app.rs:84
 msgid "Track no longer available"
 msgstr "قطعه دیگر موجود نیست"
 
-#: src/app.rs:109 src/app.rs:133
+#: src/app.rs:108 src/app.rs:132
 msgid "This track is currently not being recorded"
 msgstr "در حال حاضر قطعه ضبط نمی‌شود"
 
-#: src/app.rs:370
+#: src/app.rs:365
 msgid "Active Playback"
 msgstr "فعّال کردن پخش"
 
 #: src/audio/player.rs:455
-msgid "Don't Record"
+msgid "Don’t Record"
 msgstr "ضبط نکردن"
 
 #: src/audio/recording_state.rs:53 src/audio/recording_state.rs:55
@@ -662,7 +663,7 @@ msgid "The track contains a word that is on the ignore list"
 msgstr "قطعه شامل واژه‌ای در سیاههٔ چشم‌پوشی است."
 
 #: src/audio/recording_state.rs:73
-msgid "The track wasn't played from the beginning, so it can't be fully recorded"
+msgid "The track wasn’t played from the beginning, so it can’t be fully recorded"
 msgstr "قطعه از ابتدا پخش نشده و نمی‌تواند کامل ضبط شود"
 
 #: src/audio/recording_state.rs:76
@@ -702,13 +703,13 @@ msgid "Donate"
 msgstr "اعانه"
 
 #: src/ui/add_station_dialog.rs:92
-#, rust-format
 msgid ""
-"This station will only be added to your library. If you want it to be available "
-"to everyone, you should add it to the <a href=\"{}\">public database</a>."
+"This station will only be added to your library. If you want it to be "
+"available to everyone, you should add it to the <a href=\"{}\">public "
+"database</a>."
 msgstr ""
-"این ایستگاه به کتابخانه‌تان افزوده خواهد شد. اگر می‌خواهید در دسترس همه باشد، باید "
-"به <a href=\"{}\">پایگاه دادهٔ عمومی</a> بیفزاییدش."
+"این ایستگاه به کتابخانه‌تان افزوده خواهد شد. اگر می‌خواهید در دسترس همه باشد، "
+"باید به <a href=\"{}\">پایگاه دادهٔ عمومی</a> بیفزاییدش."
 
 #: src/ui/add_station_dialog.rs:105
 msgid "Select Station Cover"
@@ -719,17 +720,14 @@ msgid "Show Details"
 msgstr "نمایش جزییات"
 
 #: src/ui/pages/library_page.rs:114
-#, rust-format
 msgid "Welcome to {}"
 msgstr "به {} خوش‌آمدید"
 
 #: src/ui/pages/library_page.rs:121
-#, rust-format
 msgid "_About {}"
 msgstr "_دربارهٔ {}"
 
 #: src/ui/pages/search_page.rs:107
-#, rust-format
 msgid ""
 "The displayed information is provided by {}.\n"
 "{} has no influence on the listed stations."
@@ -738,7 +736,6 @@ msgstr ""
 "{} هیچ تأثیری روی ایستگاه‌های سیاهه شده ندارد."
 
 #: src/ui/player/player_gadget.rs:68
-#, rust-format
 msgid "{} INTERNET RADIO"
 msgstr "رادیوهای اینترنتی موج {}"
 
@@ -751,21 +748,18 @@ msgid "_Select"
 msgstr "_گینش"
 
 #: src/ui/preferences_dialog.rs:164
-#, rust-format
 msgid "{} min"
 msgid_plural "{} min"
 msgstr[0] "{} دقیقه"
 msgstr[1] "{} دقیقه"
 
 #: src/ui/preferences_dialog.rs:173
-#, rust-format
 msgid "{} sec"
 msgid_plural "{} sec"
 msgstr[0] "{} ثانیه"
 msgstr[1] "{} ثانیه"
 
 #: src/ui/station_dialog.rs:206
-#, rust-format
 msgid "{} kbit/s"
 msgstr "{} ک‌بی/ث"
 
@@ -773,35 +767,30 @@ msgstr "{} ک‌بی/ث"
 msgid "Copied"
 msgstr "رونوشت شد"
 
-#: src/utils.rs:50
-#, rust-format
+#: src/utils.rs:56
 msgid "{} hour"
 msgid_plural "{} hours"
 msgstr[0] "{} ساعت"
 msgstr[1] "{} ساعت"
 
-#: src/utils.rs:56
-#, rust-format
+#: src/utils.rs:62
 msgid "{} minute"
 msgid_plural "{} minutes"
 msgstr[0] "{} دقیقه"
 msgstr[1] "{} دقیقه"
 
-#: src/utils.rs:61
-#, rust-format
+#: src/utils.rs:67
 msgid "{} second"
 msgid_plural "{} seconds"
 msgstr[0] "{} ثانیه"
 msgstr[1] "{} ثانیه"
 
-#: src/utils.rs:71
-#, rust-format
+#: src/utils.rs:77
 msgid "{hours} {mins} {secs}"
 msgstr "{hours} {mins} {secs}"
 
 #. Translators: Do NOT translate the content between '{' and '}', this is a variable name.
-#: src/utils.rs:79
-#, rust-format
+#: src/utils.rs:85
 msgid "{mins} {secs}"
 msgstr "{mins} {secs}"
 
@@ -950,8 +939,8 @@ msgstr "{mins} {secs}"
 #~ msgstr "گشودن پایگاه وب"
 
 #~ msgid ""
-#~ "The number of results is limited to {} item. Try using a more specific search "
-#~ "term."
+#~ "The number of results is limited to {} item. Try using a more specific "
+#~ "search term."
 #~ msgid_plural ""
 #~ "The number of results is limited to {} items. Try using a more specific "
 #~ "search term."
