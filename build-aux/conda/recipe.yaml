@@ -23,7 +23,6 @@ build:
     interpreter: brush
     content:
       - |
-        export CARGO_PROFILE_RELEASE_STRIP="none"
         export GETTEXT_DIR="${PREFIX}"
 
         cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
@@ -78,10 +77,10 @@ requirements:
       then:
         - glycin-loaders
 
-    - zlib
     - expat
     - freetype
-    - libxml2-devel
+    - harfbuzz
+    - zlib
   run:
     - font-ttf-adwaita
 
