@@ -82,6 +82,8 @@ requirements:
     - expat
     - freetype
     - libxml2-devel
+  run:
+    - font-ttf-adwaita
 
 tests:
   - package_contents:

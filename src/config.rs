@@ -16,7 +16,7 @@ macro_rules! meson_env {
     }};
 }
 
-static PREFIX: LazyLock<PathBuf> = LazyLock::new(|| {
+pub static PREFIX: LazyLock<PathBuf> = LazyLock::new(|| {
     std::env::current_exe()
         .unwrap()
         .ancestors()

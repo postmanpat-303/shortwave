@@ -160,3 +160,25 @@ pub async fn background_portal_permissions() -> bool {
         true
     }
 }
+
+#[cfg(target_os = "macos")]
+pub fn register_coretext_fonts() {
+    let entries = std::fs::read_dir(crate::config::PREFIX.join("fonts"))
+        .into_iter()
+        .flatten()
+        .flatten();
+
+    for file in entries
+        .map(|e| e.path())
+        .filter(|p| p.extension().is_some_and(|ext| ext == "ttf"))
+    {
+        debug!("Register font: {:?}", file);
+        unsafe {
+            objc2_core_text::CTFontManagerRegisterFontsForURL(
+                &objc2_core_foundation::CFURL::from_file_path(&file).unwrap(),
+                objc2_core_text::CTFontManagerScope::Process,
+                std::ptr::null_mut(),
+            );
+        }
+    }
+}

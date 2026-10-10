@@ -170,12 +170,6 @@ mod imp {
                 obj.add_css_class("devel");
             }
 
-            // "gtk-primary-button-warps-slider" defaults to "false"
-            // on macOS which makes the volume slider unusable
-            gtk::Settings::default()
-                .expect("Could not get default GtkSettings")
-                .set_gtk_primary_button_warps_slider(true);
-
             // Restore window geometry
             let width = settings_manager::integer(Key::WindowWidth);
             let height = settings_manager::integer(Key::WindowHeight);

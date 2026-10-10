@@ -68,5 +68,7 @@ gdk4-win32 = { version = "0.11", features = ["win32"] }
 block2 = "0.6"
 objc2 = "0.6"
 objc2-app-kit = "0.3"
+objc2-core-foundation = "0.3"
+objc2-core-text = "0.3"
 objc2-foundation = "0.3"
 objc2-media-player = "0.3"

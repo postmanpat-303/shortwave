@@ -33,6 +33,7 @@ install = { cmd = "ninja -C build install", depends-on = ["build"] }
 app = { cmd = "shortwave-devel", depends-on = ["install"] }
 
 [dependencies]
+font-ttf-adwaita = "*"
 glycin-gtk4 = "*"
 gst-plugins-bad = "*"
 gst-plugins-base = "*"
