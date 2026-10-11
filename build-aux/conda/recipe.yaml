@@ -33,13 +33,13 @@ build:
         then: codesign --force --sign - --identifier "${{ app_id }}" "${PREFIX}/bin/${{ name }}"
       - |
         mkdir -p "${PREFIX}/Menu"
-        sed \
-          -e "s|@BIN_NAME@|${{ name }}|g" \
-          -e "s|@APP_ID@|${{ app_id }}|g" \
-          -e "s|@DISPLAY_NAME@|${{ display_name }}|g" \
-          -e "s|@SUMMARY@|${{ summary }}|g" \
-          -e "s|@VERSION@|${{ version }}|g" \
-          "${RECIPE_DIR}/menu.json" > "${PREFIX}/Menu/${PKG_NAME}_menu.json"
+        menu=$(<"${RECIPE_DIR}/menu.json")
+        menu=${menu//@NAME@/${{ name }}}
+        menu=${menu//@APP_ID@/${{ app_id }}}
+        menu=${menu//@DISPLAY_NAME@/${{ display_name }}}
+        menu=${menu//@SUMMARY@/${{ summary }}}
+        menu=${menu//@VERSION@/${{ version }}}
+        printf '%s\n' "$menu" > "${PREFIX}/Menu/${PKG_NAME}_menu.json"
       - if: osx
         then: python3 "${RECIPE_DIR}/generate-icon.py" "data/icons/hicolor/scalable/apps/${{ app_id }}.svg" "${PREFIX}/Menu/icon.icns"
       - if: linux
@@ -60,9 +60,6 @@ requirements:
     - if: unix
       then:
         - ${{ stdlib('c') }}
-    - if: win
-      then:
-        - m2-base
   host:
     - glycin-gtk4
     - gst-plugins-bad
