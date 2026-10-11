@@ -29,6 +29,8 @@ build:
         meson setup -Dprofile=${{ profile }} ${MESON_ARGS} --prefix="${LIBRARY_PREFIX:-${PREFIX}}" --wrap-mode=nofallback builddir
         ninja -v -C builddir -j "${CPU_COUNT}"
         ninja -C builddir install -j "${CPU_COUNT}"
+      - if: osx
+        then: codesign --force --sign - --identifier "${{ app_id }}" "${PREFIX}/bin/${{ name }}"
       - |
         mkdir -p "${PREFIX}/Menu"
         sed \
