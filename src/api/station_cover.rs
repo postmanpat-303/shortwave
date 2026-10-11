@@ -181,7 +181,7 @@ impl StationCover {
         Ok((texture, bytes))
     }
 
-    // Intial implementation from Highscore (Alice Mikhaylenko), ported to gsk nodes
+    // Initial implementation from Highscore (Alice Mikhaylenko), ported to gsk nodes
     // https://gitlab.gnome.org/World/highscore/-/blob/b07460f0c1475269381902c6305e4d91e55b61f5/src/library/cover-loader.vala#L124
     fn draw_cover(favicon: Texture, size: f32) -> gsk::RenderNode {
         // Fit size
