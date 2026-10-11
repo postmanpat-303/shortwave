@@ -12,6 +12,7 @@ import sys
 parser = argparse.ArgumentParser()
 parser.add_argument('--cargo')
 parser.add_argument('--profile')
+parser.add_argument('--binary')
 parser.add_argument('--output')
 parser.add_argument('cargo_options', nargs='*')
 args = parser.parse_args()
@@ -24,5 +25,5 @@ if result.returncode != 0:
 # 2. Copy binary to the location meson expects
 target_dir = os.environ['CARGO_TARGET_DIR']
 triple = os.environ.get('CARGO_BUILD_TARGET', '')
-binary = os.path.join(target_dir, triple, args.profile, os.path.basename(args.output))
+binary = os.path.join(target_dir, triple, args.profile, args.binary)
 shutil.copy2(binary, args.output)

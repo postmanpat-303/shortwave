@@ -51,11 +51,25 @@ fn main() -> glib::ExitCode {
     // Initialize paths
     path::init().expect("Unable to create paths.");
 
+    // Register Adwaita fonts on macOS with CoreText
+    #[cfg(target_os = "macos")]
+    utils::register_coretext_fonts();
+
     // Initialize GTK
     gtk::init().unwrap_or_else(|_| panic!("Failed to initialize GTK."));
 
     // Initialize Gstreamer
     gstreamer::init().expect("Failed to initialize Gstreamer");
+
+    // Platform specific settings overwrites
+    #[cfg(target_os = "macos")]
+    if let Some(settings) = gtk::Settings::default() {
+        // Defaults to "false" which makes the volume slider unusable
+        settings.set_gtk_primary_button_warps_slider(true);
+        // Match Linux font size (macOS defaults to 72 DPI, vs Linux 96 DPI)
+        settings.set_gtk_xft_dpi(96 * 1024);
+        settings.set_gtk_font_name(Some("Adwaita Sans 11"));
+    }
 
     // Initialize variables
     glib::set_application_name(*config::NAME);

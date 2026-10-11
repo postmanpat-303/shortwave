@@ -30,6 +30,7 @@ endif
 
 # Initialize project variables
 name       = 'Shortwave'
+pkgname    = meson.project_name()
 base_id    = 'de.haeckerfelix.Shortwave'
 path_id    = '/de/haeckerfelix/Shortwave'
 app_id     = base_id
@@ -37,9 +38,10 @@ profile    = get_option('profile')
 datadir    = join_paths(get_option('prefix'), get_option('datadir'))
 bindir     = join_paths(get_option('prefix'), get_option('bindir'))
 
-# Change app id for development builds
+# Change app id and package name for development builds
 if profile == 'development'
   app_id = '@0@.Devel'.format(app_id)
+  pkgname = '@0@-devel'.format(pkgname)
 endif
 
 subdir('data')

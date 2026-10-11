@@ -6,7 +6,7 @@ cargo_env = environment()
 cargo_env.set('CARGO_HOME', meson.project_build_root() / 'cargo-home')
 cargo_env.set('CARGO_TARGET_DIR', meson.project_build_root() / 'target')
 cargo_env.set('MESON_NAME', name)
-cargo_env.set('MESON_PKGNAME', meson.project_name())
+cargo_env.set('MESON_PKGNAME', pkgname)
 cargo_env.set('MESON_APP_ID', app_id)
 cargo_env.set('MESON_PATH_ID', path_id)
 cargo_env.set('MESON_VERSION', meson.project_version())
@@ -33,7 +33,7 @@ custom_target(
   'cargo-build',
   build_by_default: true,
   build_always_stale: true,
-  output: meson.project_name() + exe_suffix,
+  output: pkgname + exe_suffix,
   console: true,
   install: true,
   install_dir: bindir,
@@ -42,6 +42,7 @@ custom_target(
     cargo_build_script,
     '--cargo', cargo,
     '--profile', cargo_profile,
+    '--binary', meson.project_name() + exe_suffix,
     '--output', '@OUTPUT@',
     '--', cargo_options,
   ]

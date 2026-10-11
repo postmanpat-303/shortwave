@@ -1,0 +1,31 @@
+{
+  "$schema": "https://schemas.conda.org/menuinst/menuinst-1-1-3.schema.json",
+  "menu_name": "@DISPLAY_NAME@",
+  "menu_items": [
+    {
+      "name": "@DISPLAY_NAME@",
+      "description": "@SUMMARY@",
+      "icon": "{{ MENU_DIR }}/icon.{{ ICON_EXT }}",
+      "command": [
+        "{{ BIN_DIR }}/@BIN_NAME@"
+      ],
+      "platforms": {
+        "linux": {
+          "DBusActivatable": true,
+          "StartupNotify": true,
+          "StartupWMClass": "@APP_ID@"
+        },
+        "osx": {
+          "precommand": "export CFProcessPath=\"{{ MENU_ITEM_LOCATION }}/Contents/MacOS/@BIN_NAME@\"",
+          "CFBundleName": "@DISPLAY_NAME@",
+          "CFBundleIdentifier": "@APP_ID@",
+          "CFBundleVersion": "@VERSION@",
+          "info_plist_extra": {
+            "NSUserNotificationAlertStyle": "alert"
+          }
+        },
+        "win": {}
+      }
+    }
+  ]
+}

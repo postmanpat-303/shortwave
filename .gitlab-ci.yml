@@ -10,21 +10,91 @@ variables:
   RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
   RUNTIME_IMAGE: "quay.io/gnome_infrastructure/gnome-runtime-images:gnome-master"
 
-# x86_64 Flatpak bundle
-flatpak@x86_64:
+# Flatpak Builds
+
+flatpak-build@linux-x86_64:
   extends: ".flatpak@x86_64"
 
-# aarch64 Flatpak bundle
-flatpak@aarch64:
+flatpak-build@linux-aarch64:
   extends: ".flatpak@aarch64"
 
-nightly@x86_64:
+flatpak-publish@linux-x86_64:
   extends: ".publish_nightly"
-  needs: ["flatpak@x86_64"]
+  needs: ["flatpak-build@linux-x86_64"]
 
-nightly@aarch64:
+flatpak-publish@linux-aarch64:
   extends: ".publish_nightly"
-  needs: ["flatpak@aarch64"]
+  needs: ["flatpak-build@linux-aarch64"]
+
+# Pixi Builds
+
+.pixi-build: &pixi-build
+  rules:
+    - if: '$CI_COMMIT_TAG'
+      variables:
+        PROFILE: "default"
+    - variables:
+        PROFILE: "development"
+  script:
+    - pixi publish --path . --variant profile=$PROFILE
+  artifacts:
+    paths:
+      - "*.conda"
+
+pixi-build@linux-x86_64:
+  <<: *pixi-build
+  image: ghcr.io/prefix-dev/pixi:latest
+  before_script:
+    - pixi global install git
+
+pixi-build@linux-aarch64:
+  <<: *pixi-build
+  image: ghcr.io/prefix-dev/pixi:latest
+  tags:
+    - flatpak-aarch64
+  before_script:
+    - pixi global install git
+
+pixi-build@windows-x86_64:
+  <<: *pixi-build
+  tags:
+    - win32-ps
+  variables:
+    PIXI_HOME: "${CI_PROJECT_DIR}/.pixi-home"
+    PIXI_NO_PATH_UPDATE: "1"
+    GIT_CONFIG_COUNT: "1"
+    GIT_CONFIG_KEY_0: "core.longpaths"
+    GIT_CONFIG_VALUE_0: "true"
+  before_script:
+    - iwr -useb https://pixi.sh/install.ps1 | iex
+    - $env:Path = "$env:PIXI_HOME\bin;$env:Path"
+
+pixi-build@macos-arm64:
+  <<: *pixi-build
+  tags:
+    - macos
+    - arm64
+  variables:
+    ORKA_RUNNER: tahoe-3
+    PIXI_HOME: "${CI_PROJECT_DIR}/.pixi-home"
+    PIXI_NO_PATH_UPDATE: "1"
+  before_script:
+    - curl -fsSL https://pixi.sh/install.sh | sh
+    - export PATH="${PIXI_HOME}/bin:$PATH"
+
+pixi-publish:
+  image: ghcr.io/prefix-dev/pixi:latest
+  needs:
+    - pixi-build@linux-x86_64
+    - pixi-build@linux-aarch64
+    - pixi-build@windows-x86_64
+    - pixi-build@macos-arm64
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+  script:
+    - pixi upload prefix --channel haecker-felix/shortwave *.conda
+
+# Checks
 
 .flatpak-command: &flatpak-command
   image: '${RUNTIME_IMAGE}'

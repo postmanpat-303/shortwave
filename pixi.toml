@@ -1,5 +1,5 @@
 [workspace]
-name = "Shortwave"
+name = "shortwave"
 authors = ["Felix Häcker haeckerfelix@gnome.org"]
 channels = ["conda-forge"]
 platforms = [
@@ -8,26 +8,20 @@ platforms = [
     "osx-arm64",
     "win-64",
 ]
+preview = ["pixi-build"]
 
 [activation.env]
 RUST_LOG = "shortwave=debug,cast_sender=debug"
 RUST_BACKTRACE = "1"
-GSETTINGS_BACKEND = "keyfile"
 
 [target.unix.activation.env]
 GETTEXT_DIR = "$CONDA_PREFIX"
 MESON_PREFIX = "$CONDA_PREFIX"
-XDG_DATA_HOME = "$PIXI_PROJECT_ROOT/xdg-home/data"
-XDG_CACHE_HOME = "$PIXI_PROJECT_ROOT/xdg-home/cache"
-XDG_CONFIG_HOME = "$PIXI_PROJECT_ROOT/xdg-home/config"
 XDG_DATA_DIRS = "$CONDA_PREFIX/share:$XDG_DATA_DIRS"
 
 [target.win.activation.env]
 GETTEXT_DIR = "%CONDA_PREFIX%"
 MESON_PREFIX = "%CONDA_PREFIX%\\Library"
-XDG_DATA_HOME = "%PIXI_PROJECT_ROOT%\\xdg-home\\data"
-XDG_CACHE_HOME = "%PIXI_PROJECT_ROOT%\\xdg-home\\cache"
-XDG_CONFIG_HOME = "%PIXI_PROJECT_ROOT%\\xdg-home\\config"
 XDG_DATA_DIRS = "%CONDA_PREFIX%\\Library\\share;%XDG_DATA_DIRS%"
 
 [tasks]
@@ -36,9 +30,10 @@ setup = { cmd = "meson setup build --prefix=$MESON_PREFIX -Dprofile=development 
 ] }
 build = { cmd = "ninja -C build", depends-on = ["setup"] }
 install = { cmd = "ninja -C build install", depends-on = ["build"] }
-app = { cmd = "shortwave", depends-on = ["install"] }
+app = { cmd = "shortwave-devel", depends-on = ["install"] }
 
 [dependencies]
+font-ttf-adwaita = "*"
 glycin-gtk4 = "*"
 gst-plugins-bad = "*"
 gst-plugins-base = "*"
@@ -65,3 +60,10 @@ libshumate = "*"
 
 [target.linux.dependencies]
 glycin-loaders = "*"
+
+[workspace.build-variants]
+profile = ["default", "development"]
+
+[package]
+build.backend = { name = "pixi-build-rattler-build", version = "*" }
+build.config = { recipe = "build-aux/conda/recipe.yaml", experimental = true }

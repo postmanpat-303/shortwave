@@ -24,18 +24,47 @@ use crate::config;
 
 pub static DATA: LazyLock<PathBuf> = LazyLock::new(|| {
     let mut path = glib::user_data_dir();
-    path.push(*config::NAME);
+    path.push(*config::PKGNAME);
     path
 });
 
 pub static CACHE: LazyLock<PathBuf> = LazyLock::new(|| {
     let mut path = glib::user_cache_dir();
-    path.push(*config::NAME);
+    path.push(*config::PKGNAME);
     path
 });
 
 pub fn init() -> std::io::Result<()> {
+    migrate_legacy_paths();
+
     fs::create_dir_all(DATA.to_owned())?;
     fs::create_dir_all(CACHE.to_owned())?;
     Ok(())
+}
+
+/// Older versions used `config::NAME` instead of `config::PKGNAME`
+/// TODO: Drop migration step again with next major release
+fn migrate_legacy_paths() {
+    if *config::PROFILE == "development" {
+        return;
+    }
+
+    let legacy_data = glib::user_data_dir().join(*config::NAME);
+    if legacy_data.exists() && !DATA.exists() {
+        info!("Migrate data directory...");
+        let _ = fs::rename(&legacy_data, &*DATA);
+    }
+
+    let legacy_cache = glib::user_cache_dir().join(*config::NAME);
+    if legacy_cache.exists() && !CACHE.exists() {
+        info!("Migrate cache directory...");
+        let _ = fs::rename(legacy_cache, &*CACHE);
+    }
+
+    let legacy_db = DATA.join(format!("{}.db", *config::NAME));
+    let db = DATA.join(format!("{}.db", *config::PKGNAME));
+    if legacy_db.exists() && !db.exists() {
+        info!("Migrate database...");
+        let _ = fs::rename(legacy_db, db);
+    }
 }

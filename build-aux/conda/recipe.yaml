@@ -1,0 +1,104 @@
+context:
+  is_devel: ${{ profile == "development" }}
+
+  name: shortwave${{ "-devel" if is_devel else "" }}
+  app_id: de.haeckerfelix.Shortwave${{ ".Devel" if is_devel else "" }}
+  display_name: Shortwave${{ " (Devel)" if is_devel else "" }}
+  summary: Listen to internet radio
+
+  git_tag: ${{ git.latest_tag("") }}
+  git_tag_distance: ${{ git.latest_tag_distance("") }}
+  version: ${{ git_tag }}${{ ("." ~ git_tag_distance) if is_devel else "" }}
+
+package:
+  name: ${{ name }}
+  version: ${{ version }}
+
+source:
+  path: ../../
+
+build:
+  number: 0
+  script:
+    interpreter: brush
+    content:
+      - |
+        export GETTEXT_DIR="${PREFIX}"
+
+        cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+        meson setup -Dprofile=${{ profile }} ${MESON_ARGS} --prefix="${LIBRARY_PREFIX:-${PREFIX}}" --wrap-mode=nofallback builddir
+        ninja -v -C builddir -j "${CPU_COUNT}"
+        ninja -C builddir install -j "${CPU_COUNT}"
+      - if: osx
+        then: codesign --force --sign - --identifier "${{ app_id }}" "${PREFIX}/bin/${{ name }}"
+      - |
+        mkdir -p "${PREFIX}/Menu"
+        sed \
+          -e "s|@BIN_NAME@|${{ name }}|g" \
+          -e "s|@APP_ID@|${{ app_id }}|g" \
+          -e "s|@DISPLAY_NAME@|${{ display_name }}|g" \
+          -e "s|@SUMMARY@|${{ summary }}|g" \
+          -e "s|@VERSION@|${{ version }}|g" \
+          "${RECIPE_DIR}/menu.json" > "${PREFIX}/Menu/${PKG_NAME}_menu.json"
+      - if: osx
+        then: python3 "${RECIPE_DIR}/generate-icon.py" "data/icons/hicolor/scalable/apps/${{ app_id }}.svg" "${PREFIX}/Menu/icon.icns"
+      - if: linux
+        then: python3 "${RECIPE_DIR}/generate-icon.py" "data/icons/hicolor/scalable/apps/${{ app_id }}.svg" "${PREFIX}/Menu/icon.png"
+      - if: win
+        then: python "${RECIPE_DIR}/generate-icon.py" "data/icons/hicolor/scalable/apps/${{ app_id }}.svg" "${PREFIX}/Menu/icon.ico"
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ compiler('rust') }}
+    - brush
+    - cargo-bundle-licenses
+    - meson
+    - pkg-config
+    - pillow
+    - resvg
+    - if: unix
+      then:
+        - ${{ stdlib('c') }}
+    - if: win
+      then:
+        - m2-base
+  host:
+    - glycin-gtk4
+    - gst-plugins-bad
+    - gst-plugins-base
+    - gst-plugins-good
+    - gst-plugins-ugly
+    - gstreamer
+    - libadwaita
+    - libsqlite
+    - if: unix
+      then:
+        - libshumate
+    - if: linux
+      then:
+        - glycin-loaders
+
+    - expat
+    - freetype
+    - harfbuzz
+    - zlib
+  run:
+    - font-ttf-adwaita
+
+tests:
+  - package_contents:
+      bin:
+        - ${{ name }}
+
+about:
+  homepage: https://apps.gnome.org/Shortwave/
+  license: GPL-3.0-or-later
+  license_file:
+    - COPYING.md
+    - THIRDPARTY.yml
+  summary: ${{ summary }}
+  description: |
+    Shortwave is an internet radio player that provides access to a station 
+    database with over 50,000 stations.
+  repository: https://gitlab.gnome.org/World/Shortwave

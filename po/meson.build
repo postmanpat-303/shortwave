@@ -1,4 +1,4 @@
 i18n.gettext(
-  meson.project_name(),
+  pkgname,
   preset: 'glib'
 )
