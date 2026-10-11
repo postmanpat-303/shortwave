@@ -12,11 +12,11 @@ EOF
 }
 
 # Style helpers
-act="\e[1;32m"
-warn="\e[1;33m"
-err="\e[1;31m"
-pos="\e[32m"
-res="\e[0m"
+act="\033[1;32m"
+warn="\033[1;33m"
+err="\033[1;31m"
+pos="\033[32m"
+res="\033[0m"
 
 # Common styled strings
 checking="${act}Checking${res}"
@@ -55,10 +55,10 @@ cargo_fmt() {
 }
 
 cargo_typos() {
-    if ! check_tool_availability "typos-cli" "$HOME/.cargo/bin/typos --version"; then
+    if ! check_tool_availability "typos-cli" "typos --version"; then
         return
     fi
-    execute "cargo-typos" "$HOME/.cargo/bin/typos"
+    execute "cargo-typos" "typos"
 }
 
 cargo_deny() {

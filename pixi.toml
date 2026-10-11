@@ -31,6 +31,16 @@ setup = { cmd = "meson setup build --prefix=$MESON_PREFIX -Dprofile=development 
 build = { cmd = "ninja -C build", depends-on = ["setup"] }
 install = { cmd = "ninja -C build install", depends-on = ["build"] }
 app = { cmd = "shortwave-devel", depends-on = ["install"] }
+check = { cmd = "bash build-aux/checks.sh {{ '' if check == 'all' else check }}", args = [
+    { arg = "check", default = "all", choices = [
+        "all",
+        "cargo_fmt",
+        "cargo_typos",
+        "cargo_deny",
+        "cargo_clippy",
+        "potfiles",
+    ] },
+] }
 
 [dependencies]
 font-ttf-adwaita = "*"
@@ -49,11 +59,12 @@ meson = "*"
 pkgconfig = "*"
 rust = "*"
 rust-src = "*"
+typos = "*"
 
 expat = "*"
-zlib = "*"
 freetype = "*"
-libxml2-devel = "*"
+harfbuzz = "*"
+zlib = "*"
 
 [target.unix.dependencies]
 libshumate = "*"
