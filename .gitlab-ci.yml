@@ -46,7 +46,7 @@ pixi-build@linux-x86_64:
   <<: *pixi-build
   image: ghcr.io/prefix-dev/pixi:latest
   before_script:
-    - apt-get update -qq && apt-get install -y --no-install-recommends git
+    - pixi global install git
 
 pixi-build@linux-aarch64:
   <<: *pixi-build
@@ -54,7 +54,7 @@ pixi-build@linux-aarch64:
   tags:
     - flatpak-aarch64
   before_script:
-    - apt-get update -qq && apt-get install -y --no-install-recommends git
+    - pixi global install git
 
 pixi-build@windows-x86_64:
   <<: *pixi-build
