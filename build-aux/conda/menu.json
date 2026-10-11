@@ -7,7 +7,7 @@
       "description": "@SUMMARY@",
       "icon": "{{ MENU_DIR }}/icon.{{ ICON_EXT }}",
       "command": [
-        "{{ BIN_DIR }}/@BIN_NAME@"
+        "{{ BIN_DIR }}/@NAME@"
       ],
       "platforms": {
         "linux": {
@@ -16,7 +16,7 @@
           "StartupWMClass": "@APP_ID@"
         },
         "osx": {
-          "precommand": "export CFProcessPath=\"{{ MENU_ITEM_LOCATION }}/Contents/MacOS/@BIN_NAME@\"",
+          "precommand": "export CFProcessPath=\"{{ MENU_ITEM_LOCATION }}/Contents/MacOS/@NAME@\"",
           "CFBundleName": "@DISPLAY_NAME@",
           "CFBundleIdentifier": "@APP_ID@",
           "CFBundleVersion": "@VERSION@",

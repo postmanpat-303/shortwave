@@ -35,6 +35,8 @@ def main() -> None:
     parser.add_argument("output", type=Path, help="output icon file")
     args = parser.parse_args()
 
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+
     match args.output.suffix:
         case ".png":
             rasterize(args.svg, 1024).save(args.output)
