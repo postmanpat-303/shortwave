@@ -37,7 +37,7 @@ build:
 
         # Generate conda menuinst file
         menu=$(<"${RECIPE_DIR}/menu.json")
-        menu=${menu//@BIN_NAME@/${{ name }}}
+        menu=${menu//@NAME@/${{ name }}}
         menu=${menu//@APP_ID@/${{ app_id }}}
         menu=${menu//@DISPLAY_NAME@/${{ display_name }}}
         menu=${menu//@SUMMARY@/${{ summary }}}
