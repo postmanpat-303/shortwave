@@ -113,6 +113,7 @@ pixi-publish@macos-arm64:
 .pixi-check: &pixi-check
   stage: test
   image: ghcr.io/prefix-dev/pixi:latest
+  needs: []
   before_script:
     - pixi global install git
 
