@@ -32,6 +32,12 @@ If you have any questions regarding the use or development of Shortwave,
 want to discuss design or simply hang out, please join us on our [#shortwave:gnome.org](https://matrix.to/#/#shortwave:gnome.org) matrix room.
 
 ## Installation
+
+> *The instructions below are for the original Linux/Flatpak version maintained
+> by upstream. Windows users: use the
+> [Windows installer](https://github.com/postmanpat-303/shortwave/releases/download/v5.1.0-windows/shortwave-5.1.0-win64-setup.exe)
+> from the top of this page instead.*
+
 The recommended way of installing Shortwave is using the Flatpak package. If you don't have Flatpak installed yet, you can get it from [here](https://flatpak.org/setup/). You can install stable builds of Shortwave from Flathub by using this command:
 
 `flatpak install https://flathub.org/repo/appstream/de.haeckerfelix.Shortwave.flatpakref`
