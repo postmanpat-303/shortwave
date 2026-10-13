@@ -2,6 +2,10 @@
 
 > **Windows port — this fork:** an unofficial Windows build of Shortwave
 > (MSYS2/UCRT64, GTK 4 + Libadwaita) lives in [`windows-packaging/`](windows-packaging).
+>
+> **[⬇ Download for Windows (64-bit installer)](https://github.com/postmanpat-303/shortwave/releases/download/v5.1.0-windows/shortwave-5.1.0-win64-setup.exe)**
+> — or browse all [Releases](https://github.com/postmanpat-303/shortwave/releases).
+>
 > See the [Windows build & package guide](windows-packaging/README.md) for how to
 > compile the app and produce the installer from source. Everything else below
 > is the original upstream README.
