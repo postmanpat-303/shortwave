@@ -47,3 +47,11 @@ shortwave.pot
 !.pixi/config.toml
 xdg-home
 *.conda
+# ---- Windows port additions ----
+tools/
+bundle/
+.work/
+sw-test-install*/
+shortwave-*.exe
+__pycache__/
+Thumbs.db

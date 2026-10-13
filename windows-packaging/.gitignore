@@ -1,0 +1,27 @@
+# ---- Shortwave Windows port: things that must NOT be committed ----
+# (this same list is merged into the repo-root .gitignore; both layouts
+#  are covered: source in shortwave/ subfolder, or source at repo root)
+
+# Self-contained MSYS2 toolchain (multi-GB, downloaded separately)
+tools/
+
+# Meson build output
+shortwave/build/
+build/
+
+# Collected runtime bundle + intermediate packaging work
+shortwave/bundle/
+bundle/
+.work/
+sw-test-install*/
+
+# Installer output (build it with bundle.py + shortwave.nsi)
+shortwave-*.exe
+
+# Python / editor noise
+__pycache__/
+*.pyc
+Thumbs.db
+
+# Keep the packaging scripts themselves tracked — do not ignore:
+#   windows-packaging/   (bundle.py, launcher.c, shortwave.nsi, README.md)

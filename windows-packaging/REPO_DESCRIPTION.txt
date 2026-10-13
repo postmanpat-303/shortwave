@@ -1,0 +1,15 @@
+Shortwave (GNOME internet radio) — Windows port
+===============================================
+
+GitHub "About" description (paste into the repository's About field):
+  Shortwave internet radio player, ported to Windows (MSYS2 / UCRT64, GTK 4 + Libadwaita)
+
+Suggested topics (click "Topics" on the repo page and add):
+  shortwave, gnome, gtk4, libadwaita, windows, msys2, internet-radio, gstreamer
+
+Suggested "About" website field: leave blank, or point to upstream:
+  https://apps.gnome.org/Shortwave/
+
+Suggested note for the About / README badge area:
+  Fork of https://gitlab.gnome.org/World/Shortwave — see windows-packaging/README.md
+  for how to build the Windows installer.
