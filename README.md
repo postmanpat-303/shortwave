@@ -10,6 +10,18 @@
 > compile the app and produce the installer from source. Everything else below
 > is the original upstream README.
 
+## Screenshots (Windows build)
+
+Browsing the station database:
+
+![Browse stations on Windows](windows-packaging/screenshots/browse-stations.png)
+
+Scrolling through stations:
+
+![Scrolling through stations](windows-packaging/screenshots/scrolling-demo.gif)
+
+![Discover stations on Windows](windows-packaging/screenshots/discover-stations.png)
+
 ![screenshot](data/screenshots/1.png)
 ![screenshot](data/screenshots/4.png)
 
