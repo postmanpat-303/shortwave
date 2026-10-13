@@ -1,5 +1,11 @@
 # Shortwave
 
+> **Windows port — this fork:** an unofficial Windows build of Shortwave
+> (MSYS2/UCRT64, GTK 4 + Libadwaita) lives in [`windows-packaging/`](windows-packaging).
+> See the [Windows build & package guide](windows-packaging/README.md) for how to
+> compile the app and produce the installer from source. Everything else below
+> is the original upstream README.
+
 ![screenshot](data/screenshots/1.png)
 ![screenshot](data/screenshots/4.png)
 
