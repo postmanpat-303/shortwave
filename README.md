@@ -38,9 +38,9 @@ Shortwave is free, open-source software. There's no account, no ads and no subsc
 2. Run it. The installer isn't code-signed, so if Windows SmartScreen appears, click **More info → Run anyway**.
 3. Start Shortwave from the Start menu. The first launch can take a few seconds while the station list loads.
 
-The SHA-256 of every installer is in its release notes. To check it in PowerShell: `Get-FileHash .\shortwave-5.1.0-win64-setup.exe`.
+The SHA-256 of every installer is in its release notes. To check it in PowerShell: `Get-FileHash .\shortwave-5.1.0.1-win64-setup.exe`.
 
-Silent install: `shortwave-5.1.0-win64-setup.exe /S /D=C:\full\path`. Uninstall from Windows Settings, or silently with `<install folder>\uninstall.exe /S`.
+Silent install: `shortwave-5.1.0.1-win64-setup.exe /S /D=C:\full\path`. Uninstall from Windows Settings, or silently with `<install folder>\uninstall.exe /S`.
 
 ## Screenshots
 
