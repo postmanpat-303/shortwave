@@ -1,0 +1,38 @@
+// Windows resources for the Shortwave launcher (bin\shortwave.exe):
+// the app icon (group ID 1, so it is icon index 0 for shortcuts) and
+// version info. No manifest here: MinGW's gcc links its default manifest.
+// shortwave.ico must keep frames under 256 px as 32-bit BMP (PNG only at
+// 256 px), or Explorer shows a generic icon. Check with:
+//   python pe_icon.py --check-ico shortwave.ico
+#include <winver.h>
+
+1 ICON "shortwave.ico"
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION     5,1,0,1
+ PRODUCTVERSION  5,1,0,1
+ FILEFLAGSMASK   VS_FFI_FILEFLAGSMASK
+ FILEFLAGS       0
+ FILEOS          VOS_NT_WINDOWS32
+ FILETYPE        VFT_APP
+ FILESUBTYPE     VFT2_UNKNOWN
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "040904B0"
+    BEGIN
+      VALUE "CompanyName",      "GNOME Shortwave contributors (unofficial Windows build)"
+      VALUE "FileDescription",  "Shortwave"
+      VALUE "FileVersion",      "5.1.0.1"
+      VALUE "InternalName",     "shortwave"
+      VALUE "LegalCopyright",   "GPL-3.0-or-later"
+      VALUE "OriginalFilename", "shortwave.exe"
+      VALUE "ProductName",      "Shortwave"
+      VALUE "ProductVersion",   "5.1.0-windows.1"
+    END
+  END
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x0409, 1200
+  END
+END

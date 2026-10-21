@@ -1,4 +1,4 @@
-; Shortwave 5.1.0 - Windows installer (NSIS, 64-bit)
+; Shortwave 5.1.0 - Windows installer (NSIS, 64-bit), unofficial build 5.1.0-windows.1
 ; Packages the self-contained bundle (bin/ lib/ share/) built from
 ; gitlab.gnome.org/World/Shortwave @ e468e17 with MSYS2/UCRT64.
 
@@ -7,7 +7,8 @@ SetCompressor /SOLID lzma
 SetCompressorDictSize 64
 
 !define APPNAME "Shortwave"
-!define APPVERSION "5.1.0"
+!define APPVERSION "5.1.0.1"          ; numeric (file names, VERSIONINFO)
+!define APPVERSIONLABEL "5.1.0-windows.1" ; shown to users
 !define APPPUBLISHER "Felix Häcker (unofficial Windows build)"
 !define APPURL "https://apps.gnome.org/Shortwave/"
 !define APPID "de.haeckerfelix.Shortwave"
@@ -17,13 +18,28 @@ SetCompressorDictSize 64
 !include "x64.nsh"
 
 Name "${APPNAME}"
+BrandingText "${APPNAME} ${APPVERSIONLABEL} - free, unofficial Windows build"
 OutFile "shortwave-${APPVERSION}-win64-setup.exe"
 InstallDir "$PROGRAMFILES64\${APPNAME}"
 InstallDirRegKey HKLM "Software\${APPNAME}" "InstallDir"
 RequestExecutionLevel admin
 
+; --- Version info shown in the setup exe's Properties > Details ---
+VIProductVersion "${APPVERSION}"
+VIFileVersion "${APPVERSION}"
+VIAddVersionKey /LANG=1033 "ProductName" "${APPNAME}"
+VIAddVersionKey /LANG=1033 "FileDescription" "${APPNAME} ${APPVERSIONLABEL} Setup (unofficial Windows build)"
+VIAddVersionKey /LANG=1033 "ProductVersion" "${APPVERSIONLABEL}"
+VIAddVersionKey /LANG=1033 "FileVersion" "${APPVERSION}"
+VIAddVersionKey /LANG=1033 "CompanyName" "GNOME Shortwave contributors (unofficial Windows build)"
+VIAddVersionKey /LANG=1033 "LegalCopyright" "GPL-3.0-or-later"
+
 ; --- Interface settings ---
 !define MUI_ABORTWARNING
+; shortwave.ico must keep frames under 256 px as 32-bit BMP (PNG only at
+; 256 px), or Explorer/Edge fall back to a generic icon. The same ICO is
+; embedded in bin\shortwave.exe and bin\shortwave-bin.exe by bundle.py, so
+; the shortcuts below (icon index 0 of shortwave.exe) show it too.
 !define MUI_ICON "shortwave.ico"
 !define MUI_UNICON "shortwave.ico"
 !define MUI_FINISHPAGE_RUN "$INSTDIR\bin\shortwave.exe"
@@ -71,7 +87,7 @@ Section "!Shortwave (required)" SecApp
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPID}" \
         "URLInfoAbout" "${APPURL}"
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPID}" \
-        "DisplayVersion" "${APPVERSION}"
+        "DisplayVersion" "${APPVERSIONLABEL}"
 
     ${GetSize} "$INSTDIR" "/S=0K" $0 $1 $2
     IntFmt $0 "0x%08X" $0

@@ -24,9 +24,11 @@ build + packaging only — **no source modifications**.
 | `bundle.py` | Collects `shortwave.exe` + transitive DLL closure + curated GStreamer plugins + schemas/icons/locales into `shortwave/bundle/`; compiles the launcher |
 | `launcher.c` | Tiny wrapper that becomes `shortwave.exe`; sets `XDG_DATA_DIRS` so GSettings finds the relocated schemas, then runs `shortwave-bin.exe`. GLib bakes its data dir at compile time; without this a moved install can't find its schemas |
 | `shortwave.nsi` | NSIS installer script (MUI2, LZMA solid) |
-| `shortwave.ico` | Installer/app icon, generated from the app SVG |
+| `shortwave.ico` | Installer/app icon, generated from the app SVG. Frames under 256 px are 32-bit BMP, 256 px is PNG (an all-PNG ICO shows as a generic icon in Explorer/Edge) |
+| `shortwave.rc` | Icon + version info compiled into the launcher (`shortwave.exe`) by `bundle.py` via `windres` |
+| `pe_icon.py` | Checks ICO/EXE icon frames and repairs `rcedit` output (`--check-ico`, `--check`, `--fix`); needs `pefile` |
 | `COPYING.txt` | GPL-3.0 text shown on the installer's license page |
-| `shortwave-5.1.0-win64-setup.exe` | **The deliverable** (34 MB) |
+| `shortwave-5.1.0.1-win64-setup.exe` | **The deliverable** (34 MB) |
 
 ## Quick rebuild after changing code or graphics
 
@@ -38,12 +40,21 @@ cd .. && python bundle.py                # recollect bundle (~1 min)
 makensis.exe shortwave.nsi               # rebuild installer (~2 min)
 ```
 
-If the app SVG icon changed, regenerate `shortwave.ico` first:
+Extra tools for the icon step: `rcedit-x64.exe` (from
+https://github.com/electron/rcedit/releases) in `tools/` or on `PATH`, and
+`pefile` (`pacman -S mingw-w64-ucrt-x86_64-python-pefile`). `bundle.py`
+embeds `shortwave.ico` + version info in both `bin/shortwave.exe` and
+`bin/shortwave-bin.exe` and stops if the icon check fails.
+
+If the app SVG icon changed, regenerate `shortwave.ico` first. **Don't save it
+with Pillow's default ICO writer**: that stores every size as PNG, and Windows
+Explorer/Edge then show a generic icon. Frames under 256 px must be 32-bit
+BMP (PNG is fine only at 256 px). Render each size with `rsvg-convert`, build
+the ICO with BMP frames 16-128 and a PNG 256 frame (e.g. `icotool -c
+--raw=icon-256.png icon-128.png ... icon-16.png -o shortwave.ico`), then check it:
 
 ```bash
-tools/msys64/ucrt64/bin/rsvg-convert.exe -w 256 -h 256 \
-  shortwave/build/installroot/share/icons/hicolor/scalable/apps/de.haeckerfelix.Shortwave.svg -o icon-256.png
-python -c "from PIL import Image; Image.open('icon-256.png').convert('RGBA').save('shortwave.ico', sizes=[(s,s) for s in (16,24,32,48,64,128,256)])"
+python pe_icon.py --check-ico shortwave.ico
 ```
 
 ## Where the graphics live (for future customization)
@@ -116,13 +127,21 @@ to `GST_WHITELIST` → rerun `bundle.py` + `makensis.exe`.
    `libgsturidownloader-1.0-0.dll`) are loaded dynamically, so `bundle.py`
    lists them explicitly in `RUNTIME_LIBS`.
 
+## Version 5.1.0-windows.1 (icon fix)
+
+Same Shortwave 5.1.0 build as `v5.1.0-windows`; only the icons changed. The
+old installer's icon had every frame as PNG (generic icon in Explorer/Edge)
+and the two exes had no icon at all. The repackaged installer was made from
+the released payload with the two exes patched (`rcedit` + `pe_icon.py --fix`),
+so nothing was recompiled.
+
 ## Installer behavior
 
 - Installs to `%ProgramFiles%\Shortwave` (customizable), bin/lib/share prefix
   layout that GTK/GStreamer/gdk-pixbuf/GIO resolve relative to their DLLs
 - Start Menu shortcut + optional desktop shortcut; "Launch Shortwave" on the
   finish page; proper Add/Remove Programs entry with estimated size
-- Silent install: `shortwave-5.1.0-win64-setup.exe /S /D=C:\full\path`
+- Silent install: `shortwave-5.1.0.1-win64-setup.exe /S /D=C:\full\path`
 - Silent uninstall: `<install>\uninstall.exe /S`
 
 ## Validation checklist used for the shipped build

@@ -82,13 +82,50 @@ copy(exe_src, exe_dst)
 # The real binary is renamed to shortwave-bin.exe; a small launcher becomes
 # shortwave.exe and sets XDG_DATA_DIRS so GSettings finds the relocated
 # schemas.
+# The launcher gets the app icon + version info from shortwave.rc (windres);
+# the real binary gets them from rcedit below. Without an icon resource,
+# Explorer, the taskbar and the shortcuts show a generic program icon.
+HERE = os.path.dirname(os.path.abspath(__file__))
+VERSION = ("5.1.0.1", "5.1.0-windows.1")  # keep in sync with shortwave.rc/.nsi
 gcc_env = dict(os.environ)
 gcc_env["PATH"] = os.path.join(MSYS, "bin") + os.pathsep + gcc_env.get("PATH", "")
+res_obj = os.path.join(BUNDLE, "launcher-res.o")
+subprocess.run(
+    [os.path.join(MSYS, "bin", "windres.exe"), "-I", HERE,
+     os.path.join(HERE, "shortwave.rc"), "-O", "coff", "-o", res_obj],
+    check=True, env=gcc_env)
 subprocess.run(
     [os.path.join(MSYS, "bin", "gcc.exe"), "-O2", "-mwindows", "-s",
-     os.path.join(ROOT, "launcher.c"),
+     os.path.join(ROOT, "launcher.c"), res_obj,
      "-o", b("bin", "shortwave.exe")],
     check=True, env=gcc_env)
+os.remove(res_obj)
+
+# shortwave-bin.exe is linked by cargo, so its icon is added afterwards with
+# rcedit (https://github.com/electron/rcedit/releases, rcedit-x64.exe in
+# tools/ or on PATH). pe_icon.py --fix repairs rcedit's 16-bit frame sizes
+# and checks the result: frames under 256 px must be 32-bit BMP.
+rcedit = next((p for p in (os.path.join(ROOT, "tools", "rcedit-x64.exe"),
+                           os.path.join(HERE, "rcedit-x64.exe"),
+                           shutil.which("rcedit-x64.exe") or "",
+                           shutil.which("rcedit.exe") or "")
+               if p and os.path.isfile(p)), None)
+if not rcedit:
+    sys.exit("rcedit-x64.exe not found (needed to give shortwave-bin.exe its icon)")
+vs = lambda k, v: ["--set-version-string", k, v]
+subprocess.run(
+    [rcedit, exe_dst, "--set-icon", os.path.join(HERE, "shortwave.ico"),
+     "--set-file-version", VERSION[0], "--set-product-version", VERSION[0]]
+    + vs("FileDescription", "Shortwave") + vs("ProductName", "Shortwave")
+    + vs("CompanyName", "GNOME Shortwave contributors (unofficial Windows build)")
+    + vs("LegalCopyright", "GPL-3.0-or-later")
+    + vs("OriginalFilename", "shortwave-bin.exe") + vs("InternalName", "shortwave")
+    + vs("ProductVersion", VERSION[1]) + vs("FileVersion", VERSION[0]),
+    check=True)
+subprocess.run([sys.executable, os.path.join(HERE, "pe_icon.py"), "--fix", exe_dst],
+               check=True)
+subprocess.run([sys.executable, os.path.join(HERE, "pe_icon.py"), "--check",
+                b("bin", "shortwave.exe")], check=True)
 
 # ------------------------------------------------------------- gstreamer --
 # Only the plugins a radio player needs: Shortwave builds the pipeline
